@@ -173,11 +173,6 @@ cypress/screenshots/
 *.tar
 *.gz
 
-# -----------------------------------------------------
-# MAC / LINUX HIDDEN FILES
-# -----------------------------------------------------
-.fuse_hidden*
-.directory
 
 # -----------------------------------------------------
 # KEEP IMPORTANT FILES
@@ -189,3 +184,4 @@ cypress/screenshots/
 !vite.config.js
 !tailwind.config.js
 !postcss.config.js
+
