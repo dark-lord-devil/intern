@@ -1,0 +1,241 @@
+<!DOCTYPE html>
+<html class="light" lang="en">
+<head>
+    <meta charset="utf-8"/>
+    <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+    <title>E-Faws | Admin Control Hub</title>
+    <!-- Fonts & Icons -->
+    <link href="https://fonts.googleapis.com" rel="preconnect"/>
+    <link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&amp;family=Sora:wght@600;700;800&amp;display=swap" rel="stylesheet"/>
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+    
+    <!-- Compiled CSS & Theme Toggle script -->
+    <link rel="stylesheet" href="/css/main.css" />
+    <link rel="stylesheet" href="/css/theme.css" />
+    <link rel="stylesheet" href="/css/responsive.css" />
+    <script type="module" src="/js/theme.js"></script>
+    <style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .card-shadow {
+            box-shadow: 0 4px 20px -2px rgba(0, 74, 198, 0.04);
+        }
+        .glass-glow {
+            background: rgba(255, 255, 255, 0.7);
+            backdrop-filter: blur(12px);
+            border: 1px solid rgba(0, 83, 219, 0.1);
+        }
+        .sidebar-active {
+            box-shadow: inset -4px 0 0 0 #004ac6;
+        }
+        ::-webkit-scrollbar { width: 6px; }
+        ::-webkit-scrollbar-track { background: transparent; }
+        ::-webkit-scrollbar-thumb { background: #c3c6d7; border-radius: 10px; }
+    </style>
+</head>
+<body class="bg-background text-on-surface font-body-md min-h-screen dark:bg-dark-bg dark:text-inverse-on-surface">
+<!-- Desktop Side Navigation Shell -->
+<aside class="fixed left-0 top-0 h-screen w-64 border-r border-outline-variant/30 bg-surface-container-lowest dark:bg-dark-surface flex flex-col py-margin-desktop space-y-stack-md z-30">
+    <div class="px-6 mb-8 flex items-center gap-3">
+        <div class="flex flex-col">
+            <span class="font-card-title text-card-title font-bold text-primary dark:text-inverse-primary">E-Faws</span>
+            <span class="font-label-sm text-[10px] uppercase tracking-wider text-outline">Growth OS</span>
+        </div>
+    </div>
+    <nav class="flex-1 px-4 space-y-1 overflow-y-auto">
+        <a class="flex items-center gap-3 px-4 py-3 rounded-xl text-on-surface-variant dark:text-outline-variant font-medium hover:bg-surface-container dark:hover:bg-dark-elevated transition-colors" href="/pages/dashboard.html">
+            <span class="material-symbols-outlined">dashboard</span>
+            <span class="font-label-sm">Dashboard</span>
+        </a>
+        <a class="flex items-center gap-3 px-4 py-3 rounded-xl text-on-surface-variant dark:text-outline-variant font-medium hover:bg-surface-container dark:hover:bg-dark-elevated transition-colors" href="/pages/lending.html">
+            <span class="material-symbols-outlined">payments</span>
+            <span class="font-label-sm">Lending</span>
+        </a>
+        <a class="flex items-center gap-3 px-4 py-3 rounded-xl text-on-surface-variant dark:text-outline-variant font-medium hover:bg-surface-container dark:hover:bg-dark-elevated transition-colors" href="/pages/investments.html">
+            <span class="material-symbols-outlined">trending_up</span>
+            <span class="font-label-sm">Investment</span>
+        </a>
+        <a class="flex items-center gap-3 px-4 py-3 rounded-xl text-on-surface-variant dark:text-outline-variant font-medium hover:bg-surface-container dark:hover:bg-dark-elevated transition-colors" href="/pages/insurance.html">
+            <span class="material-symbols-outlined">verified_user</span>
+            <span class="font-label-sm">Insurance</span>
+        </a>
+        <a class="flex items-center gap-3 px-4 py-3 rounded-xl text-on-surface-variant dark:text-outline-variant font-medium hover:bg-surface-container dark:hover:bg-dark-elevated transition-colors" href="/pages/earnhub.html">
+            <span class="material-symbols-outlined">savings</span>
+            <span class="font-label-sm">Earn Hub</span>
+        </a>
+        <a class="flex items-center gap-3 px-4 py-3 rounded-xl text-on-surface-variant dark:text-outline-variant font-medium hover:bg-surface-container dark:hover:bg-dark-elevated transition-colors" href="/pages/wallet.html">
+            <span class="material-symbols-outlined">account_balance_wallet</span>
+            <span class="font-label-sm">Wallet</span>
+        </a>
+        <a class="flex items-center gap-3 px-4 py-3 rounded-xl text-on-surface-variant dark:text-outline-variant font-medium hover:bg-surface-container dark:hover:bg-dark-elevated transition-colors" href="/pages/notifications.html">
+            <span class="material-symbols-outlined">notifications</span>
+            <span class="font-label-sm">Notifications</span>
+        </a>
+        <a class="flex items-center gap-3 px-4 py-3 rounded-xl text-on-surface-variant dark:text-outline-variant font-medium hover:bg-surface-container dark:hover:bg-dark-elevated transition-colors" href="/pages/security.html">
+            <span class="material-symbols-outlined">security</span>
+            <span class="font-label-sm">Security</span>
+        </a>
+        <a id="nav-admin-link" class="flex items-center gap-3 px-4 py-3 rounded-xl text-primary font-bold bg-primary/10 sidebar-active transition-all duration-150" href="/pages/admin.html">
+            <span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">admin_panel_settings</span>
+            <span class="font-label-sm">Admin Panel</span>
+        </a>
+    </nav>
+    <div class="px-4 mt-auto">
+        <button id="logout-btn" class="w-full bg-surface-variant dark:bg-dark-elevated text-on-surface-variant dark:text-white py-3 px-4 rounded-xl font-label-sm flex items-center justify-center gap-2 hover:opacity-90 active:scale-95 transition-all">
+            <span class="material-symbols-outlined text-[20px]">logout</span>
+            Sign Out
+        </button>
+    </div>
+</aside>
+
+<!-- Top AppBar Shell -->
+<header class="fixed top-0 right-0 left-64 h-20 bg-surface/80 dark:bg-dark-bg/80 backdrop-blur-md z-20 px-margin-desktop flex items-center justify-between shadow-sm border-b border-outline-variant/10">
+    <div class="flex-1 max-w-xl">
+        <h1 class="font-sora text-lg font-bold text-on-surface dark:text-white flex items-center gap-2">
+            <span class="material-symbols-outlined text-primary text-[24px]">shield_person</span>
+            E-Faws Ecosystem Administrator Console
+        </h1>
+    </div>
+    <div class="flex items-center gap-6">
+        <div class="hidden md:flex items-center gap-2 px-4 py-1.5 bg-success/10 text-success rounded-full border border-success/20">
+            <span class="material-symbols-outlined text-[18px]">ecg_heart</span>
+            <span class="font-label-sm font-bold" id="header-health-score">Health Score: 85</span>
+        </div>
+        <div class="flex items-center gap-2">
+            <button onclick="window.toggleTheme()" class="p-2 text-on-surface-variant dark:text-outline-variant hover:bg-surface-container dark:hover:bg-dark-surface rounded-full transition-all" title="Toggle Mode">
+                <span class="material-symbols-outlined">contrast</span>
+            </button>
+        </div>
+        <div class="h-10 w-px bg-outline-variant/30 mx-2"></div>
+        <div class="flex items-center gap-3 cursor-pointer group">
+            <div class="flex flex-col items-end">
+                <span class="font-label-sm font-bold text-on-surface dark:text-white group-hover:text-primary transition-colors" id="top-user-name">Loading Profile</span>
+                <span class="text-[11px] text-outline" id="top-user-tier">Premium User</span>
+            </div>
+            <div class="w-10 h-10 rounded-full bg-primary/10 text-primary flex items-center justify-center font-bold" id="user-avatar-initials">
+                EF
+            </div>
+        </div>
+    </div>
+</header>
+
+<!-- Main Content Canvas -->
+<main class="ml-64 pt-28 px-margin-desktop pb-margin-desktop max-w-[1200px] dark:bg-dark-bg">
+    <!-- Page Title -->
+    <div class="flex justify-between items-center mb-8">
+        <div>
+            <h2 class="font-section-title text-section-title text-3xl font-bold text-on-surface dark:text-white">Administrative Overview</h2>
+            <p class="text-on-surface-variant dark:text-outline-variant font-body-md mt-1">Simulate operational workflows, update client statuses, and inspect system liquidity metrics.</p>
+        </div>
+        <span class="flex items-center gap-1 font-semibold text-primary cursor-pointer hover:underline text-xs" id="last-sync-time">
+            <span class="material-symbols-outlined text-[14px]">sync</span>
+            Synced just now
+        </span>
+    </div>
+
+    <!-- Stats Panel -->
+    <div class="grid grid-cols-1 md:grid-cols-4 gap-gutter mb-8">
+        
+        <!-- Total Platform Balance -->
+        <div class="bg-surface-container-lowest dark:bg-dark-surface p-5 rounded-2xl border border-outline-variant/30 dark:border-outline/10 card-shadow">
+            <span class="text-[10px] uppercase font-bold text-outline tracking-wider block mb-1">Ecosystem Balance (INR)</span>
+            <div class="flex justify-between items-center">
+                <span id="stat-total-balance" class="font-sora text-2xl font-extrabold text-primary">₹0.00</span>
+                <div class="w-8 h-8 rounded-full bg-primary/10 text-primary flex items-center justify-center">
+                    <span class="material-symbols-outlined text-md">account_balance_wallet</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- Average Health Score -->
+        <div class="bg-surface-container-lowest dark:bg-dark-surface p-5 rounded-2xl border border-outline-variant/30 dark:border-outline/10 card-shadow">
+            <span class="text-[10px] uppercase font-bold text-outline tracking-wider block mb-1">Average Health Index</span>
+            <div class="flex justify-between items-center">
+                <span id="stat-avg-health" class="font-sora text-2xl font-extrabold text-success">0</span>
+                <div class="w-8 h-8 rounded-full bg-success/10 text-success flex items-center justify-center">
+                    <span class="material-symbols-outlined text-md">trending_up</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- Outstanding Lending Amount -->
+        <div class="bg-surface-container-lowest dark:bg-dark-surface p-5 rounded-2xl border border-outline-variant/30 dark:border-outline/10 card-shadow">
+            <span class="text-[10px] uppercase font-bold text-outline tracking-wider block mb-1">Outstanding Loans</span>
+            <div class="flex justify-between items-center">
+                <span id="stat-total-loans" class="font-sora text-2xl font-extrabold text-warning">₹0.00</span>
+                <div class="w-8 h-8 rounded-full bg-warning/10 text-warning flex items-center justify-center">
+                    <span class="material-symbols-outlined text-md">payments</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- Total Insurance Underwritten -->
+        <div class="bg-surface-container-lowest dark:bg-dark-surface p-5 rounded-2xl border border-outline-variant/30 dark:border-outline/10 card-shadow">
+            <span class="text-[10px] uppercase font-bold text-outline tracking-wider block mb-1">Total Insured Pool</span>
+            <div class="flex justify-between items-center">
+                <span id="stat-total-insurance" class="font-sora text-2xl font-extrabold text-[#00687a]">₹0.00</span>
+                <div class="w-8 h-8 rounded-full bg-[#00687a]/10 text-[#00687a] flex items-center justify-center">
+                    <span class="material-symbols-outlined text-md">verified_user</span>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+    <!-- Active Users Controller Grid -->
+    <div class="bg-surface-container-lowest dark:bg-dark-surface border border-outline-variant/30 dark:border-outline/10 rounded-2xl p-6 card-shadow mb-8">
+        <div class="flex flex-col md:flex-row justify-between items-start md:items-center gap-4 mb-6">
+            <div>
+                <h3 class="text-lg font-bold text-on-surface dark:text-white">Active Platform Profiles</h3>
+                <p class="text-xs text-outline">Manage KYC validation, freeze account access, and check client metrics in real-time.</p>
+            </div>
+            <div class="relative w-full md:w-72">
+                <span class="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-outline text-sm">search</span>
+                <input id="user-search" class="w-full bg-surface-container dark:bg-dark-bg border-none rounded-xl py-2 pl-9 pr-4 text-xs dark:text-white" placeholder="Search by name, email or phone..." type="text"/>
+            </div>
+        </div>
+
+        <div class="overflow-x-auto">
+            <table class="w-full text-left border-collapse text-xs">
+                <thead>
+                    <tr class="border-b border-outline-variant/30 text-outline uppercase font-extrabold tracking-wider">
+                        <th class="py-3 px-4">Client Name / Email</th>
+                        <th class="py-3 px-4 text-right">E-Wallet Balance</th>
+                        <th class="py-3 px-4 text-center">Health Score</th>
+                        <th class="py-3 px-4 text-center">KYC Status</th>
+                        <th class="py-3 px-4 text-center">Account State</th>
+                        <th class="py-3 px-4 text-right">Administrative Actions</th>
+                    </tr>
+                </thead>
+                <tbody id="admin-users-tbody">
+                    <tr>
+                        <td colspan="6" class="py-8 text-center text-outline animate-pulse">Gathering platform registry details...</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+    <!-- Simulation Settings Info -->
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-gutter">
+        <div class="bg-[#004ac6]/5 dark:bg-dark-surface p-5 rounded-2xl border border-primary/20 space-y-2">
+            <h4 class="font-bold text-xs uppercase tracking-wider text-primary">KYC Simulation Workflow</h4>
+            <p class="text-[11px] text-outline leading-normal">
+                Approving a user's KYC status immediately enables active loan applications and high-tier investment products. Reverting to pending restricts advanced transactional features on the client side.
+            </p>
+        </div>
+        <div class="bg-error/5 dark:bg-dark-surface p-5 rounded-2xl border border-error/20 space-y-2">
+            <h4 class="font-bold text-xs uppercase tracking-wider text-error">Account Freezing Safety Mechanism</h4>
+            <p class="text-[11px] text-outline leading-normal">
+                Freezing a user's profile blocks all deposit, withdraw, transfer, and payout processes immediately. Users attempting actions will receive a critical warning alert. Toggle freeze state above to test security bounds.
+            </p>
+        </div>
+    </div>
+</main>
+
+<!-- Scripts -->
+<script type="module" src="/js/admin.js"></script>
+</body>
+</html>

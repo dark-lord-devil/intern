@@ -1,0 +1,191 @@
+# =====================================================
+# E-FAWS — COMPLETE .gitignore
+# =====================================================
+
+# -----------------------------------------------------
+# ENVIRONMENT VARIABLES & SECRETS
+# -----------------------------------------------------
+.env
+.env.*
+!.env.example
+
+# Secret keys / certificates
+*.pem
+*.key
+*.crt
+*.pfx
+*.p12
+
+# -----------------------------------------------------
+# NODE / JAVASCRIPT
+# -----------------------------------------------------
+node_modules/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+
+# Package manager cache
+.npm/
+.pnpm-store/
+
+# Build outputs
+dist/
+build/
+.vite/
+.cache/
+
+# Coverage / testing
+coverage/
+test-results/
+playwright-report/
+
+# Logs
+logs/
+*.log
+
+# -----------------------------------------------------
+# PYTHON / FASTAPI
+# -----------------------------------------------------
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+*.sqlite3
+
+# Virtual environments
+venv/
+.venv/
+env/
+
+# Python tooling cache
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+
+# -----------------------------------------------------
+# IDE / EDITORS
+# -----------------------------------------------------
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# -----------------------------------------------------
+# OPERATING SYSTEM FILES
+# -----------------------------------------------------
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# -----------------------------------------------------
+# TEMPORARY FILES
+# -----------------------------------------------------
+tmp/
+temp/
+*.tmp
+*.temp
+
+# -----------------------------------------------------
+# GENERATED / BUILD FILES
+# -----------------------------------------------------
+frontend/dist/
+backend/dist/
+python-service/dist/
+
+# Vite generated cache
+frontend/.vite/
+
+# -----------------------------------------------------
+# DATABASE / MOCK STORAGE
+# -----------------------------------------------------
+mock_db.json
+mock_db_backup.json
+backup/
+backups/
+*.bak
+*.backup
+
+# Database snapshots
+*.sql.gz
+*.dump
+
+# -----------------------------------------------------
+# UPLOADS / STORAGE
+# -----------------------------------------------------
+uploads/
+storage/
+firebase-debug.log
+
+# -----------------------------------------------------
+# SUPABASE / FIREBASE
+# -----------------------------------------------------
+.supabase/
+.firebase/
+
+# -----------------------------------------------------
+# SERVICE WORKERS / MAP FILES
+# -----------------------------------------------------
+*.map
+
+# -----------------------------------------------------
+# PWA GENERATED FILES
+# -----------------------------------------------------
+workbox-*.js
+
+# -----------------------------------------------------
+# SECURITY / TOKENS
+# -----------------------------------------------------
+secrets/
+tokens/
+credentials/
+
+# -----------------------------------------------------
+# LOCAL CONFIG FILES
+# -----------------------------------------------------
+*.local
+config.local.js
+
+# -----------------------------------------------------
+# CACHE FILES
+# -----------------------------------------------------
+.cache-loader/
+eslintcache
+
+# -----------------------------------------------------
+# OPTIONAL HOSTING FILES
+# -----------------------------------------------------
+.vercel/
+.netlify/
+.render/
+
+# -----------------------------------------------------
+# TESTING ARTIFACTS
+# -----------------------------------------------------
+screenshots/
+cypress/videos/
+cypress/screenshots/
+
+# -----------------------------------------------------
+# ZIP / EXPORTS
+# -----------------------------------------------------
+*.zip
+*.tar
+*.gz
+
+# -----------------------------------------------------
+# MAC / LINUX HIDDEN FILES
+# -----------------------------------------------------
+.fuse_hidden*
+.directory
+
+# -----------------------------------------------------
+# KEEP IMPORTANT FILES
+# -----------------------------------------------------
+!README.md
+!.gitignore
+!package.json
+!package-lock.json
+!vite.config.js
+!tailwind.config.js
+!postcss.config.js

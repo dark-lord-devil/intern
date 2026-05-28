@@ -1,0 +1,9 @@
+/* E-Faws Custom Responsive Layout Tweaks */
+/* Handled primarily via Tailwind grid/flex modifiers (sm:, md:, lg:, xl:) */
+
+@media (max-width: 640px) {
+  .mobile-padding-adjust {
+    padding-left: var(--spacing-margin-mobile, 16px);
+    padding-right: var(--spacing-margin-mobile, 16px);
+  }
+}

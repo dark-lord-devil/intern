@@ -1,0 +1,349 @@
+<!DOCTYPE html>
+<html class="light" lang="en">
+<head>
+    <meta charset="utf-8"/>
+    <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+    <title>E-Faws | Growth OS Dashboard</title>
+    <!-- Fonts & Icons -->
+    <link href="https://fonts.googleapis.com" rel="preconnect"/>
+    <link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&amp;family=Sora:wght@600;700;800&amp;display=swap" rel="stylesheet"/>
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+    
+    <!-- Compiled CSS & Theme Toggle script -->
+    <link rel="stylesheet" href="/css/main.css" />
+    <link rel="stylesheet" href="/css/theme.css" />
+    <link rel="stylesheet" href="/css/responsive.css" />
+    <script type="module" src="/js/theme.js"></script>
+    <style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .card-shadow {
+            box-shadow: 0 4px 20px -2px rgba(0, 74, 198, 0.04);
+        }
+        .glass-glow {
+            background: rgba(255, 255, 255, 0.7);
+            backdrop-filter: blur(12px);
+            border: 1px solid rgba(0, 83, 219, 0.1);
+        }
+        .sidebar-active {
+            box-shadow: inset -4px 0 0 0 #004ac6;
+        }
+        ::-webkit-scrollbar { width: 6px; }
+        ::-webkit-scrollbar-track { background: transparent; }
+        ::-webkit-scrollbar-thumb { background: #c3c6d7; border-radius: 10px; }
+    </style>
+</head>
+<body class="bg-background text-on-surface font-body-md min-h-screen dark:bg-dark-bg dark:text-inverse-on-surface">
+<!-- Desktop Side Navigation Shell -->
+<aside class="fixed left-0 top-0 h-screen w-64 border-r border-outline-variant/30 bg-surface-container-lowest dark:bg-dark-surface flex flex-col py-margin-desktop space-y-stack-md z-30">
+    <div class="px-6 mb-8 flex items-center gap-3">
+        <div class="flex flex-col">
+            <span class="font-card-title text-card-title font-bold text-primary dark:text-inverse-primary">E-Faws</span>
+            <span class="font-label-sm text-[10px] uppercase tracking-wider text-outline">Growth OS</span>
+        </div>
+    </div>
+    <nav class="flex-1 px-4 space-y-1 overflow-y-auto">
+        <a class="flex items-center gap-3 px-4 py-3 rounded-xl text-primary font-bold bg-primary/10 sidebar-active transition-all duration-150" href="/pages/dashboard.html">
+            <span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">dashboard</span>
+            <span class="font-label-sm">Dashboard</span>
+        </a>
+        <a class="flex items-center gap-3 px-4 py-3 rounded-xl text-on-surface-variant dark:text-outline-variant font-medium hover:bg-surface-container dark:hover:bg-dark-elevated transition-colors" href="/pages/lending.html">
+            <span class="material-symbols-outlined">payments</span>
+            <span class="font-label-sm">Lending</span>
+        </a>
+        <a class="flex items-center gap-3 px-4 py-3 rounded-xl text-on-surface-variant dark:text-outline-variant font-medium hover:bg-surface-container dark:hover:bg-dark-elevated transition-colors" href="/pages/investments.html">
+            <span class="material-symbols-outlined">trending_up</span>
+            <span class="font-label-sm">Investment</span>
+        </a>
+        <a class="flex items-center gap-3 px-4 py-3 rounded-xl text-on-surface-variant dark:text-outline-variant font-medium hover:bg-surface-container dark:hover:bg-dark-elevated transition-colors" href="/pages/insurance.html">
+            <span class="material-symbols-outlined">verified_user</span>
+            <span class="font-label-sm">Insurance</span>
+        </a>
+        <a class="flex items-center gap-3 px-4 py-3 rounded-xl text-on-surface-variant dark:text-outline-variant font-medium hover:bg-surface-container dark:hover:bg-dark-elevated transition-colors" href="/pages/earnhub.html">
+            <span class="material-symbols-outlined">savings</span>
+            <span class="font-label-sm">Earn Hub</span>
+        </a>
+        <a class="flex items-center gap-3 px-4 py-3 rounded-xl text-on-surface-variant dark:text-outline-variant font-medium hover:bg-surface-container dark:hover:bg-dark-elevated transition-colors" href="/pages/wallet.html">
+            <span class="material-symbols-outlined">account_balance_wallet</span>
+            <span class="font-label-sm">Wallet</span>
+        </a>
+        <a class="flex items-center gap-3 px-4 py-3 rounded-xl text-on-surface-variant dark:text-outline-variant font-medium hover:bg-surface-container dark:hover:bg-dark-elevated transition-colors" href="/pages/notifications.html">
+            <span class="material-symbols-outlined">notifications</span>
+            <span class="font-label-sm">Notifications</span>
+        </a>
+        <a class="flex items-center gap-3 px-4 py-3 rounded-xl text-on-surface-variant dark:text-outline-variant font-medium hover:bg-surface-container dark:hover:bg-dark-elevated transition-colors" href="/pages/security.html">
+            <span class="material-symbols-outlined">security</span>
+            <span class="font-label-sm">Security</span>
+        </a>
+        <a id="nav-admin-link" class="flex items-center gap-3 px-4 py-3 rounded-xl text-on-surface-variant dark:text-outline-variant font-medium hover:bg-surface-container dark:hover:bg-dark-elevated transition-colors hidden" href="/pages/admin.html">
+            <span class="material-symbols-outlined">admin_panel_settings</span>
+            <span class="font-label-sm">Admin Panel</span>
+        </a>
+    </nav>
+    <div class="px-4 mt-auto">
+        <button id="logout-btn" class="w-full bg-surface-variant dark:bg-dark-elevated text-on-surface-variant dark:text-white py-3 px-4 rounded-xl font-label-sm flex items-center justify-center gap-2 hover:opacity-90 active:scale-95 transition-all">
+            <span class="material-symbols-outlined text-[20px]">logout</span>
+            Sign Out
+        </button>
+    </div>
+</aside>
+
+<!-- Top AppBar Shell -->
+<header class="fixed top-0 right-0 left-64 h-20 bg-surface/80 dark:bg-dark-bg/80 backdrop-blur-md z-20 px-margin-desktop flex items-center justify-between shadow-sm border-b border-outline-variant/10">
+    <div class="flex-1 max-w-xl">
+        <div class="relative group">
+            <span class="material-symbols-outlined absolute left-4 top-1/2 -translate-y-1/2 text-outline group-focus-within:text-primary">search</span>
+            <input class="w-full bg-surface-container-low dark:bg-dark-surface border-none rounded-full py-2.5 pl-12 pr-4 focus:ring-2 focus:ring-primary/20 text-body-md transition-all dark:text-white" placeholder="Search markets, accounts, or insights..." type="text"/>
+        </div>
+    </div>
+    <div class="flex items-center gap-6">
+        <div class="hidden md:flex items-center gap-2 px-4 py-1.5 bg-success/10 text-success rounded-full border border-success/20">
+            <span class="material-symbols-outlined text-[18px]">ecg_heart</span>
+            <span class="font-label-sm font-bold" id="header-health-score">Health Score: 85</span>
+        </div>
+        <div class="flex items-center gap-2">
+            <button onclick="window.toggleTheme()" class="p-2 text-on-surface-variant dark:text-outline-variant hover:bg-surface-container dark:hover:bg-dark-surface rounded-full transition-all" title="Toggle Mode">
+                <span class="material-symbols-outlined">contrast</span>
+            </button>
+        </div>
+        <div class="h-10 w-px bg-outline-variant/30 mx-2"></div>
+        <div class="flex items-center gap-3 cursor-pointer group">
+            <div class="flex flex-col items-end">
+                <span class="font-label-sm font-bold text-on-surface dark:text-white group-hover:text-primary transition-colors" id="top-user-name">Loading Profile</span>
+                <span class="text-[11px] text-outline" id="top-user-tier">Premium User</span>
+            </div>
+            <div class="w-10 h-10 rounded-full bg-primary/10 text-primary flex items-center justify-center font-bold" id="user-avatar-initials">
+                EF
+            </div>
+        </div>
+    </div>
+</header>
+
+<!-- Main Content Canvas -->
+<main class="ml-64 pt-28 px-margin-desktop pb-margin-desktop max-w-[1600px] dark:bg-dark-bg">
+    <!-- 1. Welcome Section -->
+    <section class="grid grid-cols-1 lg:grid-cols-3 gap-gutter mb-section-gap">
+        <div class="lg:col-span-2 flex flex-col justify-center">
+            <h1 class="font-hero-lg-mobile md:text-5xl font-bold text-primary dark:text-inverse-primary mb-2">Welcome back, <span id="user-first-name">Arjun</span></h1>
+            <p class="font-body-lg text-on-surface-variant dark:text-outline-variant max-w-2xl">Your portfolio is outpacing the market this month. Let's see your real-time stats.</p>
+            <div class="mt-8 flex gap-4">
+                <div class="flex items-center gap-2 text-on-surface-variant dark:text-outline-variant font-label-sm">
+                    <span class="material-symbols-outlined text-success">verified</span>
+                    KYC <span id="kyc-badge-status">Verified</span>
+                </div>
+                <div class="flex items-center gap-2 text-on-surface-variant dark:text-outline-variant font-label-sm">
+                    <span class="material-symbols-outlined text-primary">security</span>
+                    256-bit Encrypted
+                </div>
+            </div>
+        </div>
+        
+        <!-- Dynamic AI Growth Tip -->
+        <div class="glass-glow dark:bg-dark-surface p-6 rounded-[24px] card-shadow border-l-4 border-l-secondary-container relative overflow-hidden">
+            <div class="absolute -right-8 -top-8 w-32 h-32 bg-secondary-container/10 rounded-full blur-3xl"></div>
+            <div class="flex items-center gap-2 mb-4">
+                <span class="material-symbols-outlined text-secondary-container">psychology</span>
+                <span class="font-label-sm font-bold text-secondary dark:text-secondary-container">AI GROWTH TIP</span>
+            </div>
+            <h3 class="font-card-title text-on-surface dark:text-white mb-3" id="ai-tip-title">Rebalance SIP Portfolio</h3>
+            <p class="font-body-md text-on-surface-variant dark:text-outline-variant mb-6" id="ai-tip-desc">Based on your recent spending drop, increasing your index fund SIP by ₹5,000 could reach your retirement goal 2 years earlier.</p>
+            <button class="w-full bg-secondary-container text-on-secondary-container py-3 rounded-xl font-label-sm font-bold hover:brightness-95 transition-all" id="ai-tip-btn">Apply Recommendation</button>
+        </div>
+    </section>
+
+    <!-- Onboarding Progress & Smart Goals Section -->
+    <section class="grid grid-cols-1 lg:grid-cols-3 gap-gutter mb-section-gap">
+        <!-- Onboarding Checklist -->
+        <div class="bg-surface-container-lowest dark:bg-dark-surface p-6 rounded-[24px] card-shadow border border-outline-variant/30 dark:border-outline/10 lg:col-span-1 flex flex-col justify-between">
+            <div>
+                <div class="flex justify-between items-center mb-6">
+                    <h3 class="font-card-title text-on-surface dark:text-white font-bold text-lg">Onboarding Tracker</h3>
+                    <span class="text-xs font-bold text-primary bg-primary/10 px-3 py-1 rounded-full border border-primary/20" id="onboarding-percent">0% Completed</span>
+                </div>
+                <div class="space-y-4" id="onboarding-checklist-container">
+                    <!-- Loaded dynamically via js -->
+                    <div class="flex items-center gap-3 animate-pulse">
+                        <div class="w-5 h-5 rounded bg-outline-variant/30"></div>
+                        <div class="h-4 bg-outline-variant/30 rounded w-2/3"></div>
+                    </div>
+                </div>
+            </div>
+            <div class="pt-4 border-t border-outline-variant/20 mt-4 font-semibold">
+                <div class="w-full bg-outline-variant/20 h-2 rounded-full overflow-hidden">
+                    <div class="bg-primary h-full rounded-full transition-all duration-500" id="onboarding-progress-bar" style="width: 0%"></div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Smart Wealth Goals Widget -->
+        <div class="bg-surface-container-lowest dark:bg-dark-surface p-6 rounded-[24px] card-shadow border border-outline-variant/30 dark:border-outline/10 lg:col-span-2">
+            <div id="widget-goals-tracker" class="w-full min-h-[220px]"></div>
+        </div>
+    </section>
+
+    <!-- 2. Bento Grid Hub (React widgets container) -->
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-gutter mb-section-gap">
+        <!-- Financial Health Card -->
+        <div class="bg-surface-container-lowest dark:bg-dark-surface p-6 rounded-[24px] card-shadow border border-outline-variant/30 dark:border-outline/10 flex flex-col justify-between">
+            <div>
+                <div class="flex justify-between items-start mb-4">
+                    <span class="font-label-sm text-outline">Health Score</span>
+                    <span class="material-symbols-outlined text-primary">analytics</span>
+                </div>
+                <!-- React Circular Progress Widget -->
+                <div id="widget-health-score" class="w-full min-h-[128px]"></div>
+            </div>
+            <div class="mt-6 flex justify-between items-center text-[12px]">
+                <div class="flex flex-col">
+                    <span class="text-outline">Savings Status</span>
+                    <span class="text-success font-bold">+18% MoM</span>
+                </div>
+                <div class="w-px h-6 bg-outline-variant/30"></div>
+                <div class="flex flex-col items-end">
+                    <span class="text-outline">Spending Trend</span>
+                    <span class="text-error font-bold">-4% reduction</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- Investment Portfolio Chart -->
+        <div class="md:col-span-2 bg-surface-container-lowest dark:bg-dark-surface p-6 rounded-[24px] card-shadow border border-outline-variant/30 dark:border-outline/10 overflow-hidden relative">
+            <!-- React Area Chart Widget -->
+            <div id="widget-networth-growth" class="w-full min-h-[220px]"></div>
+        </div>
+
+        <!-- Security & Trust -->
+        <div class="bg-primary p-6 rounded-[24px] card-shadow flex flex-col justify-between text-on-primary relative overflow-hidden">
+            <div class="absolute top-0 right-0 w-32 h-32 bg-white/10 rounded-full -mr-16 -mt-16 blur-2xl"></div>
+            <div>
+                <div class="flex items-center gap-2 mb-6">
+                    <span class="material-symbols-outlined">verified_user</span>
+                    <span class="font-label-sm font-bold uppercase tracking-widest">Fortress Security</span>
+                </div>
+                <div class="space-y-4">
+                    <div class="flex items-center justify-between">
+                        <span class="text-[12px] opacity-80">Encrypted Status</span>
+                        <span class="text-[12px] font-bold text-success bg-white px-2 py-0.5 rounded-full">ACTIVE</span>
+                    </div>
+                    <div class="flex items-center justify-between">
+                        <span class="text-[12px] opacity-80">Fraud Monitoring</span>
+                        <span class="text-[12px] font-bold">Safe</span>
+                    </div>
+                    <div class="flex items-center justify-between">
+                        <span class="text-[12px] opacity-80">Session Scanner</span>
+                        <span class="text-[12px] font-bold">Secure</span>
+                    </div>
+                </div>
+            </div>
+            <button class="w-full bg-white/20 hover:bg-white/30 py-3 rounded-xl font-label-sm transition-all border border-white/20">Review Security</button>
+        </div>
+    </div>
+
+    <!-- 3. Bottom Layout Grid -->
+    <div class="grid grid-cols-1 lg:grid-cols-3 gap-gutter">
+        <!-- Wallet & Lending Stack -->
+        <div class="lg:col-span-2 space-y-gutter">
+            <!-- Wallet Accounts -->
+            <div class="bg-surface-container-lowest dark:bg-dark-surface p-6 rounded-[24px] card-shadow border border-outline-variant/30 dark:border-outline/10">
+                <div class="flex justify-between items-center mb-6">
+                    <h3 class="font-card-title text-on-surface dark:text-white font-bold text-lg">Accounts &amp; Wallet</h3>
+                    <a href="/pages/wallet.html" class="text-primary dark:text-inverse-primary font-bold font-label-sm hover:underline">Go to Wallet →</a>
+                </div>
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-4" id="wallet-accounts-grid">
+                    <!-- Loaded dynamically via js -->
+                    <div class="p-4 rounded-2xl border border-outline-variant/50 dark:border-outline/20 bg-light-bg dark:bg-dark-bg flex justify-between items-center animate-pulse">
+                        <span class="text-sm text-outline">Loading wallet balance...</span>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Lending & Repayment -->
+            <div class="bg-surface-container-lowest dark:bg-dark-surface p-6 rounded-[24px] card-shadow border border-outline-variant/30 dark:border-outline/10">
+                <div class="flex justify-between items-center mb-6">
+                    <h3 class="font-card-title text-on-surface dark:text-white font-bold text-lg">Lending &amp; Loans</h3>
+                    <span class="bg-warning/10 text-warning px-3 py-1 rounded-full text-[12px] font-bold" id="emi-days-badge">Checking Loans</span>
+                </div>
+                <div class="space-y-6" id="active-loan-section">
+                    <!-- Hydrated dynamically -->
+                    <div class="text-outline text-sm animate-pulse">Checking active credit accounts...</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Sidebar Contextual Stack -->
+        <div class="space-y-gutter">
+            <!-- Earn Hub Progression -->
+            <div class="bg-gradient-to-br from-dark-surface to-dark-elevated p-6 rounded-[24px] shadow-lg text-white">
+                <div class="flex justify-between items-center mb-6">
+                    <span class="bg-primary/20 text-primary-fixed px-3 py-1 rounded-full text-[10px] font-bold tracking-widest border border-primary/30 uppercase">Earn Hub</span>
+                    <div class="flex -space-x-2">
+                        <div class="w-8 h-8 rounded-full bg-warning flex items-center justify-center border-2 border-dark-surface" title="Top Earner Badge">
+                            <span class="material-symbols-outlined text-[16px]" style="font-variation-settings: 'FILL' 1;">workspace_premium</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="text-center mb-8">
+                    <h4 class="text-outline text-[12px] uppercase font-bold mb-1">Current Standing</h4>
+                    <p class="text-4xl font-financial-display font-bold" id="earnhub-level-display">Level --</p>
+                    <p class="text-outline-variant text-sm mt-1" id="earnhub-next-level-tip">Loading level metrics...</p>
+                </div>
+                <div class="space-y-4">
+                    <div class="w-full h-2 bg-white/10 rounded-full overflow-hidden">
+                        <div class="h-full bg-gradient-to-r from-primary to-secondary-container rounded-full" id="earnhub-progress-bar" style="width: 0%"></div>
+                    </div>
+                    <div class="flex justify-between text-[11px] font-bold text-outline">
+                        <span id="earnhub-current-xp">0 XP</span>
+                        <span id="earnhub-next-xp">1000 XP</span>
+                    </div>
+                </div>
+                <a href="/pages/earnhub.html" class="w-full text-center block mt-8 bg-white text-dark-surface py-3 rounded-xl font-label-sm font-bold hover:bg-opacity-90 active:scale-95 transition-all">Go to Earn Hub</a>
+            </div>
+
+            <!-- Monthly Analytics -->
+            <div class="bg-surface-container-lowest dark:bg-dark-surface p-6 rounded-[24px] card-shadow border border-outline-variant/30 dark:border-outline/10">
+                <h3 class="font-card-title text-on-surface dark:text-white font-bold text-lg mb-6">Monthly Flow</h3>
+                
+                <!-- React Bar Chart Widget -->
+                <div id="widget-monthly-flow" class="w-full min-h-[128px]"></div>
+
+                <div class="pt-4 border-t border-outline-variant/30 space-y-3 mt-4">
+                    <div class="flex justify-between text-label-sm">
+                        <span class="text-on-surface-variant dark:text-outline-variant">Income Category</span>
+                        <span class="font-bold text-on-surface dark:text-white">Primary Salary</span>
+                    </div>
+                    <div class="flex justify-between text-label-sm">
+                        <span class="text-on-surface-variant dark:text-outline-variant">Savings Rate</span>
+                        <span class="font-bold text-success">42% (Seeded target)</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- 4. AI Insights Bottom Shelf -->
+    <section class="mt-section-gap">
+        <div class="flex items-center gap-3 mb-8">
+            <div class="w-10 h-10 bg-primary/10 rounded-full flex items-center justify-center text-primary">
+                <span class="material-symbols-outlined">auto_awesome</span>
+            </div>
+            <div>
+                <h2 class="font-section-title text-on-surface dark:text-white text-2xl font-bold">Intelligent Insights</h2>
+                <p class="text-outline font-label-sm">Real-time financial optimizations powered by E-Faws AI</p>
+            </div>
+        </div>
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-gutter" id="insights-container">
+            <!-- Loading Insights -->
+            <div class="bg-surface-container-low dark:bg-dark-surface p-6 rounded-[24px] border border-outline-variant/30 dark:border-outline/10 group hover:bg-white hover:card-shadow transition-all cursor-pointer">
+                <p class="text-outline text-sm">Loading AI insights...</p>
+            </div>
+        </div>
+    </section>
+</main>
+
+<!-- Scripts -->
+<script type="module" src="/widgets/index.jsx"></script>
+<script type="module" src="/js/dashboard.js"></script>
+</body>
+</html>

@@ -1,0 +1,399 @@
+<!DOCTYPE html>
+<html class="light" lang="en">
+<head>
+    <meta charset="utf-8"/>
+    <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+    <title>E-Faws | Wallet &amp; Transactions</title>
+    <!-- Fonts & Icons -->
+    <link href="https://fonts.googleapis.com" rel="preconnect"/>
+    <link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&amp;family=Sora:wght@600;700;800&amp;display=swap" rel="stylesheet"/>
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+    
+    <!-- Compiled CSS & Theme Toggle script -->
+    <link rel="stylesheet" href="/css/main.css" />
+    <link rel="stylesheet" href="/css/theme.css" />
+    <link rel="stylesheet" href="/css/responsive.css" />
+    <script type="module" src="/js/theme.js"></script>
+    <style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .card-shadow {
+            box-shadow: 0 4px 20px -2px rgba(0, 74, 198, 0.04);
+        }
+        .glass-glow {
+            background: rgba(255, 255, 255, 0.7);
+            backdrop-filter: blur(12px);
+            border: 1px solid rgba(0, 83, 219, 0.1);
+        }
+        .sidebar-active {
+            box-shadow: inset -4px 0 0 0 #004ac6;
+        }
+        ::-webkit-scrollbar { width: 6px; }
+        ::-webkit-scrollbar-track { background: transparent; }
+        ::-webkit-scrollbar-thumb { background: #c3c6d7; border-radius: 10px; }
+    </style>
+</head>
+<body class="bg-background text-on-surface font-body-md min-h-screen dark:bg-dark-bg dark:text-inverse-on-surface">
+<!-- Desktop Side Navigation Shell -->
+<aside class="fixed left-0 top-0 h-screen w-64 border-r border-outline-variant/30 bg-surface-container-lowest dark:bg-dark-surface flex flex-col py-margin-desktop space-y-stack-md z-30">
+    <div class="px-6 mb-8 flex items-center gap-3">
+        <div class="flex flex-col">
+            <span class="font-card-title text-card-title font-bold text-primary dark:text-inverse-primary">E-Faws</span>
+            <span class="font-label-sm text-[10px] uppercase tracking-wider text-outline">Growth OS</span>
+        </div>
+    </div>
+    <nav class="flex-1 px-4 space-y-1 overflow-y-auto">
+        <a class="flex items-center gap-3 px-4 py-3 rounded-xl text-on-surface-variant dark:text-outline-variant font-medium hover:bg-surface-container dark:hover:bg-dark-elevated transition-colors" href="/pages/dashboard.html">
+            <span class="material-symbols-outlined">dashboard</span>
+            <span class="font-label-sm">Dashboard</span>
+        </a>
+        <a class="flex items-center gap-3 px-4 py-3 rounded-xl text-on-surface-variant dark:text-outline-variant font-medium hover:bg-surface-container dark:hover:bg-dark-elevated transition-colors" href="/pages/lending.html">
+            <span class="material-symbols-outlined">payments</span>
+            <span class="font-label-sm">Lending</span>
+        </a>
+        <a class="flex items-center gap-3 px-4 py-3 rounded-xl text-on-surface-variant dark:text-outline-variant font-medium hover:bg-surface-container dark:hover:bg-dark-elevated transition-colors" href="/pages/investments.html">
+            <span class="material-symbols-outlined">trending_up</span>
+            <span class="font-label-sm">Investment</span>
+        </a>
+        <a class="flex items-center gap-3 px-4 py-3 rounded-xl text-on-surface-variant dark:text-outline-variant font-medium hover:bg-surface-container dark:hover:bg-dark-elevated transition-colors" href="/pages/insurance.html">
+            <span class="material-symbols-outlined">verified_user</span>
+            <span class="font-label-sm">Insurance</span>
+        </a>
+        <a class="flex items-center gap-3 px-4 py-3 rounded-xl text-on-surface-variant dark:text-outline-variant font-medium hover:bg-surface-container dark:hover:bg-dark-elevated transition-colors" href="/pages/earnhub.html">
+            <span class="material-symbols-outlined">savings</span>
+            <span class="font-label-sm">Earn Hub</span>
+        </a>
+        <a class="flex items-center gap-3 px-4 py-3 rounded-xl text-primary font-bold bg-primary/10 sidebar-active transition-all duration-150" href="/pages/wallet.html">
+            <span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">account_balance_wallet</span>
+            <span class="font-label-sm">Wallet</span>
+        </a>
+    </nav>
+    <div class="px-4 mt-auto">
+        <button id="logout-btn" class="w-full bg-surface-variant dark:bg-dark-elevated text-on-surface-variant dark:text-white py-3 px-4 rounded-xl font-label-sm flex items-center justify-center gap-2 hover:opacity-90 active:scale-95 transition-all">
+            <span class="material-symbols-outlined text-[20px]">logout</span>
+            Sign Out
+        </button>
+    </div>
+</aside>
+
+<!-- Top AppBar Shell -->
+<header class="fixed top-0 right-0 left-64 h-20 bg-surface/80 dark:bg-dark-bg/80 backdrop-blur-md z-20 px-margin-desktop flex items-center justify-between shadow-sm border-b border-outline-variant/10">
+    <div class="flex-1 max-w-xl">
+        <div class="relative group">
+            <span class="material-symbols-outlined absolute left-4 top-1/2 -translate-y-1/2 text-outline group-focus-within:text-primary">search</span>
+            <input id="header-search" class="w-full bg-surface-container-low dark:bg-dark-surface border-none rounded-full py-2.5 pl-12 pr-4 focus:ring-2 focus:ring-primary/20 text-body-md transition-all dark:text-white" placeholder="Search wallet operations or transactions..." type="text"/>
+        </div>
+    </div>
+    <div class="flex items-center gap-6">
+        <div class="hidden md:flex items-center gap-2 px-4 py-1.5 bg-success/10 text-success rounded-full border border-success/20">
+            <span class="material-symbols-outlined text-[18px]">ecg_heart</span>
+            <span class="font-label-sm font-bold" id="header-health-score">Health Score: 85</span>
+        </div>
+        <div class="flex items-center gap-2">
+            <button onclick="window.toggleTheme()" class="p-2 text-on-surface-variant dark:text-outline-variant hover:bg-surface-container dark:hover:bg-dark-surface rounded-full transition-all" title="Toggle Mode">
+                <span class="material-symbols-outlined">contrast</span>
+            </button>
+        </div>
+        <div class="h-10 w-px bg-outline-variant/30 mx-2"></div>
+        <div class="flex items-center gap-3 cursor-pointer group">
+            <div class="flex flex-col items-end">
+                <span class="font-label-sm font-bold text-on-surface dark:text-white group-hover:text-primary transition-colors" id="top-user-name">Loading Profile</span>
+                <span class="text-[11px] text-outline" id="top-user-tier">Premium User</span>
+            </div>
+            <div class="w-10 h-10 rounded-full bg-primary/10 text-primary flex items-center justify-center font-bold" id="user-avatar-initials">
+                EF
+            </div>
+        </div>
+    </div>
+</header>
+
+<!-- Main Content Canvas -->
+<main class="ml-64 pt-28 px-margin-desktop pb-margin-desktop max-w-[1600px] dark:bg-dark-bg">
+    <!-- Hero Section: Wallet Overview -->
+    <div class="grid grid-cols-1 lg:grid-cols-3 gap-gutter mb-8">
+        <!-- Balance Card -->
+        <div class="lg:col-span-2 relative bg-primary rounded-[24px] p-8 text-white overflow-hidden shadow-2xl shadow-primary/30 flex flex-col justify-between min-h-[220px]">
+            <div class="absolute top-0 right-0 w-64 h-64 bg-white/10 rounded-full blur-3xl -mr-20 -mt-20"></div>
+            <div class="absolute bottom-0 left-0 w-48 h-48 bg-secondary-container/20 rounded-full blur-2xl -ml-16 -mb-16"></div>
+            
+            <div class="relative z-10 flex justify-between items-start">
+                <div>
+                    <p class="font-label-sm text-white/80 mb-1">Total Available Balance</p>
+                    <h2 class="font-financial-display text-4xl md:text-5xl font-bold tracking-tight" id="wallet-balance-display">₹0.00</h2>
+                </div>
+                <div class="bg-white/20 backdrop-blur-md px-3 py-1 rounded-full flex items-center gap-2">
+                    <span class="material-symbols-outlined text-sm" style="font-variation-settings: 'FILL' 1;">stars</span>
+                    <span class="font-label-sm text-xs">Growth Member</span>
+                </div>
+            </div>
+            
+            <div class="relative z-10 grid grid-cols-2 md:grid-cols-3 gap-6 pt-8 border-t border-white/10 mt-6">
+                <div>
+                    <p class="text-xs text-white/60 mb-1 uppercase tracking-wider">UPI ID</p>
+                    <p class="font-bold text-sm" id="user-upi-id">loading@efaws</p>
+                </div>
+                <div>
+                    <p class="text-xs text-white/60 mb-1 uppercase tracking-wider">Linked Accounts</p>
+                    <p class="font-bold text-sm">3 Active Banks</p>
+                </div>
+                <div class="hidden md:block">
+                    <p class="text-xs text-white/60 mb-1 uppercase tracking-wider">Rewards Tier</p>
+                    <p class="font-bold text-sm text-secondary-container" id="user-level-badge">Level 1</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Wallet AI Advice Card -->
+        <div class="bg-surface-container-lowest dark:bg-dark-surface border border-outline-variant/30 dark:border-outline/10 rounded-[24px] p-6 shadow-sm flex flex-col justify-between">
+            <div class="flex items-center gap-3 mb-4">
+                <div class="w-10 h-10 bg-primary/10 rounded-xl flex items-center justify-center text-primary">
+                    <span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">auto_awesome</span>
+                </div>
+                <h3 class="font-card-title text-lg font-bold text-primary dark:text-inverse-primary">Smart Wallet Insights</h3>
+            </div>
+            <div class="space-y-4 flex-1">
+                <div class="p-3 bg-surface-container/50 dark:bg-dark-elevated rounded-xl flex gap-3">
+                    <span class="material-symbols-outlined text-warning text-xl">warning</span>
+                    <p class="text-xs font-medium text-on-surface-variant dark:text-outline-variant">Auto-sweep matches: ₹10,000 could be sweeping to 7.2% FD automatically.</p>
+                </div>
+                <div class="p-3 bg-success/5 border border-success/10 rounded-xl flex gap-3">
+                    <span class="material-symbols-outlined text-success text-xl">verified</span>
+                    <p class="text-xs font-medium text-on-surface-variant dark:text-outline-variant">Wallet liquidity is healthy. You have saved ₹8,200 on grocery transactions this month.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Quick Action Buttons -->
+    <div class="mb-8">
+        <h3 class="font-card-title text-on-surface dark:text-white font-bold text-lg mb-4">Quick Operations</h3>
+        <div class="grid grid-cols-2 md:grid-cols-5 gap-4">
+            <button onclick="openDepositModal()" class="flex flex-col items-center justify-center gap-3 bg-surface-container-lowest dark:bg-dark-surface border border-outline-variant/30 dark:border-outline/10 p-6 rounded-2xl hover:shadow-lg hover:-translate-y-1 transition-all duration-300">
+                <div class="w-12 h-12 bg-primary/10 text-primary rounded-full flex items-center justify-center">
+                    <span class="material-symbols-outlined">add</span>
+                </div>
+                <span class="font-label-sm font-semibold">Deposit Funds</span>
+            </button>
+            <button onclick="openWithdrawModal()" class="flex flex-col items-center justify-center gap-3 bg-surface-container-lowest dark:bg-dark-surface border border-outline-variant/30 dark:border-outline/10 p-6 rounded-2xl hover:shadow-lg hover:-translate-y-1 transition-all duration-300">
+                <div class="w-12 h-12 bg-secondary/10 text-secondary rounded-full flex items-center justify-center">
+                    <span class="material-symbols-outlined">call_received</span>
+                </div>
+                <span class="font-label-sm font-semibold">Withdraw Funds</span>
+            </button>
+            <button onclick="openSendMoneyModal()" class="flex flex-col items-center justify-center gap-3 bg-surface-container-lowest dark:bg-dark-surface border border-outline-variant/30 dark:border-outline/10 p-6 rounded-2xl hover:shadow-lg hover:-translate-y-1 transition-all duration-300">
+                <div class="w-12 h-12 bg-tertiary/10 text-tertiary rounded-full flex items-center justify-center">
+                    <span class="material-symbols-outlined">send</span>
+                </div>
+                <span class="font-label-sm font-semibold">Send Money</span>
+            </button>
+            <button onclick="alert('Bill Pay is fully configured. Setup automatic sweeps in settings.')" class="flex flex-col items-center justify-center gap-3 bg-surface-container-lowest dark:bg-dark-surface border border-outline-variant/30 dark:border-outline/10 p-6 rounded-2xl hover:shadow-lg hover:-translate-y-1 transition-all duration-300">
+                <div class="w-12 h-12 bg-warning/10 text-warning rounded-full flex items-center justify-center">
+                    <span class="material-symbols-outlined">receipt_long</span>
+                </div>
+                <span class="font-label-sm font-semibold">Pay Bills</span>
+            </button>
+            <button onclick="window.location.href='/pages/investments.html'" class="flex flex-col items-center justify-center gap-3 bg-primary text-white p-6 rounded-2xl hover:shadow-xl hover:-translate-y-1 transition-all duration-300 shadow-lg shadow-primary/20">
+                <div class="w-12 h-12 bg-white/20 rounded-full flex items-center justify-center">
+                    <span class="material-symbols-outlined">trending_up</span>
+                </div>
+                <span class="font-label-sm font-semibold">Invest Savings</span>
+            </button>
+        </div>
+    </div>
+
+    <!-- Analytics & Accounts Bento Grid -->
+    <div class="grid grid-cols-1 xl:grid-cols-3 gap-gutter mb-8">
+        <!-- Monthly Flow Analytics Card -->
+        <div class="xl:col-span-2 bg-surface-container-lowest dark:bg-dark-surface border border-outline-variant/30 dark:border-outline/10 rounded-[24px] p-6 shadow-sm">
+            <h3 class="font-card-title text-on-surface dark:text-white font-bold text-lg mb-6">Spending &amp; Income Analytics</h3>
+            <!-- React Bar Chart Widget -->
+            <div id="widget-monthly-flow" class="w-full min-h-[140px]"></div>
+        </div>
+
+        <!-- Linked Accounts Card -->
+        <div class="bg-surface-container-lowest dark:bg-dark-surface border border-outline-variant/30 dark:border-outline/10 rounded-[24px] p-6 shadow-sm flex flex-col">
+            <h3 class="font-card-title text-on-surface dark:text-white font-bold text-lg mb-4">Linked Bank Accounts</h3>
+            <div class="space-y-4 flex-1">
+                <div class="p-4 border border-outline-variant/30 dark:border-outline/10 rounded-xl flex items-center justify-between hover:border-primary transition-colors cursor-pointer bg-surface-container-low dark:bg-dark-surface">
+                    <div class="flex items-center gap-4">
+                        <div class="w-10 h-10 rounded-lg bg-primary/10 text-primary flex items-center justify-center font-bold">H</div>
+                        <div>
+                            <p class="font-bold text-sm text-on-surface dark:text-white">HDFC Bank</p>
+                            <p class="text-xs text-outline">Savings - **** 8821</p>
+                        </div>
+                    </div>
+                    <span class="material-symbols-outlined text-success" style="font-variation-settings: 'FILL' 1;">verified</span>
+                </div>
+                <div class="p-4 border border-outline-variant/30 dark:border-outline/10 rounded-xl flex items-center justify-between hover:border-primary transition-colors cursor-pointer bg-surface-container-low dark:bg-dark-surface">
+                    <div class="flex items-center gap-4">
+                        <div class="w-10 h-10 rounded-lg bg-success/10 text-success flex items-center justify-center font-bold">S</div>
+                        <div>
+                            <p class="font-bold text-sm text-on-surface dark:text-white">State Bank of India</p>
+                            <p class="text-xs text-outline">Current - **** 4432</p>
+                        </div>
+                    </div>
+                    <span class="material-symbols-outlined text-success" style="font-variation-settings: 'FILL' 1;">verified</span>
+                </div>
+            </div>
+            <button onclick="alert('Linking external bank APIs requires verification.')" class="w-full mt-4 py-3 border-2 border-dashed border-outline-variant/50 rounded-xl text-on-surface-variant dark:text-white font-semibold text-xs hover:border-primary hover:text-primary transition-all flex items-center justify-center gap-2">
+                <span class="material-symbols-outlined text-sm">add_circle</span> Link New Bank Account
+            </button>
+        </div>
+    </div>
+
+    <!-- Transaction History Card -->
+    <div class="bg-surface-container-lowest dark:bg-dark-surface border border-outline-variant/30 dark:border-outline/10 rounded-[24px] p-6 shadow-sm">
+        <div class="flex flex-col md:flex-row md:items-center justify-between gap-4 mb-6">
+            <h3 class="font-card-title text-on-surface dark:text-white font-bold text-lg">Recent Wallet Activity</h3>
+            <div class="flex flex-wrap items-center gap-3">
+                <div class="relative w-full md:w-64">
+                    <span class="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-outline text-sm">search</span>
+                    <input id="tx-search" type="text" placeholder="Search transactions..." class="w-full bg-surface-container-low dark:bg-dark-elevated text-xs border border-outline-variant/30 rounded-xl py-2 pl-9 pr-3 focus:outline-none focus:border-primary text-on-surface dark:text-white" />
+                </div>
+                <select id="tx-category-filter" class="bg-surface-container-low dark:bg-dark-elevated text-xs border border-outline-variant/30 rounded-xl py-2 px-3 focus:outline-none focus:border-primary text-outline">
+                    <option value="">All Categories</option>
+                    <option value="Deposit">Deposit</option>
+                    <option value="Withdrawal">Withdrawal</option>
+                    <option value="Mutual Funds">Mutual Funds</option>
+                    <option value="Stocks">Stocks</option>
+                    <option value="Gold">Gold</option>
+                    <option value="Fixed Deposits">Fixed Deposits</option>
+                    <option value="Lending">Lending</option>
+                    <option value="Insurance">Insurance</option>
+                    <option value="Transfer">Transfer</option>
+                    <option value="Goals Allocation">Goals Allocation</option>
+                </select>
+            </div>
+        </div>
+        <div class="overflow-x-auto">
+            <table class="w-full">
+                <thead>
+                    <tr class="text-left border-b border-outline-variant/30">
+                        <th class="pb-4 font-label-sm text-outline uppercase tracking-wider text-xs">Description</th>
+                        <th class="pb-4 font-label-sm text-outline uppercase tracking-wider text-xs">Date</th>
+                        <th class="pb-4 font-label-sm text-outline uppercase tracking-wider text-xs">Category</th>
+                        <th class="pb-4 font-label-sm text-outline uppercase tracking-wider text-xs">Status</th>
+                        <th class="pb-4 font-label-sm text-outline uppercase tracking-wider text-xs text-right">Amount</th>
+                    </tr>
+                </thead>
+                <tbody class="divide-y divide-outline-variant/20" id="transactions-table-body">
+                    <!-- Dynamic Rows -->
+                    <tr>
+                        <td colspan="5" class="py-6 text-center text-outline text-sm">Loading activity logs...</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</main>
+
+<!-- Deposit Modal -->
+<div id="deposit-modal" class="fixed inset-0 bg-black/60 backdrop-blur-sm z-50 flex items-center justify-center hidden opacity-0 transition-opacity duration-300">
+    <div class="bg-surface-container-lowest dark:bg-dark-surface p-8 rounded-[28px] max-w-md w-full mx-4 shadow-2xl border border-outline-variant/20 relative">
+        <button onclick="closeDepositModal()" class="absolute right-6 top-6 text-outline hover:text-primary transition-colors">
+            <span class="material-symbols-outlined">close</span>
+        </button>
+        <h3 class="font-card-title text-2xl font-bold text-on-surface dark:text-white mb-2">Deposit Funds</h3>
+        <p class="text-sm text-outline mb-6">Add simulated funds to your Smart E-Wallet from your linked HDFC savings account.</p>
+        
+        <form id="deposit-form" onsubmit="handleDeposit(event)" class="space-y-6">
+            <div>
+                <label class="block text-xs font-bold text-outline uppercase tracking-wider mb-2">Amount (INR)</label>
+                <div class="relative">
+                    <span class="absolute left-4 top-1/2 -translate-y-1/2 text-2xl font-bold text-primary font-financial-display">₹</span>
+                    <input type="number" id="deposit-amount" min="100" max="1000000" step="100" class="w-full bg-surface-container-low dark:bg-dark-bg border border-outline-variant/30 rounded-2xl py-4 pl-10 pr-4 focus:ring-2 focus:ring-primary/20 text-2xl font-bold text-on-surface dark:text-white font-financial-display" required placeholder="5,000" />
+                </div>
+            </div>
+            <button type="submit" class="w-full bg-primary text-white py-4 rounded-2xl font-label-sm font-bold shadow-lg shadow-primary/25 hover:opacity-95 transition-all">Confirm Deposit</button>
+        </form>
+    </div>
+</div>
+
+<!-- Withdraw Modal -->
+<div id="withdraw-modal" class="fixed inset-0 bg-black/60 backdrop-blur-sm z-50 flex items-center justify-center hidden opacity-0 transition-opacity duration-300">
+    <div class="bg-surface-container-lowest dark:bg-dark-surface p-8 rounded-[28px] max-w-md w-full mx-4 shadow-2xl border border-outline-variant/20 relative">
+        <button onclick="closeWithdrawModal()" class="absolute right-6 top-6 text-outline hover:text-primary transition-colors">
+            <span class="material-symbols-outlined">close</span>
+        </button>
+        <h3 class="font-card-title text-2xl font-bold text-on-surface dark:text-white mb-2">Withdraw Funds</h3>
+        <p class="text-sm text-outline mb-6">Withdraw funds from your Smart E-Wallet to your linked Bank Account.</p>
+        
+        <form id="withdraw-form" onsubmit="handleWithdraw(event)" class="space-y-6">
+            <div>
+                <label class="block text-xs font-bold text-outline uppercase tracking-wider mb-2">Amount (INR)</label>
+                <div class="relative">
+                    <span class="absolute left-4 top-1/2 -translate-y-1/2 text-2xl font-bold text-secondary font-financial-display">₹</span>
+                    <input type="number" id="withdraw-amount" min="100" max="1000000" step="100" class="w-full bg-surface-container-low dark:bg-dark-bg border border-outline-variant/30 rounded-2xl py-4 pl-10 pr-4 focus:ring-2 focus:ring-secondary/20 text-2xl font-bold text-on-surface dark:text-white font-financial-display" required placeholder="5,000" />
+                </div>
+                <p class="text-xs text-outline mt-2" id="withdraw-max-limit">Available balance: ₹0.00</p>
+            </div>
+            <button type="submit" class="w-full bg-secondary text-white py-4 rounded-2xl font-label-sm font-bold shadow-lg shadow-secondary/25 hover:opacity-95 transition-all">Confirm Withdrawal</button>
+        </form>
+    </div>
+</div>
+
+<!-- Send Money Modal -->
+<div id="send-money-modal" class="fixed inset-0 bg-black/60 backdrop-blur-sm z-50 flex items-center justify-center hidden opacity-0 transition-opacity duration-300">
+    <div class="bg-surface-container-lowest dark:bg-dark-surface p-8 rounded-[28px] max-w-md w-full mx-4 shadow-2xl border border-outline-variant/20 relative">
+        <button onclick="closeSendMoneyModal()" class="absolute right-6 top-6 text-outline hover:text-primary transition-colors">
+            <span class="material-symbols-outlined">close</span>
+        </button>
+        <h3 class="font-card-title text-2xl font-bold text-on-surface dark:text-white mb-2">Send Money</h3>
+        <p class="text-sm text-outline mb-6">Send funds via UPI ID or Bank Account.</p>
+        
+        <form id="send-money-form" onsubmit="handleSendMoney(event)" class="space-y-4">
+            <div>
+                <label class="block text-xs font-bold text-outline uppercase tracking-wider mb-2">Transfer Method</label>
+                <div class="grid grid-cols-2 gap-3">
+                    <label class="border border-outline-variant/50 rounded-xl p-3 flex items-center gap-2 cursor-pointer hover:border-primary bg-surface-container-low dark:bg-dark-bg">
+                        <input type="radio" name="transfer-method" value="UPI" checked onchange="toggleTransferFields('UPI')" />
+                        <span class="text-xs font-semibold ml-2">UPI ID</span>
+                    </label>
+                    <label class="border border-outline-variant/50 rounded-xl p-3 flex items-center gap-2 cursor-pointer hover:border-primary bg-surface-container-low dark:bg-dark-bg">
+                        <input type="radio" name="transfer-method" value="BANK" onchange="toggleTransferFields('BANK')" />
+                        <span class="text-xs font-semibold ml-2">Bank Account</span>
+                    </label>
+                </div>
+            </div>
+            
+            <div id="upi-fields">
+                <label class="block text-xs font-bold text-outline uppercase tracking-wider mb-2">UPI ID</label>
+                <input type="text" id="send-upi-id" class="w-full bg-surface-container-low dark:bg-dark-bg border border-outline-variant/30 rounded-2xl py-3 px-4 focus:ring-2 focus:ring-primary/20 text-sm text-on-surface dark:text-white" placeholder="receiver@upi" />
+            </div>
+            
+            <div id="bank-fields" class="hidden space-y-3">
+                <div>
+                    <label class="block text-xs font-bold text-outline uppercase tracking-wider mb-2">Account Number</label>
+                    <input type="text" id="send-bank-acc" class="w-full bg-surface-container-low dark:bg-dark-bg border border-outline-variant/30 rounded-2xl py-3 px-4 focus:ring-2 focus:ring-primary/20 text-sm text-on-surface dark:text-white" placeholder="123456789012" />
+                </div>
+                <div>
+                    <label class="block text-xs font-bold text-outline uppercase tracking-wider mb-2">IFSC Code</label>
+                    <input type="text" id="send-bank-ifsc" class="w-full bg-surface-container-low dark:bg-dark-bg border border-outline-variant/30 rounded-2xl py-3 px-4 focus:ring-2 focus:ring-primary/20 text-sm text-on-surface dark:text-white" placeholder="HDFC0000123" />
+                </div>
+            </div>
+            
+            <div>
+                <label class="block text-xs font-bold text-outline uppercase tracking-wider mb-2">Amount (INR)</label>
+                <div class="relative">
+                    <span class="absolute left-4 top-1/2 -translate-y-1/2 text-2xl font-bold text-primary font-financial-display">₹</span>
+                    <input type="number" id="send-amount" min="1" max="100000" class="w-full bg-surface-container-low dark:bg-dark-bg border border-outline-variant/30 rounded-2xl py-4 pl-10 pr-4 focus:ring-2 focus:ring-primary/20 text-2xl font-bold text-on-surface dark:text-white font-financial-display" required placeholder="5,000" />
+                </div>
+            </div>
+            
+            <div>
+                <label class="block text-xs font-bold text-outline uppercase tracking-wider mb-2">Notes (Optional)</label>
+                <input type="text" id="send-notes" class="w-full bg-surface-container-low dark:bg-dark-bg border border-outline-variant/30 rounded-2xl py-3 px-4 focus:ring-2 focus:ring-primary/20 text-sm text-on-surface dark:text-white" placeholder="Rent, dinner, etc." />
+            </div>
+            
+            <button type="submit" class="w-full bg-primary text-white py-4 rounded-2xl font-label-sm font-bold shadow-lg shadow-primary/25 hover:opacity-95 transition-all">Send Money</button>
+        </form>
+    </div>
+</div>
+
+<!-- Scripts -->
+<script type="module" src="/widgets/index.jsx"></script>
+<script type="module" src="/js/wallet.js"></script>
+</body>
+</html>

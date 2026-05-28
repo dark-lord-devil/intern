@@ -1,0 +1,488 @@
+<!DOCTYPE html>
+<html class="light" lang="en">
+<head>
+    <meta charset="utf-8"/>
+    <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+    <title>E-Faws | Investment Hub</title>
+    <!-- Fonts & Icons -->
+    <link href="https://fonts.googleapis.com" rel="preconnect"/>
+    <link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&amp;family=Sora:wght@600;700;800&amp;display=swap" rel="stylesheet"/>
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+    
+    <!-- Compiled CSS & Theme Toggle script -->
+    <link rel="stylesheet" href="/css/main.css" />
+    <link rel="stylesheet" href="/css/theme.css" />
+    <link rel="stylesheet" href="/css/responsive.css" />
+    <script type="module" src="/js/theme.js"></script>
+    <style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .card-shadow {
+            box-shadow: 0 4px 20px -2px rgba(0, 74, 198, 0.04);
+        }
+        .glass-glow {
+            background: rgba(255, 255, 255, 0.7);
+            backdrop-filter: blur(12px);
+            border: 1px solid rgba(0, 83, 219, 0.1);
+        }
+        .sidebar-active {
+            box-shadow: inset -4px 0 0 0 #004ac6;
+        }
+        ::-webkit-scrollbar { width: 6px; }
+        ::-webkit-scrollbar-track { background: transparent; }
+        ::-webkit-scrollbar-thumb { background: #c3c6d7; border-radius: 10px; }
+    </style>
+</head>
+<body class="bg-background text-on-surface font-body-md min-h-screen dark:bg-dark-bg dark:text-inverse-on-surface">
+<!-- Desktop Side Navigation Shell -->
+<aside class="fixed left-0 top-0 h-screen w-64 border-r border-outline-variant/30 bg-surface-container-lowest dark:bg-dark-surface flex flex-col py-margin-desktop space-y-stack-md z-30">
+    <div class="px-6 mb-8 flex items-center gap-3">
+        <div class="flex flex-col">
+            <span class="font-card-title text-card-title font-bold text-primary dark:text-inverse-primary">E-Faws</span>
+            <span class="font-label-sm text-[10px] uppercase tracking-wider text-outline">Growth OS</span>
+        </div>
+    </div>
+    <nav class="flex-1 px-4 space-y-1 overflow-y-auto">
+        <a class="flex items-center gap-3 px-4 py-3 rounded-xl text-on-surface-variant dark:text-outline-variant font-medium hover:bg-surface-container dark:hover:bg-dark-elevated transition-colors" href="/pages/dashboard.html">
+            <span class="material-symbols-outlined">dashboard</span>
+            <span class="font-label-sm">Dashboard</span>
+        </a>
+        <a class="flex items-center gap-3 px-4 py-3 rounded-xl text-on-surface-variant dark:text-outline-variant font-medium hover:bg-surface-container dark:hover:bg-dark-elevated transition-colors" href="/pages/lending.html">
+            <span class="material-symbols-outlined">payments</span>
+            <span class="font-label-sm">Lending</span>
+        </a>
+        <a class="flex items-center gap-3 px-4 py-3 rounded-xl text-primary font-bold bg-primary/10 sidebar-active transition-all duration-150" href="/pages/investments.html">
+            <span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">trending_up</span>
+            <span class="font-label-sm">Investment</span>
+        </a>
+        <a class="flex items-center gap-3 px-4 py-3 rounded-xl text-on-surface-variant dark:text-outline-variant font-medium hover:bg-surface-container dark:hover:bg-dark-elevated transition-colors" href="/pages/insurance.html">
+            <span class="material-symbols-outlined">verified_user</span>
+            <span class="font-label-sm">Insurance</span>
+        </a>
+        <a class="flex items-center gap-3 px-4 py-3 rounded-xl text-on-surface-variant dark:text-outline-variant font-medium hover:bg-surface-container dark:hover:bg-dark-elevated transition-colors" href="/pages/earnhub.html">
+            <span class="material-symbols-outlined">savings</span>
+            <span class="font-label-sm">Earn Hub</span>
+        </a>
+        <a class="flex items-center gap-3 px-4 py-3 rounded-xl text-on-surface-variant dark:text-outline-variant font-medium hover:bg-surface-container dark:hover:bg-dark-elevated transition-colors" href="/pages/wallet.html">
+            <span class="material-symbols-outlined">account_balance_wallet</span>
+            <span class="font-label-sm">Wallet</span>
+        </a>
+    </nav>
+    <div class="px-4 mt-auto">
+        <button id="logout-btn" class="w-full bg-surface-variant dark:bg-dark-elevated text-on-surface-variant dark:text-white py-3 px-4 rounded-xl font-label-sm flex items-center justify-center gap-2 hover:opacity-90 active:scale-95 transition-all">
+            <span class="material-symbols-outlined text-[20px]">logout</span>
+            Sign Out
+        </button>
+    </div>
+</aside>
+
+<!-- Top AppBar Shell -->
+<header class="fixed top-0 right-0 left-64 h-20 bg-surface/80 dark:bg-dark-bg/80 backdrop-blur-md z-20 px-margin-desktop flex items-center justify-between shadow-sm border-b border-outline-variant/10">
+    <div class="flex-1 max-w-xl">
+        <div class="relative group">
+            <span class="material-symbols-outlined absolute left-4 top-1/2 -translate-y-1/2 text-outline group-focus-within:text-primary">search</span>
+            <input class="w-full bg-surface-container-low dark:bg-dark-surface border-none rounded-full py-2.5 pl-12 pr-4 focus:ring-2 focus:ring-primary/20 text-body-md transition-all dark:text-white" placeholder="Search markets, funds, or goals..." type="text"/>
+        </div>
+    </div>
+    <div class="flex items-center gap-6">
+        <div class="hidden md:flex items-center gap-2 px-4 py-1.5 bg-success/10 text-success rounded-full border border-success/20">
+            <span class="material-symbols-outlined text-[18px]">ecg_heart</span>
+            <span class="font-label-sm font-bold" id="header-health-score">Health Score: 85</span>
+        </div>
+        <div class="flex items-center gap-2">
+            <button onclick="window.toggleTheme()" class="p-2 text-on-surface-variant dark:text-outline-variant hover:bg-surface-container dark:hover:bg-dark-surface rounded-full transition-all" title="Toggle Mode">
+                <span class="material-symbols-outlined">contrast</span>
+            </button>
+        </div>
+        <div class="h-10 w-px bg-outline-variant/30 mx-2"></div>
+        <div class="flex items-center gap-3 cursor-pointer group">
+            <div class="flex flex-col items-end">
+                <span class="font-label-sm font-bold text-on-surface dark:text-white group-hover:text-primary transition-colors" id="top-user-name">Loading Profile</span>
+                <span class="text-[11px] text-outline" id="top-user-tier">Premium User</span>
+            </div>
+            <div class="w-10 h-10 rounded-full bg-primary/10 text-primary flex items-center justify-center font-bold" id="user-avatar-initials">
+                EF
+            </div>
+        </div>
+    </div>
+</header>
+
+<!-- Main Content Canvas -->
+<main class="ml-64 pt-28 px-margin-desktop pb-margin-desktop max-w-[1600px] dark:bg-dark-bg">
+    <!-- Page Title and CTA -->
+    <div class="flex justify-between items-end mb-8">
+        <div>
+            <h2 class="font-section-title text-section-title text-3xl font-bold text-on-surface dark:text-white">Investment Hub</h2>
+            <p class="text-on-surface-variant dark:text-outline-variant font-body-md mt-1">Grow your wealth with automated insights and custom asset bundles.</p>
+        </div>
+        <button onclick="openInvestmentModal()" class="bg-primary text-on-primary px-6 py-3 rounded-2xl font-semibold flex items-center gap-2 shadow-md hover:opacity-90 active:scale-95 transition-all">
+            <span class="material-symbols-outlined">add</span>
+            New Investment
+        </button>
+    </div>
+
+    <!-- Top Grid: Portfolio Allocation & Recommendations -->
+    <div class="grid grid-cols-1 lg:grid-cols-3 gap-gutter mb-8">
+        <!-- Portfolio Overview and Asset Allocation Widget -->
+        <section class="lg:col-span-2 bg-surface-container-lowest dark:bg-dark-surface rounded-2xl p-8 border border-outline-variant/30 dark:border-outline/10 card-shadow">
+            <div class="flex justify-between items-start mb-8">
+                <div>
+                    <p class="text-outline font-label-sm mb-1 uppercase tracking-wider">Total Portfolio Value</p>
+                    <h3 class="font-financial-display text-4xl font-extrabold text-on-surface dark:text-white" id="portfolio-total-value">₹0</h3>
+                    <div class="flex items-center gap-3 mt-2">
+                        <span class="bg-success/10 text-success px-2 py-0.5 rounded-lg text-sm font-bold flex items-center gap-1">
+                            <span class="material-symbols-outlined text-sm">trending_up</span>
+                            <span id="portfolio-today-returns">+₹0 (0.00%)</span>
+                        </span>
+                        <span class="text-outline text-sm">Overall Returns</span>
+                    </div>
+                </div>
+                <div class="text-right">
+                    <p class="text-outline font-label-sm mb-1 uppercase tracking-wider">Invested Capital</p>
+                    <p class="text-2xl font-bold text-primary dark:text-inverse-primary" id="portfolio-invested-capital">₹0</p>
+                    <p class="text-[12px] text-success font-semibold mt-1" id="portfolio-total-returns-amount">₹0 Profit</p>
+                </div>
+            </div>
+            
+            <div class="border-t border-outline-variant/20 pt-6">
+                <!-- React Asset Allocation Donut Widget -->
+                <div id="widget-asset-allocation" class="w-full">
+                    <div class="flex h-48 w-full items-center justify-center">
+                        <div class="h-6 w-6 animate-spin rounded-full border-2 border-primary border-t-transparent"></div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- AI Investment Recommendations -->
+        <section class="bg-primary/5 dark:bg-dark-surface rounded-2xl p-8 border border-primary/20 relative overflow-hidden flex flex-col justify-between card-shadow">
+            <div class="absolute -right-8 -top-8 w-32 h-32 bg-primary/10 rounded-full blur-3xl"></div>
+            <div>
+                <div class="flex items-center gap-2 mb-6">
+                    <span class="material-symbols-outlined text-primary" style="font-variation-settings: 'FILL' 1;">auto_awesome</span>
+                    <h3 class="font-card-title text-card-title font-bold text-primary dark:text-inverse-primary">Smart Growth Pick</h3>
+                </div>
+                <div class="space-y-4">
+                    <p class="text-on-surface-variant dark:text-outline-variant font-body-md text-sm leading-relaxed">
+                        Based on your financial parameters, a recurring SIP in a diversified index fund can accelerate your wealth goals.
+                    </p>
+                    <div class="bg-surface-container-lowest dark:bg-dark-bg/60 rounded-xl p-4 border border-outline-variant/20 mb-6">
+                        <p class="font-label-sm text-outline text-xs mb-1">Recommended Index SIP</p>
+                        <p class="font-bold text-on-surface dark:text-white text-md">Nifty Next 50 Index Fund</p>
+                        <div class="mt-3 flex items-center justify-between">
+                            <span class="text-sm font-bold text-success">14.2% est. p.a.</span>
+                            <span class="text-[10px] bg-primary/10 text-primary px-2 py-0.5 rounded-md uppercase font-bold tracking-tighter">Low Risk</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <button onclick="openInvestmentModal('Mutual Funds')" class="w-full bg-primary text-on-primary py-3 rounded-xl font-bold flex items-center justify-center gap-2 hover:opacity-90 active:scale-95 transition-all">
+                Invest Now
+                <span class="material-symbols-outlined">arrow_forward</span>
+            </button>
+        </section>
+    </div>
+
+    <!-- Market Ticker -->
+    <div class="relative w-full bg-surface-container-low dark:bg-dark-surface border border-outline-variant/30 rounded-2xl py-3 px-6 overflow-hidden mb-8 shadow-sm">
+        <div class="flex animate-marquee gap-12 whitespace-nowrap">
+            <!-- Set 1 -->
+            <div class="flex items-center gap-2">
+                <span class="font-bold text-xs">NIFTY 50</span>
+                <span class="text-xs text-success font-bold flex items-center">22,402.10 <span class="material-symbols-outlined text-[14px]">arrow_drop_up</span> +0.45%</span>
+            </div>
+            <div class="flex items-center gap-2">
+                <span class="font-bold text-xs">SENSEX</span>
+                <span class="text-xs text-success font-bold flex items-center">73,738.40 <span class="material-symbols-outlined text-[14px]">arrow_drop_up</span> +0.38%</span>
+            </div>
+            <div class="flex items-center gap-2">
+                <span class="font-bold text-xs">HDFC BANK</span>
+                <span class="text-xs text-error font-bold flex items-center">1,482.35 <span class="material-symbols-outlined text-[14px]">arrow_drop_down</span> -0.15%</span>
+            </div>
+            <div class="flex items-center gap-2">
+                <span class="font-bold text-xs">RELIANCE</span>
+                <span class="text-xs text-success font-bold flex items-center">2,860.10 <span class="material-symbols-outlined text-[14px]">arrow_drop_up</span> +1.20%</span>
+            </div>
+            <div class="flex items-center gap-2">
+                <span class="font-bold text-xs">GOLD (24K)</span>
+                <span class="text-xs text-success font-bold flex items-center">71,850.00 <span class="material-symbols-outlined text-[14px]">arrow_drop_up</span> +0.75%</span>
+            </div>
+            <div class="flex items-center gap-2">
+                <span class="font-bold text-xs">TCS</span>
+                <span class="text-xs text-error font-bold flex items-center">3,892.40 <span class="material-symbols-outlined text-[14px]">arrow_drop_down</span> -0.82%</span>
+            </div>
+            <!-- Set 2 (for scrolling repeat) -->
+            <div class="flex items-center gap-2">
+                <span class="font-bold text-xs">NIFTY 50</span>
+                <span class="text-xs text-success font-bold flex items-center">22,402.10 <span class="material-symbols-outlined text-[14px]">arrow_drop_up</span> +0.45%</span>
+            </div>
+            <div class="flex items-center gap-2">
+                <span class="font-bold text-xs">SENSEX</span>
+                <span class="text-xs text-success font-bold flex items-center">73,738.40 <span class="material-symbols-outlined text-[14px]">arrow_drop_up</span> +0.38%</span>
+            </div>
+            <div class="flex items-center gap-2">
+                <span class="font-bold text-xs">HDFC BANK</span>
+                <span class="text-xs text-error font-bold flex items-center">1,482.35 <span class="material-symbols-outlined text-[14px]">arrow_drop_down</span> -0.15%</span>
+            </div>
+            <div class="flex items-center gap-2">
+                <span class="font-bold text-xs">RELIANCE</span>
+                <span class="text-xs text-success font-bold flex items-center">2,860.10 <span class="material-symbols-outlined text-[14px]">arrow_drop_up</span> +1.20%</span>
+            </div>
+            <div class="flex items-center gap-2">
+                <span class="font-bold text-xs">GOLD (24K)</span>
+                <span class="text-xs text-success font-bold flex items-center">71,850.00 <span class="material-symbols-outlined text-[14px]">arrow_drop_up</span> +0.75%</span>
+            </div>
+            <div class="flex items-center gap-2">
+                <span class="font-bold text-xs">TCS</span>
+                <span class="text-xs text-error font-bold flex items-center">3,892.40 <span class="material-symbols-outlined text-[14px]">arrow_drop_down</span> -0.82%</span>
+            </div>
+        </div>
+    </div>
+
+    <!-- Quick Asset Selection Cards -->
+    <section class="mb-8 overflow-x-auto pb-2">
+        <div class="flex gap-4 min-w-max">
+            <div onclick="openInvestmentModal('Mutual Funds')" class="bg-surface-container-lowest dark:bg-dark-surface p-6 rounded-2xl border border-outline-variant/30 dark:border-outline/10 shadow-sm w-44 hover:border-primary transition-all cursor-pointer group text-center">
+                <div class="w-12 h-12 rounded-xl bg-primary/10 text-primary flex items-center justify-center mx-auto mb-3 group-hover:bg-primary group-hover:text-white transition-all">
+                    <span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">account_balance</span>
+                </div>
+                <h4 class="font-label-sm font-bold text-on-surface dark:text-white">Mutual Funds</h4>
+                <p class="text-[10px] text-outline mt-0.5">Auto SIPs</p>
+            </div>
+            <div onclick="openInvestmentModal('Stocks')" class="bg-surface-container-lowest dark:bg-dark-surface p-6 rounded-2xl border border-outline-variant/30 dark:border-outline/10 shadow-sm w-44 hover:border-primary transition-all cursor-pointer group text-center">
+                <div class="w-12 h-12 rounded-xl bg-primary/10 text-primary flex items-center justify-center mx-auto mb-3 group-hover:bg-primary group-hover:text-white transition-all">
+                    <span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">monitoring</span>
+                </div>
+                <h4 class="font-label-sm font-bold text-on-surface dark:text-white">Stocks</h4>
+                <p class="text-[10px] text-outline mt-0.5">Equity Portfolios</p>
+            </div>
+            <div onclick="openInvestmentModal('Gold')" class="bg-surface-container-lowest dark:bg-dark-surface p-6 rounded-2xl border border-outline-variant/30 dark:border-outline/10 shadow-sm w-44 hover:border-primary transition-all cursor-pointer group text-center">
+                <div class="w-12 h-12 rounded-xl bg-warning/10 text-warning flex items-center justify-center mx-auto mb-3 group-hover:bg-warning group-hover:text-white transition-all">
+                    <span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">diamond</span>
+                </div>
+                <h4 class="font-label-sm font-bold text-on-surface dark:text-white">Digital Gold</h4>
+                <p class="text-[10px] text-outline mt-0.5">24K Purity</p>
+            </div>
+            <div onclick="openInvestmentModal('Fixed Deposits')" class="bg-surface-container-lowest dark:bg-dark-surface p-6 rounded-2xl border border-outline-variant/30 dark:border-outline/10 shadow-sm w-44 hover:border-primary transition-all cursor-pointer group text-center">
+                <div class="w-12 h-12 rounded-xl bg-primary/10 text-primary flex items-center justify-center mx-auto mb-3 group-hover:bg-primary group-hover:text-white transition-all">
+                    <span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">savings</span>
+                </div>
+                <h4 class="font-label-sm font-bold text-on-surface dark:text-white">Fixed Deposits</h4>
+                <p class="text-[10px] text-outline mt-0.5">Guaranteed 7.5%</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Interactive SIP Calculator -->
+    <section class="bg-surface-container-lowest dark:bg-dark-surface rounded-[24px] p-8 border border-outline-variant/30 dark:border-outline/10 shadow-sm mb-8">
+        <div id="widget-sip-projection" class="w-full">
+            <div class="flex h-64 w-full items-center justify-center">
+                <div class="h-6 w-6 animate-spin rounded-full border-2 border-primary border-t-transparent"></div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Portfolio Performance Area Chart & Upcoming SIPs -->
+    <div class="grid grid-cols-1 lg:grid-cols-3 gap-gutter mb-8">
+        <!-- Recharts Performance Widget -->
+        <section class="lg:col-span-2 bg-surface-container-lowest dark:bg-dark-surface rounded-2xl p-8 border border-outline-variant/30 dark:border-outline/10 card-shadow">
+            <!-- React Area Chart Widget mounts here -->
+            <div id="widget-networth-growth" class="w-full">
+                <div class="flex h-64 w-full items-center justify-center">
+                    <div class="h-6 w-6 animate-spin rounded-full border-2 border-primary border-t-transparent"></div>
+                </div>
+            </div>
+        </section>
+
+        <!-- SIP Tracking & Management -->
+        <section class="bg-surface-container-lowest dark:bg-dark-surface rounded-2xl p-8 border border-outline-variant/30 dark:border-outline/10 card-shadow flex flex-col justify-between">
+            <div>
+                <h3 class="font-card-title text-on-surface dark:text-white font-bold text-lg mb-6">Upcoming Auto SIPs</h3>
+                <div class="space-y-4">
+                    <div class="flex items-center gap-4 p-4 rounded-xl bg-surface-container-low dark:bg-dark-bg border border-outline-variant/10">
+                        <div class="w-10 h-10 rounded-lg bg-primary/10 text-primary flex items-center justify-center">
+                            <span class="material-symbols-outlined">trending_up</span>
+                        </div>
+                        <div class="flex-1">
+                            <p class="font-label-sm font-bold text-sm text-on-surface dark:text-white">Nifty 50 Index Fund</p>
+                            <p class="text-[11px] text-outline">₹10,000 • Monthly Auto-pay</p>
+                        </div>
+                        <span class="text-xs font-bold text-primary">In 4 days</span>
+                    </div>
+                    <div class="flex items-center gap-4 p-4 rounded-xl bg-surface-container-low dark:bg-dark-bg border border-outline-variant/10">
+                        <div class="w-10 h-10 rounded-lg bg-warning/10 text-warning flex items-center justify-center">
+                            <span class="material-symbols-outlined">diamond</span>
+                        </div>
+                        <div class="flex-1">
+                            <p class="font-label-sm font-bold text-sm text-on-surface dark:text-white">HDFC Gold Fund SIP</p>
+                            <p class="text-[11px] text-outline">₹5,000 • Monthly Auto-pay</p>
+                        </div>
+                        <span class="text-xs font-bold text-primary">In 12 days</span>
+                    </div>
+                    <div class="flex items-center gap-4 p-4 rounded-xl bg-surface-container-low dark:bg-dark-bg border border-outline-variant/10">
+                        <div class="w-10 h-10 rounded-lg bg-primary/10 text-primary flex items-center justify-center">
+                            <span class="material-symbols-outlined">analytics</span>
+                        </div>
+                        <div class="flex-1">
+                            <p class="font-label-sm font-bold text-sm text-on-surface dark:text-white">Parag Parikh Flexicap</p>
+                            <p class="text-[11px] text-outline">₹15,000 • Monthly Auto-pay</p>
+                        </div>
+                        <span class="text-xs font-bold text-primary">In 20 days</span>
+                    </div>
+                </div>
+            </div>
+            <button onclick="alert('Manage SIP functions are preconfigured under active banking consent.')" class="mt-6 text-primary dark:text-inverse-primary font-bold text-sm hover:underline text-center w-full">Manage all SIP triggers</button>
+        </section>
+    </div>
+
+    <!-- Goals & Insights bottom row -->
+    <div class="grid grid-cols-1 lg:grid-cols-2 gap-gutter mb-8">
+        <!-- Goal Tracking -->
+        <section class="bg-surface-container-lowest dark:bg-dark-surface rounded-2xl p-8 border border-outline-variant/30 dark:border-outline/10 card-shadow">
+            <div class="flex justify-between items-center mb-6">
+                <h3 class="font-card-title text-on-surface dark:text-white font-bold text-lg">Wealth Goals</h3>
+                <button onclick="alert('Add custom goal functionality connects to your risk profiling.')" class="text-primary dark:text-inverse-primary font-bold text-sm">Add Goal</button>
+            </div>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+                <div class="bg-background dark:bg-dark-bg p-5 rounded-2xl border border-outline-variant/10 text-center">
+                    <p class="font-label-sm font-bold text-sm mb-4">Retirement 2045</p>
+                    <div class="relative w-20 h-20 mx-auto mb-4">
+                        <svg class="w-full h-full transform -rotate-90" viewBox="0 0 36 36">
+                            <circle cx="18" cy="18" fill="transparent" r="16" stroke="#E2E8F0" stroke-width="3" class="text-outline-variant/20"></circle>
+                            <circle cx="18" cy="18" fill="transparent" r="16" stroke="#004ac6" stroke-dasharray="65 100" stroke-width="3"></circle>
+                        </svg>
+                        <div class="absolute inset-0 flex items-center justify-center text-xs font-bold text-on-surface dark:text-white">65%</div>
+                    </div>
+                    <p class="text-[10px] text-outline">₹2.4Cr / ₹5Cr</p>
+                </div>
+                <div class="bg-background dark:bg-dark-bg p-5 rounded-2xl border border-outline-variant/10 text-center">
+                    <p class="font-label-sm font-bold text-sm mb-4">Home Purchase</p>
+                    <div class="relative w-20 h-20 mx-auto mb-4">
+                        <svg class="w-full h-full transform -rotate-90" viewBox="0 0 36 36">
+                            <circle cx="18" cy="18" fill="transparent" r="16" stroke="#E2E8F0" stroke-width="3" class="text-outline-variant/20"></circle>
+                            <circle cx="18" cy="18" fill="transparent" r="16" stroke="#00687a" stroke-dasharray="30 100" stroke-width="3"></circle>
+                        </svg>
+                        <div class="absolute inset-0 flex items-center justify-center text-xs font-bold text-on-surface dark:text-white">30%</div>
+                    </div>
+                    <p class="text-[10px] text-outline">₹15L / ₹50L</p>
+                </div>
+                <div class="bg-background dark:bg-dark-bg p-5 rounded-2xl border border-outline-variant/10 text-center">
+                    <p class="font-label-sm font-bold text-sm mb-4">Education Fund</p>
+                    <div class="relative w-20 h-20 mx-auto mb-4">
+                        <svg class="w-full h-full transform -rotate-90" viewBox="0 0 36 36">
+                            <circle cx="18" cy="18" fill="transparent" r="16" stroke="#E2E8F0" stroke-width="3" class="text-outline-variant/20"></circle>
+                            <circle cx="18" cy="18" fill="transparent" r="16" stroke="#10B981" stroke-dasharray="15 100" stroke-width="3"></circle>
+                        </svg>
+                        <div class="absolute inset-0 flex items-center justify-center text-xs font-bold text-on-surface dark:text-white">15%</div>
+                    </div>
+                    <p class="text-[10px] text-outline">₹1.2L / ₹8L</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- AI Investment Advisor Insights -->
+        <section class="bg-surface-container-lowest dark:bg-dark-surface rounded-2xl p-8 border border-outline-variant/30 dark:border-outline/10 card-shadow flex flex-col justify-between">
+            <div>
+                <div class="flex items-center gap-2 mb-6">
+                    <span class="material-symbols-outlined text-primary" style="font-variation-settings: 'FILL' 1;">insights</span>
+                    <h3 class="font-card-title text-on-surface dark:text-white font-bold text-lg">Portfolio Insights</h3>
+                </div>
+                <div class="space-y-4" id="portfolio-insights-list">
+                    <div class="bg-background dark:bg-dark-bg p-4 rounded-xl border-l-4 border-warning flex gap-4 items-start">
+                        <span class="material-symbols-outlined text-warning">trending_flat</span>
+                        <div>
+                            <p class="font-body-md text-sm text-on-surface dark:text-white leading-relaxed">
+                                Gold prices are consolidating at current levels; consider increasing your allocation by <span class="font-bold">2%</span> for portfolio hedging.
+                            </p>
+                            <p class="text-[10px] text-outline mt-2 uppercase font-bold tracking-widest">Recommended Action</p>
+                        </div>
+                    </div>
+                    <div class="bg-background dark:bg-dark-bg p-4 rounded-xl border-l-4 border-success flex gap-4 items-start">
+                        <span class="material-symbols-outlined text-success">verified_user</span>
+                        <div>
+                            <p class="font-body-md text-sm text-on-surface dark:text-white leading-relaxed">
+                                Market volatility alert: High domestic turbulence expected this week. Your portfolio is <span class="font-bold">well-diversified</span> and resilient.
+                            </p>
+                            <p class="text-[10px] text-outline mt-2 uppercase font-bold tracking-widest">Portfolio Health: Good</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <!-- Security Footer -->
+    <footer class="pt-12 pb-6 border-t border-outline-variant/20 flex flex-col items-center">
+        <div class="flex flex-wrap justify-center gap-12 mb-6">
+            <div class="flex items-center gap-2 text-outline text-xs font-bold uppercase tracking-wider">
+                <span class="material-symbols-outlined text-sm">security</span>
+                AES-256 Encrypted
+            </div>
+            <div class="flex items-center gap-2 text-outline text-xs font-bold uppercase tracking-wider">
+                <span class="material-symbols-outlined text-sm">verified</span>
+                Verified Partners
+            </div>
+            <div class="flex items-center gap-2 text-outline text-xs font-bold uppercase tracking-wider">
+                <span class="material-symbols-outlined text-sm">gavel</span>
+                SEBI Regulated
+            </div>
+        </div>
+        <p class="text-outline text-center max-w-2xl text-xs leading-relaxed mb-4">
+            Investment in securities market are subject to market risks. Read all the related documents carefully before investing. E-Faws is a registered investment advisor under SEBI guidelines.
+        </p>
+        <div class="flex gap-6 text-xs text-primary font-bold">
+            <span class="cursor-pointer hover:underline">Privacy Policy</span>
+            <span class="cursor-pointer hover:underline">Terms of Service</span>
+            <span class="cursor-pointer hover:underline">Disclosures</span>
+        </div>
+    </footer>
+</main>
+
+<!-- New Investment Modal -->
+<div id="investment-modal" class="fixed inset-0 bg-black/60 backdrop-blur-sm z-50 flex items-center justify-center hidden opacity-0 transition-opacity duration-300">
+    <div class="bg-surface-container-lowest dark:bg-dark-surface p-8 rounded-[28px] max-w-lg w-full mx-4 shadow-2xl border border-outline-variant/20 relative">
+        <button onclick="closeInvestmentModal()" class="absolute right-6 top-6 text-outline hover:text-primary transition-colors">
+            <span class="material-symbols-outlined">close</span>
+        </button>
+        <h3 class="font-card-title text-2xl font-bold text-on-surface dark:text-white mb-1">Make New Investment</h3>
+        <p class="text-xs text-outline mb-6">Select your asset class and specify the amount to buy. Funds are debited from your Smart E-Wallet.</p>
+        
+        <form id="investment-purchase-form" onsubmit="submitInvestmentPurchase(event)" class="space-y-5">
+            <div>
+                <label class="block text-xs font-bold text-outline uppercase tracking-wider mb-2">Asset Category</label>
+                <select id="invest-category-field" class="w-full bg-surface-container-low dark:bg-dark-bg border border-outline-variant/30 rounded-xl py-3 px-4 font-bold text-on-surface dark:text-white focus:ring-2 focus:ring-primary/20">
+                    <option value="Mutual Funds">Mutual Funds (Auto-SIP eligible)</option>
+                    <option value="Stocks">Direct Equities (Stocks)</option>
+                    <option value="Gold">Digital Gold (24K, 99.9% Purity)</option>
+                    <option value="Fixed Deposits">High-Yield Fixed Deposits</option>
+                </select>
+            </div>
+            
+            <div>
+                <label class="block text-xs font-bold text-outline uppercase tracking-wider mb-2">Investment Amount (₹)</label>
+                <input type="number" id="invest-amount-field" min="500" max="10000000" placeholder="e.g. 10000" class="w-full bg-surface-container-low dark:bg-dark-bg border border-outline-variant/30 rounded-xl py-3 px-4 font-bold text-on-surface dark:text-white focus:ring-2 focus:ring-primary/20" required />
+            </div>
+
+            <div class="bg-primary/5 p-4 rounded-xl space-y-2 border border-primary/10">
+                <div class="flex justify-between text-xs font-medium">
+                    <span class="text-outline">Brokerage / Entry Load</span>
+                    <span class="font-bold text-success">₹0.00 (Zero Load)</span>
+                </div>
+                <div class="flex justify-between text-xs font-medium">
+                    <span class="text-outline">Security Transaction Tax (STT)</span>
+                    <span class="font-bold text-on-surface dark:text-white">Inc. in execution</span>
+                </div>
+            </div>
+            
+            <button type="submit" class="w-full bg-primary text-white py-4 rounded-xl font-label-sm font-bold shadow-lg shadow-primary/25 hover:opacity-95 transition-all">Confirm Purchase</button>
+        </form>
+    </div>
+</div>
+
+<!-- Scripts -->
+<script type="module" src="/widgets/index.jsx"></script>
+<script type="module" src="/js/investments.js"></script>
+</body>
+</html>

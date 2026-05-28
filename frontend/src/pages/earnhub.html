@@ -1,0 +1,557 @@
+<!DOCTYPE html>
+<html class="light" lang="en">
+<head>
+    <meta charset="utf-8"/>
+    <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+    <title>E-Faws | Earn Hub</title>
+    <!-- Fonts & Icons -->
+    <link href="https://fonts.googleapis.com" rel="preconnect"/>
+    <link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&amp;family=Sora:wght@600;700;800&amp;display=swap" rel="stylesheet"/>
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+    
+    <!-- Compiled CSS & Theme Toggle script -->
+    <link rel="stylesheet" href="/css/main.css" />
+    <link rel="stylesheet" href="/css/theme.css" />
+    <link rel="stylesheet" href="/css/responsive.css" />
+    <script type="module" src="/js/theme.js"></script>
+    <style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .card-shadow {
+            box-shadow: 0 4px 20px -2px rgba(0, 74, 198, 0.04);
+        }
+        .glass-glow {
+            background: rgba(255, 255, 255, 0.7);
+            backdrop-filter: blur(12px);
+            border: 1px solid rgba(0, 83, 219, 0.1);
+        }
+        .sidebar-active {
+            box-shadow: inset -4px 0 0 0 #004ac6;
+        }
+        ::-webkit-scrollbar { width: 6px; }
+        ::-webkit-scrollbar-track { background: transparent; }
+        ::-webkit-scrollbar-thumb { background: #c3c6d7; border-radius: 10px; }
+    </style>
+</head>
+<body class="bg-background text-on-surface font-body-md min-h-screen dark:bg-dark-bg dark:text-inverse-on-surface">
+<!-- Desktop Side Navigation Shell -->
+<aside class="fixed left-0 top-0 h-screen w-64 border-r border-outline-variant/30 bg-surface-container-lowest dark:bg-dark-surface flex flex-col py-margin-desktop space-y-stack-md z-30">
+    <div class="px-6 mb-8 flex items-center gap-3">
+        <div class="flex flex-col">
+            <span class="font-card-title text-card-title font-bold text-primary dark:text-inverse-primary">E-Faws</span>
+            <span class="font-label-sm text-[10px] uppercase tracking-wider text-outline">Growth OS</span>
+        </div>
+    </div>
+    <nav class="flex-1 px-4 space-y-1 overflow-y-auto">
+        <a class="flex items-center gap-3 px-4 py-3 rounded-xl text-on-surface-variant dark:text-outline-variant font-medium hover:bg-surface-container dark:hover:bg-dark-elevated transition-colors" href="/pages/dashboard.html">
+            <span class="material-symbols-outlined">dashboard</span>
+            <span class="font-label-sm">Dashboard</span>
+        </a>
+        <a class="flex items-center gap-3 px-4 py-3 rounded-xl text-on-surface-variant dark:text-outline-variant font-medium hover:bg-surface-container dark:hover:bg-dark-elevated transition-colors" href="/pages/lending.html">
+            <span class="material-symbols-outlined">payments</span>
+            <span class="font-label-sm">Lending</span>
+        </a>
+        <a class="flex items-center gap-3 px-4 py-3 rounded-xl text-on-surface-variant dark:text-outline-variant font-medium hover:bg-surface-container dark:hover:bg-dark-elevated transition-colors" href="/pages/investments.html">
+            <span class="material-symbols-outlined">trending_up</span>
+            <span class="font-label-sm">Investment</span>
+        </a>
+        <a class="flex items-center gap-3 px-4 py-3 rounded-xl text-on-surface-variant dark:text-outline-variant font-medium hover:bg-surface-container dark:hover:bg-dark-elevated transition-colors" href="/pages/insurance.html">
+            <span class="material-symbols-outlined">verified_user</span>
+            <span class="font-label-sm">Insurance</span>
+        </a>
+        <a class="flex items-center gap-3 px-4 py-3 rounded-xl text-primary font-bold bg-primary/10 sidebar-active transition-all duration-150" href="/pages/earnhub.html">
+            <span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">savings</span>
+            <span class="font-label-sm">Earn Hub</span>
+        </a>
+        <a class="flex items-center gap-3 px-4 py-3 rounded-xl text-on-surface-variant dark:text-outline-variant font-medium hover:bg-surface-container dark:hover:bg-dark-elevated transition-colors" href="/pages/wallet.html">
+            <span class="material-symbols-outlined">account_balance_wallet</span>
+            <span class="font-label-sm">Wallet</span>
+        </a>
+    </nav>
+    <div class="px-4 mt-auto">
+        <button id="logout-btn" class="w-full bg-surface-variant dark:bg-dark-elevated text-on-surface-variant dark:text-white py-3 px-4 rounded-xl font-label-sm flex items-center justify-center gap-2 hover:opacity-90 active:scale-95 transition-all">
+            <span class="material-symbols-outlined text-[20px]">logout</span>
+            Sign Out
+        </button>
+    </div>
+</aside>
+
+<!-- Top AppBar Shell -->
+<header class="fixed top-0 right-0 left-64 h-20 bg-surface/80 dark:bg-dark-bg/80 backdrop-blur-md z-20 px-margin-desktop flex items-center justify-between shadow-sm border-b border-outline-variant/10">
+    <div class="flex-1 max-w-xl">
+        <div class="relative group">
+            <span class="material-symbols-outlined absolute left-4 top-1/2 -translate-y-1/2 text-outline group-focus-within:text-primary">search</span>
+            <input class="w-full bg-surface-container-low dark:bg-dark-surface border-none rounded-full py-2.5 pl-12 pr-4 focus:ring-2 focus:ring-primary/20 text-body-md transition-all dark:text-white" placeholder="Search growth opportunities..." type="text"/>
+        </div>
+    </div>
+    <div class="flex items-center gap-6">
+        <div class="hidden md:flex items-center gap-2 px-4 py-1.5 bg-success/10 text-success rounded-full border border-success/20">
+            <span class="material-symbols-outlined text-[18px]">ecg_heart</span>
+            <span class="font-label-sm font-bold" id="header-health-score">Health Score: 85</span>
+        </div>
+        <div class="flex items-center gap-2">
+            <button onclick="window.toggleTheme()" class="p-2 text-on-surface-variant dark:text-outline-variant hover:bg-surface-container dark:hover:bg-dark-surface rounded-full transition-all" title="Toggle Mode">
+                <span class="material-symbols-outlined">contrast</span>
+            </button>
+        </div>
+        <div class="h-10 w-px bg-outline-variant/30 mx-2"></div>
+        <div class="flex items-center gap-3 cursor-pointer group">
+            <div class="flex flex-col items-end">
+                <span class="font-label-sm font-bold text-on-surface dark:text-white group-hover:text-primary transition-colors" id="top-user-name">Loading Profile</span>
+                <span class="text-[11px] text-outline" id="top-user-tier">Premium User</span>
+            </div>
+            <div class="w-10 h-10 rounded-full bg-primary/10 text-primary flex items-center justify-center font-bold" id="user-avatar-initials">
+                EF
+            </div>
+        </div>
+    </div>
+</header>
+
+<!-- Main Content Canvas -->
+<main class="ml-64 pt-28 px-margin-desktop pb-margin-desktop max-w-[1600px] dark:bg-dark-bg space-y-12">
+    <!-- Section 1: Earn Hub Overview -->
+    <section class="grid grid-cols-1 lg:grid-cols-12 gap-gutter">
+        <div class="lg:col-span-8 bg-surface-container-lowest dark:bg-dark-surface p-8 rounded-[24px] shadow-sm flex flex-col justify-between border border-outline-variant/10 dark:border-outline/10">
+            <div class="flex justify-between items-start mb-8">
+                <div>
+                    <h2 class="font-section-title text-section-title text-primary dark:text-inverse-primary mb-2">Earn Hub Overview</h2>
+                    <div class="flex items-center gap-3">
+                        <span id="earn-level-rank" class="px-3 py-1 bg-primary text-white rounded-full font-label-sm text-xs">Gold Rank</span>
+                        <span id="earn-level-text" class="text-on-surface-variant dark:text-outline-variant font-label-sm text-xs font-bold">Current Level 4</span>
+                    </div>
+                </div>
+                <div class="text-right">
+                    <span id="earn-xp-display" class="font-financial-display text-4xl font-extrabold text-primary dark:text-inverse-primary block">1,200 XP</span>
+                    <span id="earn-next-xp-text" class="font-label-sm text-xs text-outline">Next Level at 1,600 XP</span>
+                </div>
+            </div>
+            <div class="w-full bg-surface-container dark:bg-dark-bg rounded-full h-4 mb-8">
+                <div id="earn-xp-progress-bar" class="bg-primary h-4 rounded-full transition-all duration-500" style="width: 75%;"></div>
+            </div>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+                <div class="p-4 bg-surface-container-low dark:bg-dark-elevated rounded-xl border border-outline-variant/30 dark:border-outline/10">
+                    <span class="font-label-sm text-xs text-outline block mb-1">Financial Health</span>
+                    <div class="flex items-center gap-2">
+                        <span class="material-symbols-outlined text-success" style="font-variation-settings: 'FILL' 1;">shield_with_heart</span>
+                        <span id="earn-health-score-val" class="font-card-title text-lg text-success font-bold">85/100</span>
+                    </div>
+                </div>
+                <div class="p-4 bg-surface-container-low dark:bg-dark-elevated rounded-xl border border-outline-variant/30 dark:border-outline/10">
+                    <span class="font-label-sm text-xs text-outline block mb-1">Active Streams</span>
+                    <div class="flex items-center gap-2">
+                        <span class="material-symbols-outlined text-primary dark:text-inverse-primary" style="font-variation-settings: 'FILL' 1;">account_tree</span>
+                        <span class="font-card-title text-lg text-on-surface dark:text-white font-bold">4 Active</span>
+                    </div>
+                </div>
+                <div class="p-4 bg-surface-container-low dark:bg-dark-elevated rounded-xl border border-outline-variant/30 dark:border-outline/10">
+                    <span class="font-label-sm text-xs text-outline block mb-1">Earning Trend</span>
+                    <div class="flex items-center gap-2 text-primary dark:text-inverse-primary">
+                        <span class="material-symbols-outlined">trending_up</span>
+                        <span class="font-card-title text-lg font-bold">+12.5%</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- AI Opportunity Suggestion (Contextual Card) -->
+        <div class="lg:col-span-4 bg-primary/10 dark:bg-primary/20 text-on-surface dark:text-white p-8 rounded-[24px] shadow-sm flex flex-col justify-between border border-primary/20 relative overflow-hidden">
+            <div class="absolute top-0 right-0 p-4 opacity-5">
+                <span class="material-symbols-outlined text-[80px]" style="font-variation-settings: 'wght' 700;">psychology</span>
+            </div>
+            <div>
+                <div class="flex items-center gap-2 mb-4">
+                    <span class="material-symbols-outlined text-primary" style="font-variation-settings: 'FILL' 1;">auto_awesome</span>
+                    <span class="font-label-sm text-xs uppercase font-bold tracking-wider text-primary">AI Recommendation</span>
+                </div>
+                <h3 class="font-card-title text-lg font-bold mb-4 text-on-surface dark:text-white leading-snug">Based on your skills, try our AI Content Partner program.</h3>
+                <p class="font-body-md text-xs text-on-surface-variant dark:text-outline-variant opacity-90 mb-6 leading-relaxed">Users with your profile earn an average of ₹35,000/mo through decentralized content validation.</p>
+            </div>
+            <button onclick="alert('Applying for the AI Content Partner beta program... Your profile has been queued.')" class="bg-primary text-white px-6 py-3 rounded-full font-label-sm text-xs font-bold w-fit hover:opacity-90 active:scale-95 transition-all">
+                Explore Program
+            </button>
+        </div>
+    </section>
+
+    <!-- Section 2: Level Progression -->
+    <section class="space-y-6">
+        <div>
+            <h2 class="font-section-title text-2xl font-bold text-on-surface dark:text-white mb-1">Level Progression</h2>
+            <p class="font-body-md text-sm text-on-surface-variant dark:text-outline-variant">Advance your financial status to unlock premium yields and tools.</p>
+        </div>
+        <div class="grid grid-cols-1 md:grid-cols-4 gap-gutter">
+            <!-- Beginner -->
+            <div id="tier-card-1" class="bg-surface-container-lowest dark:bg-dark-surface p-6 rounded-[24px] border border-outline-variant/30 dark:border-outline/10 flex flex-col justify-between transition-all duration-300">
+                <div>
+                    <div class="w-12 h-12 bg-outline/10 rounded-full flex items-center justify-center mb-6">
+                        <span class="material-symbols-outlined text-outline">verified</span>
+                    </div>
+                    <h4 class="font-card-title text-lg font-bold mb-2">Beginner</h4>
+                    <ul class="space-y-2 mb-6 text-xs text-on-surface-variant dark:text-outline-variant">
+                        <li class="flex items-center">
+                            <span class="material-symbols-outlined text-[16px] mr-2 text-success">check</span> Basic Earn Tools
+                        </li>
+                        <li class="flex items-center">
+                            <span class="material-symbols-outlined text-[16px] mr-2 text-success">check</span> Community Support
+                        </li>
+                    </ul>
+                </div>
+                <span id="tier-status-1" class="font-label-sm text-xs text-outline italic">Completed</span>
+            </div>
+            <!-- Intermediate -->
+            <div id="tier-card-2" class="bg-surface-container-lowest dark:bg-dark-surface p-6 rounded-[24px] border border-outline-variant/30 dark:border-outline/10 flex flex-col justify-between transition-all duration-300">
+                <div>
+                    <div class="w-12 h-12 bg-secondary/10 rounded-full flex items-center justify-center mb-6">
+                        <span class="material-symbols-outlined text-secondary">workspace_premium</span>
+                    </div>
+                    <h4 class="font-card-title text-lg font-bold mb-2">Intermediate</h4>
+                    <ul class="space-y-2 mb-6 text-xs text-on-surface-variant dark:text-outline-variant">
+                        <li class="flex items-center">
+                            <span class="material-symbols-outlined text-[16px] mr-2 text-success">check</span> +5% Referral Bonus
+                        </li>
+                        <li class="flex items-center">
+                            <span class="material-symbols-outlined text-[16px] mr-2 text-success">check</span> Priority Missions
+                        </li>
+                    </ul>
+                </div>
+                <span id="tier-status-2" class="font-label-sm text-xs text-outline italic">Completed</span>
+            </div>
+            <!-- Gold / Advanced -->
+            <div id="tier-card-3" class="bg-surface-container-lowest dark:bg-dark-surface p-6 rounded-[24px] border border-outline-variant/30 dark:border-outline/10 flex flex-col justify-between transition-all duration-300">
+                <div>
+                    <div class="flex justify-between items-start mb-6">
+                        <div class="w-12 h-12 bg-primary/10 rounded-full flex items-center justify-center text-primary">
+                            <span class="material-symbols-outlined">military_tech</span>
+                        </div>
+                        <span id="tier-badge-3" class="bg-primary/10 text-primary px-3 py-1 rounded-full font-label-sm text-[10px] uppercase font-bold hidden">Current Tier</span>
+                    </div>
+                    <h4 class="font-card-title text-lg font-bold mb-2">Advanced</h4>
+                    <ul class="space-y-2 mb-6 text-xs text-on-surface-variant dark:text-outline-variant">
+                        <li class="flex items-center">
+                            <span class="material-symbols-outlined text-[16px] mr-2 text-primary" style="font-variation-settings: 'FILL' 1;">stars</span> Early Token Access
+                        </li>
+                        <li class="flex items-center">
+                            <span class="material-symbols-outlined text-[16px] mr-2 text-primary" style="font-variation-settings: 'FILL' 1;">stars</span> AI Trading Bot v1
+                        </li>
+                        <li class="flex items-center">
+                            <span class="material-symbols-outlined text-[16px] mr-2 text-primary" style="font-variation-settings: 'FILL' 1;">stars</span> Dedicated Advisor
+                        </li>
+                    </ul>
+                </div>
+                <span id="tier-status-3" class="font-label-sm text-xs text-outline italic">Locked</span>
+            </div>
+            <!-- Expert -->
+            <div id="tier-card-4" class="bg-surface-container-lowest dark:bg-dark-surface p-6 rounded-[24px] border border-outline-variant/30 dark:border-outline/10 flex flex-col justify-between relative transition-all duration-300">
+                <div id="tier-lock-overlay" class="absolute inset-0 bg-background/60 dark:bg-dark-bg/60 backdrop-blur-[2px] rounded-[24px] flex items-center justify-center z-10">
+                    <div class="flex flex-col items-center">
+                        <span class="material-symbols-outlined text-outline text-[32px] mb-2">lock</span>
+                        <span id="tier-lock-text" class="font-label-sm text-xs text-on-surface-variant dark:text-outline-variant font-bold">Unlocks at Level 5</span>
+                    </div>
+                </div>
+                <div>
+                    <div class="w-12 h-12 bg-tertiary/10 rounded-full flex items-center justify-center mb-6 text-tertiary">
+                        <span class="material-symbols-outlined">diamond</span>
+                    </div>
+                    <h4 class="font-card-title text-lg font-bold mb-2">Expert</h4>
+                    <ul class="space-y-2 mb-6 text-xs text-on-surface-variant dark:text-outline-variant opacity-40">
+                        <li class="flex items-center">Institutional Access</li>
+                        <li class="flex items-center">Private Equity Club</li>
+                        <li class="flex items-center">Zero Fee Trading</li>
+                    </ul>
+                </div>
+                <span id="tier-status-4" class="font-label-sm text-xs text-outline italic">Locked</span>
+            </div>
+        </div>
+    </section>
+
+    <!-- Section 3: Unlockable Opportunities & Analytics -->
+    <section class="grid grid-cols-1 lg:grid-cols-12 gap-gutter">
+        <!-- Analytics Chart Representation -->
+        <div class="lg:col-span-7 bg-surface-container-lowest dark:bg-dark-surface p-8 rounded-[24px] shadow-sm border border-outline-variant/10 dark:border-outline/10">
+            <div class="flex justify-between items-center mb-10">
+                <div>
+                    <h3 class="font-card-title text-lg font-bold mb-1">Financial Growth Analytics</h3>
+                    <p class="font-label-sm text-xs text-outline">Earning trends over the last 6 months</p>
+                </div>
+                <select class="bg-surface-container-low dark:bg-dark-bg border-none rounded-lg font-label-sm text-xs text-on-surface-variant dark:text-outline-variant px-4 py-2">
+                    <option>Last 6 Months</option>
+                    <option>Last Year</option>
+                </select>
+            </div>
+            <!-- Stylized CSS Chart Representation -->
+            <div class="h-64 flex items-end justify-between space-x-2 pt-10">
+                <div class="flex-1 bg-primary/10 dark:bg-primary/20 rounded-t-lg relative group transition-all hover:bg-primary/20 dark:hover:bg-primary/30" style="height: 40%;">
+                    <div class="absolute -top-10 left-1/2 -translate-x-1/2 bg-surface-variant dark:bg-dark-elevated text-on-surface dark:text-white px-2 py-1 rounded text-[10px] font-bold opacity-0 group-hover:opacity-100 transition-opacity">₹12,000</div>
+                </div>
+                <div class="flex-1 bg-primary/20 dark:bg-primary/30 rounded-t-lg relative group transition-all hover:bg-primary/30 dark:hover:bg-primary/40" style="height: 55%;">
+                    <div class="absolute -top-10 left-1/2 -translate-x-1/2 bg-surface-variant dark:bg-dark-elevated text-on-surface dark:text-white px-2 py-1 rounded text-[10px] font-bold opacity-0 group-hover:opacity-100 transition-opacity">₹18,000</div>
+                </div>
+                <div class="flex-1 bg-primary/30 dark:bg-primary/40 rounded-t-lg relative group transition-all hover:bg-primary/40 dark:hover:bg-primary/50" style="height: 45%;">
+                    <div class="absolute -top-10 left-1/2 -translate-x-1/2 bg-surface-variant dark:bg-dark-elevated text-on-surface dark:text-white px-2 py-1 rounded text-[10px] font-bold opacity-0 group-hover:opacity-100 transition-opacity">₹15,000</div>
+                </div>
+                <div class="flex-1 bg-primary/40 dark:bg-primary/50 rounded-t-lg relative group transition-all hover:bg-primary/50 dark:hover:bg-primary/60" style="height: 70%;">
+                    <div class="absolute -top-10 left-1/2 -translate-x-1/2 bg-surface-variant dark:bg-dark-elevated text-on-surface dark:text-white px-2 py-1 rounded text-[10px] font-bold opacity-0 group-hover:opacity-100 transition-opacity">₹24,000</div>
+                </div>
+                <div class="flex-1 bg-primary/50 dark:bg-primary/60 rounded-t-lg relative group transition-all hover:bg-primary/60 dark:hover:bg-primary/70" style="height: 85%;">
+                    <div class="absolute -top-10 left-1/2 -translate-x-1/2 bg-surface-variant dark:bg-dark-elevated text-on-surface dark:text-white px-2 py-1 rounded text-[10px] font-bold opacity-0 group-hover:opacity-100 transition-opacity">₹31,000</div>
+                </div>
+                <div class="flex-1 bg-primary rounded-t-lg relative group transition-all hover:bg-primary/90" style="height: 100%;">
+                    <div class="absolute -top-10 left-1/2 -translate-x-1/2 bg-surface-variant dark:bg-dark-elevated text-on-surface dark:text-white px-2 py-1 rounded text-[10px] font-bold opacity-0 group-hover:opacity-100 transition-opacity">₹42,000</div>
+                </div>
+            </div>
+            <div class="flex justify-between mt-4 text-xs font-bold text-outline px-2">
+                <span>Jan</span><span>Feb</span><span>Mar</span><span>Apr</span><span>May</span><span>Jun</span>
+            </div>
+        </div>
+        
+        <!-- Achievement System -->
+        <div class="lg:col-span-5 bg-surface-container-low dark:bg-dark-surface p-8 rounded-[24px] border border-outline-variant/20 dark:border-outline/10 flex flex-col justify-between">
+            <div>
+                <h3 class="font-card-title text-lg font-bold mb-6">Earned Badges</h3>
+                <div class="space-y-4">
+                    <div class="flex items-center gap-4 p-4 bg-surface-container-lowest dark:bg-dark-elevated rounded-xl border border-outline-variant/30 dark:border-outline/10">
+                        <div class="w-12 h-12 bg-warning/10 rounded-full flex items-center justify-center flex-shrink-0">
+                            <span class="material-symbols-outlined text-warning text-2xl" style="font-variation-settings: 'FILL' 1;">rocket_launch</span>
+                        </div>
+                        <div>
+                            <h5 class="font-body-md text-sm font-bold text-on-surface dark:text-white">Early Adopter</h5>
+                            <p class="font-label-sm text-xs text-on-surface-variant dark:text-outline-variant">Joined during beta phase</p>
+                        </div>
+                    </div>
+                    <div class="flex items-center gap-4 p-4 bg-surface-container-lowest dark:bg-dark-elevated rounded-xl border border-outline-variant/30 dark:border-outline/10">
+                        <div class="w-12 h-12 bg-primary/10 rounded-full flex items-center justify-center flex-shrink-0">
+                            <span class="material-symbols-outlined text-primary text-2xl" style="font-variation-settings: 'FILL' 1;">savings</span>
+                        </div>
+                        <div>
+                            <h5 class="font-body-md text-sm font-bold text-on-surface dark:text-white">Smart Saver</h5>
+                            <p class="font-label-sm text-xs text-on-surface-variant dark:text-outline-variant">Maintained high wallet balance</p>
+                        </div>
+                    </div>
+                    <div class="flex items-center gap-4 p-4 bg-surface-container-lowest dark:bg-dark-elevated rounded-xl border border-outline-variant/30 dark:border-outline/10 opacity-50" id="badge-lock-3">
+                        <div class="w-12 h-12 bg-success/10 rounded-full flex items-center justify-center flex-shrink-0">
+                            <span class="material-symbols-outlined text-success text-2xl" style="font-variation-settings: 'FILL' 1;">energy_savings_leaf</span>
+                        </div>
+                        <div>
+                            <h5 class="font-body-md text-sm font-bold text-on-surface dark:text-white">Growth Master</h5>
+                            <p class="font-label-sm text-xs text-on-surface-variant dark:text-outline-variant" id="badge-lock-text-3">Unlock by buying investments</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <button onclick="alert('Opening achievements archive... All badge standards are IRDAI & Sebi audit-compliant.')" class="mt-6 text-primary dark:text-inverse-primary font-label-sm text-xs font-bold flex items-center hover:underline">
+                View Achievement Gallery <span class="material-symbols-outlined text-[18px] ml-1">arrow_forward</span>
+            </button>
+        </div>
+    </section>
+
+    <!-- Section 4: Available Opportunities Grid -->
+    <section class="space-y-6">
+        <h2 class="font-section-title text-2xl font-bold text-on-surface dark:text-white mb-2">Available Opportunities</h2>
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-gutter">
+            <!-- Affiliate Program -->
+            <div class="bg-surface-container-lowest dark:bg-dark-surface p-6 rounded-[24px] border border-outline-variant/30 dark:border-outline/10 hover:shadow-lg transition-all group">
+                <div class="aspect-video bg-surface-container dark:bg-dark-bg rounded-xl mb-6 overflow-hidden relative">
+                    <img alt="Affiliate Programs Visual" class="w-full h-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBh39tnvEfmgL1tIRthevVgNzPkgv3XdIZY82kdzmxLMcJDz6rO1NSBAYa-NRILq6lpqj7okXa7wWO-dXhiIj1CYTX98l1jYsEDU_CqWF7DStXj7xZgPZ-gV5i9-eJ6p9tsLIlvUW1_fdcQpzM_KPNEeBtKdI7qUNllxOdLCTe_hIE59JjC9TLFHhvGQ2okYCMFp5Mew7CFU-iNlRke27i0rtl_DPQ2QpBkAcyQLRFzGhGmuwJ-ntRFBdMUAWLBpEt6Gmt-kDhpHa8"/>
+                    <div class="absolute top-3 right-3 px-3 py-1 bg-success text-white rounded-full font-label-sm text-[10px] font-bold">Active</div>
+                </div>
+                <h4 class="font-card-title text-md font-bold mb-2">Partner Affiliate Program</h4>
+                <p class="font-body-md text-xs text-on-surface-variant dark:text-outline-variant mb-6 leading-relaxed">Earn recurring 15% commission by referring premium business accounts.</p>
+                <div class="flex items-center justify-between">
+                    <div class="text-primary dark:text-inverse-primary font-bold text-xs">High Yield</div>
+                    <button onclick="alert('Your affiliate code is active: EFAWS-AM882. Share it to earn commissions.')" class="bg-surface-container dark:bg-dark-elevated text-on-surface-variant dark:text-white px-4 py-2 rounded-lg font-label-sm text-xs group-hover:bg-primary group-hover:text-white transition-all">Join Now</button>
+                </div>
+            </div>
+            <!-- AI Freelancing -->
+            <div class="bg-surface-container-lowest dark:bg-dark-surface p-6 rounded-[24px] border border-outline-variant/30 dark:border-outline/10 hover:shadow-lg transition-all group">
+                <div class="aspect-video bg-surface-container dark:bg-dark-bg rounded-xl mb-6 overflow-hidden relative">
+                    <img alt="AI Freelancing Tools Visual" class="w-full h-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuD5czeQixglWIRO93Lq941ti8F8zKLVQ3f4_HN1rRC5Kv0yXzhcEhddR8t0NfloT6uIkknVIWbzJoRxUgUidMWVGkxQm7JGW3NruOJqVzqz10rMsEmye4LYFZmoUzyzBzp-sKDW-r8KykccvDQy5Fy09oYRmtUxlhbykkvioVWC672Lh1VNQr1s_gnVAkeCpcgxGyV-cvke9L-m2U4UsICk2ijDvYqwItQ7-9QdurmsseesB2n5Lo82BJf9NH_aGmtWCicbFk5xdRw"/>
+                    <div class="absolute top-3 right-3 px-3 py-1 bg-primary text-white rounded-full font-label-sm text-[10px] font-bold">Recommended</div>
+                </div>
+                <h4 class="font-card-title text-md font-bold mb-2">AI Freelancing Engine</h4>
+                <p class="font-body-md text-xs text-on-surface-variant dark:text-outline-variant mb-6 leading-relaxed">Connect your skills with AI-augmented projects paying 2x standard market rates.</p>
+                <div class="flex items-center justify-between">
+                    <div class="text-primary dark:text-inverse-primary font-bold text-xs">Tech Focus</div>
+                    <button onclick="window.location.href='/pages/dashboard.html'" class="bg-surface-container dark:bg-dark-elevated text-on-surface-variant dark:text-white px-4 py-2 rounded-lg font-label-sm text-xs group-hover:bg-primary group-hover:text-white transition-all">Start Task</button>
+                </div>
+            </div>
+            <!-- Passive Income -->
+            <div class="bg-surface-container-lowest dark:bg-dark-surface p-6 rounded-[24px] border border-outline-variant/30 dark:border-outline/10 hover:shadow-lg transition-all group">
+                <div class="aspect-video bg-surface-container dark:bg-dark-bg rounded-xl mb-6 overflow-hidden relative">
+                    <img alt="Passive Income Visual" class="w-full h-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCRdRYxLVpz6Nl_-2MGsqZvNwguhlWIoDzKy3u1HUemvUL5oWqAPHmYXJpy1TLgezAX4tQcqPDzcxP4nb1ZzAEyUvvZ7TTDiNJ4-xqjymMiAJCNExnA9Few8JJFqdMA54BIMwxPXvbkBXF1bTFJIjVgMm06qRnWpA8zYJDtOQcq7JBsPQ8O6o1bae65LZsC1AFGTMeOmeZDmGnpDM3sNOU8WWBbHwRykIV2tZsCuCeRayTB1s5o5Czyeg_zbEERjRqLjXpdzNcnCb8"/>
+                </div>
+                <h4 class="font-card-title text-md font-bold mb-2">Liquidity Pools</h4>
+                <p class="font-body-md text-xs text-on-surface-variant dark:text-outline-variant mb-6 leading-relaxed">Automated yield farming across verified low-risk institutional debt pools.</p>
+                <div class="flex items-center justify-between">
+                    <div class="text-primary dark:text-inverse-primary font-bold text-xs">Low Risk</div>
+                    <button onclick="window.location.href='/pages/investments.html'" class="bg-surface-container dark:bg-dark-elevated text-on-surface-variant dark:text-white px-4 py-2 rounded-lg font-label-sm text-xs group-hover:bg-primary group-hover:text-white transition-all">Configure</button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Learn & Earn Quizzes Section -->
+    <section class="space-y-6">
+        <div>
+            <h2 class="font-section-title text-2xl font-bold text-on-surface dark:text-white mb-1">Learn & Earn Quizzes</h2>
+            <p class="font-body-md text-sm text-on-surface-variant dark:text-outline-variant">Test your financial literacy and earn XP to level up your status.</p>
+        </div>
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-gutter">
+            <!-- Quiz 1: Compounding Interest -->
+            <div class="bg-surface-container-lowest dark:bg-dark-surface p-6 rounded-[24px] border border-outline-variant/30 dark:border-outline/10 hover:shadow-lg transition-all flex flex-col justify-between" id="quiz-card-compounding">
+                <div>
+                    <div class="w-12 h-12 bg-primary/10 text-primary rounded-full flex items-center justify-center mb-6">
+                        <span class="material-symbols-outlined">calculate</span>
+                    </div>
+                    <h4 class="font-card-title text-md font-bold mb-2">Compounding Interest Quiz</h4>
+                    <p class="font-body-md text-xs text-on-surface-variant dark:text-outline-variant mb-6 leading-relaxed">Understand the math behind compound growth and how time multiplies wealth.</p>
+                </div>
+                <div class="flex items-center justify-between mt-auto">
+                    <span class="text-success font-bold text-xs">+100 XP</span>
+                    <button onclick="openQuizModal('compounding')" id="quiz-btn-compounding" class="bg-primary text-white px-4 py-2 rounded-lg font-label-sm text-xs font-bold hover:opacity-90 active:scale-95 transition-all">Start Quiz</button>
+                </div>
+            </div>
+            
+            <!-- Quiz 2: Asset Risk -->
+            <div class="bg-surface-container-lowest dark:bg-dark-surface p-6 rounded-[24px] border border-outline-variant/30 dark:border-outline/10 hover:shadow-lg transition-all flex flex-col justify-between" id="quiz-card-asset_risk">
+                <div>
+                    <div class="w-12 h-12 bg-secondary/10 text-secondary rounded-full flex items-center justify-center mb-6">
+                        <span class="material-symbols-outlined">monitoring</span>
+                    </div>
+                    <h4 class="font-card-title text-md font-bold mb-2">Asset Risk & Diversification Quiz</h4>
+                    <p class="font-body-md text-xs text-on-surface-variant dark:text-outline-variant mb-6 leading-relaxed">Test your understanding of stock vs debt risk profiles and efficient allocation.</p>
+                </div>
+                <div class="flex items-center justify-between mt-auto">
+                    <span class="text-success font-bold text-xs">+100 XP</span>
+                    <button onclick="openQuizModal('asset_risk')" id="quiz-btn-asset_risk" class="bg-primary text-white px-4 py-2 rounded-lg font-label-sm text-xs font-bold hover:opacity-90 active:scale-95 transition-all">Start Quiz</button>
+                </div>
+            </div>
+            
+            <!-- Quiz 3: Debt Structures -->
+            <div class="bg-surface-container-lowest dark:bg-dark-surface p-6 rounded-[24px] border border-outline-variant/30 dark:border-outline/10 hover:shadow-lg transition-all flex flex-col justify-between" id="quiz-card-debt_structures">
+                <div>
+                    <div class="w-12 h-12 bg-tertiary/10 text-tertiary rounded-full flex items-center justify-center mb-6">
+                        <span class="material-symbols-outlined">credit_score</span>
+                    </div>
+                    <h4 class="font-card-title text-md font-bold mb-2">Debt Structures Quiz</h4>
+                    <p class="font-body-md text-xs text-on-surface-variant dark:text-outline-variant mb-6 leading-relaxed">Master the difference between reducing rates, EMI amortization, and penalty structures.</p>
+                </div>
+                <div class="flex items-center justify-between mt-auto">
+                    <span class="text-success font-bold text-xs">+100 XP</span>
+                    <button onclick="openQuizModal('debt_structures')" id="quiz-btn-debt_structures" class="bg-primary text-white px-4 py-2 rounded-lg font-label-sm text-xs font-bold hover:opacity-90 active:scale-95 transition-all">Start Quiz</button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Section 5: Tasks & Missions and Premium Unlocks -->
+    <section class="grid grid-cols-1 lg:grid-cols-12 gap-gutter">
+        <!-- Missions -->
+        <div class="lg:col-span-8 space-y-6">
+            <h2 class="font-section-title text-xl font-bold text-on-surface dark:text-white">Daily Missions</h2>
+            <div class="space-y-4">
+                <!-- Check-in Mission -->
+                <div class="flex items-center justify-between p-6 bg-surface-container-lowest dark:bg-dark-surface rounded-[24px] border border-outline-variant/30 dark:border-outline/10 shadow-sm">
+                    <div class="flex items-center gap-4">
+                        <div class="w-12 h-12 bg-primary/10 rounded-full flex items-center justify-center text-primary">
+                            <span class="material-symbols-outlined">calendar_today</span>
+                        </div>
+                        <div>
+                            <h5 class="font-body-md text-sm font-bold text-on-surface dark:text-white">Daily Check-in</h5>
+                            <p class="font-label-sm text-xs text-on-surface-variant dark:text-outline-variant">Maintain your growth streak</p>
+                            <div class="flex items-center gap-1.5 mt-2" id="streak-dots-container"></div>
+                        </div>
+                    </div>
+                    <div class="flex items-center gap-6">
+                        <span class="text-primary dark:text-inverse-primary font-bold text-xs">+10 XP</span>
+                        <button id="claim-checkin-btn" onclick="triggerCheckIn()" class="px-6 py-2 bg-primary text-white rounded-lg font-label-sm text-xs font-bold hover:opacity-90 active:scale-95 transition-all">Claim</button>
+                    </div>
+                </div>
+                
+                <!-- Referral Mission -->
+                <div class="flex items-center justify-between p-6 bg-surface-container-lowest dark:bg-dark-surface rounded-[24px] border border-outline-variant/30 dark:border-outline/10 shadow-sm">
+                    <div class="flex items-center gap-4">
+                        <div class="w-12 h-12 bg-secondary/10 rounded-full flex items-center justify-center text-secondary">
+                            <span class="material-symbols-outlined">person_add</span>
+                        </div>
+                        <div>
+                            <h5 class="font-body-md text-sm font-bold text-on-surface dark:text-white">Refer a Friend</h5>
+                            <p class="font-label-sm text-xs text-on-surface-variant dark:text-outline-variant">Invite a peer to the ecosystem</p>
+                        </div>
+                    </div>
+                    <div class="flex items-center gap-6">
+                        <span class="text-primary dark:text-inverse-primary font-bold text-xs">+250 XP</span>
+                        <button id="claim-referral-btn" onclick="triggerReferral()" class="px-6 py-2 bg-surface-container dark:bg-dark-elevated text-on-surface-variant dark:text-white rounded-lg font-label-sm text-xs font-bold hover:opacity-90 active:scale-95 transition-all">Invite</button>
+                    </div>
+                </div>
+                
+                <!-- Investment Profile Mission -->
+                <div class="flex items-center justify-between p-6 bg-surface-container-lowest dark:bg-dark-surface rounded-[24px] border border-outline-variant/30 dark:border-outline/10 shadow-sm">
+                    <div class="flex items-center gap-4">
+                        <div class="w-12 h-12 bg-tertiary/10 rounded-full flex items-center justify-center text-tertiary">
+                            <span class="material-symbols-outlined">assignment_turned_in</span>
+                        </div>
+                        <div>
+                            <h5 class="font-body-md text-sm font-bold text-on-surface dark:text-white">Complete Investment Profile</h5>
+                            <p class="font-label-sm text-xs text-on-surface-variant dark:text-outline-variant">Unlock personalized yields</p>
+                        </div>
+                    </div>
+                    <div class="flex items-center gap-6">
+                        <span class="text-primary dark:text-inverse-primary font-bold text-xs">+100 XP</span>
+                        <button id="claim-profile-btn" onclick="window.location.href='/pages/investments.html'" class="px-6 py-2 bg-surface-container dark:bg-dark-elevated text-on-surface-variant dark:text-white rounded-lg font-label-sm text-xs font-bold hover:opacity-90 active:scale-95 transition-all">Resume</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Premium Unlocks (Institutional) -->
+        <div class="lg:col-span-4 space-y-6">
+            <h2 class="font-section-title text-xl font-bold text-on-surface dark:text-white">Institutional</h2>
+            <div class="space-y-4">
+                <div class="p-6 bg-surface-container-low dark:bg-dark-surface rounded-[24px] border border-outline-variant/30 dark:border-outline/10 relative">
+                    <div class="absolute top-4 right-4">
+                        <span class="material-symbols-outlined text-outline">lock</span>
+                    </div>
+                    <h5 class="font-body-md text-sm font-bold text-on-surface dark:text-white mb-2">Private Equity</h5>
+                    <p class="font-label-sm text-xs text-outline mb-4 leading-normal">Direct participation in pre-IPO series funding.</p>
+                    <span class="text-[10px] uppercase font-bold text-primary dark:text-inverse-primary tracking-widest bg-primary/10 px-3 py-1 rounded-full">Unlock with Level 5</span>
+                </div>
+                <div class="p-6 bg-surface-container-low dark:bg-dark-surface rounded-[24px] border border-outline-variant/30 dark:border-outline/10 relative">
+                    <div class="absolute top-4 right-4">
+                        <span class="material-symbols-outlined text-outline">lock</span>
+                    </div>
+                    <h5 class="font-body-md text-sm font-bold text-on-surface dark:text-white mb-2">Real Estate Syndicate</h5>
+                    <p class="font-label-sm text-xs text-outline mb-4 leading-normal">Fractional ownership of grade-A commercial assets.</p>
+                    <span class="text-[10px] uppercase font-bold text-primary dark:text-inverse-primary tracking-widest bg-primary/10 px-3 py-1 rounded-full">Unlock with Level 6</span>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- Quiz Modal -->
+    <div id="quiz-modal" class="fixed inset-0 z-50 flex items-center justify-center bg-black/50 backdrop-blur-sm hidden">
+        <div class="bg-surface dark:bg-dark-surface w-full max-w-lg p-8 rounded-[28px] shadow-2xl border border-outline-variant/30 dark:border-outline/10 m-4 flex flex-col max-h-[90vh]">
+            <div class="flex justify-between items-center mb-6 border-b border-outline-variant/10 pb-4">
+                <h3 class="font-card-title text-lg font-bold text-primary dark:text-inverse-primary" id="quiz-modal-title">Quiz</h3>
+                <button onclick="closeQuizModal()" class="p-1 rounded-full text-on-surface-variant dark:text-outline-variant hover:bg-surface-container-high dark:hover:bg-dark-elevated transition-colors">
+                    <span class="material-symbols-outlined">close</span>
+                </button>
+            </div>
+            
+            <div id="quiz-modal-body" class="flex-1 overflow-y-auto pr-2 space-y-6">
+                <!-- Question content dynamically rendered -->
+            </div>
+            
+            <div class="flex justify-between items-center mt-6 pt-4 border-t border-outline-variant/10">
+                <span class="text-xs text-outline font-medium" id="quiz-progress-text">Question 1 of 3</span>
+                <button id="quiz-next-btn" class="bg-primary text-white px-6 py-2.5 rounded-xl font-label-sm text-xs font-bold hover:opacity-90 active:scale-95 transition-all disabled:opacity-50 disabled:cursor-not-allowed">Next</button>
+            </div>
+        </div>
+    </div>
+
+</main>
+
+<!-- Scripts -->
+<script type="module" src="/widgets/index.jsx"></script>
+<script type="module" src="/js/earnhub.js"></script>
+</body>
+</html>

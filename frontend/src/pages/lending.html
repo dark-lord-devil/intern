@@ -1,0 +1,408 @@
+<!DOCTYPE html>
+<html class="light" lang="en">
+<head>
+    <meta charset="utf-8"/>
+    <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+    <title>E-Faws | Lending Hub</title>
+    <!-- Fonts & Icons -->
+    <link href="https://fonts.googleapis.com" rel="preconnect"/>
+    <link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&amp;family=Sora:wght@600;700;800&amp;display=swap" rel="stylesheet"/>
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+    
+    <!-- Compiled CSS & Theme Toggle script -->
+    <link rel="stylesheet" href="/css/main.css" />
+    <link rel="stylesheet" href="/css/theme.css" />
+    <link rel="stylesheet" href="/css/responsive.css" />
+    <script type="module" src="/js/theme.js"></script>
+    <style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .card-shadow {
+            box-shadow: 0 4px 20px -2px rgba(0, 74, 198, 0.04);
+        }
+        .glass-glow {
+            background: rgba(255, 255, 255, 0.7);
+            backdrop-filter: blur(12px);
+            border: 1px solid rgba(0, 83, 219, 0.1);
+        }
+        .sidebar-active {
+            box-shadow: inset -4px 0 0 0 #004ac6;
+        }
+        ::-webkit-scrollbar { width: 6px; }
+        ::-webkit-scrollbar-track { background: transparent; }
+        ::-webkit-scrollbar-thumb { background: #c3c6d7; border-radius: 10px; }
+    </style>
+</head>
+<body class="bg-background text-on-surface font-body-md min-h-screen dark:bg-dark-bg dark:text-inverse-on-surface">
+<!-- Desktop Side Navigation Shell -->
+<aside class="fixed left-0 top-0 h-screen w-64 border-r border-outline-variant/30 bg-surface-container-lowest dark:bg-dark-surface flex flex-col py-margin-desktop space-y-stack-md z-30">
+    <div class="px-6 mb-8 flex items-center gap-3">
+        <div class="flex flex-col">
+            <span class="font-card-title text-card-title font-bold text-primary dark:text-inverse-primary">E-Faws</span>
+            <span class="font-label-sm text-[10px] uppercase tracking-wider text-outline">Growth OS</span>
+        </div>
+    </div>
+    <nav class="flex-1 px-4 space-y-1 overflow-y-auto">
+        <a class="flex items-center gap-3 px-4 py-3 rounded-xl text-on-surface-variant dark:text-outline-variant font-medium hover:bg-surface-container dark:hover:bg-dark-elevated transition-colors" href="/pages/dashboard.html">
+            <span class="material-symbols-outlined">dashboard</span>
+            <span class="font-label-sm">Dashboard</span>
+        </a>
+        <a class="flex items-center gap-3 px-4 py-3 rounded-xl text-primary font-bold bg-primary/10 sidebar-active transition-all duration-150" href="/pages/lending.html">
+            <span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">payments</span>
+            <span class="font-label-sm">Lending</span>
+        </a>
+        <a class="flex items-center gap-3 px-4 py-3 rounded-xl text-on-surface-variant dark:text-outline-variant font-medium hover:bg-surface-container dark:hover:bg-dark-elevated transition-colors" href="/pages/investments.html">
+            <span class="material-symbols-outlined">trending_up</span>
+            <span class="font-label-sm">Investment</span>
+        </a>
+        <a class="flex items-center gap-3 px-4 py-3 rounded-xl text-on-surface-variant dark:text-outline-variant font-medium hover:bg-surface-container dark:hover:bg-dark-elevated transition-colors" href="/pages/insurance.html">
+            <span class="material-symbols-outlined">verified_user</span>
+            <span class="font-label-sm">Insurance</span>
+        </a>
+        <a class="flex items-center gap-3 px-4 py-3 rounded-xl text-on-surface-variant dark:text-outline-variant font-medium hover:bg-surface-container dark:hover:bg-dark-elevated transition-colors" href="/pages/earnhub.html">
+            <span class="material-symbols-outlined">savings</span>
+            <span class="font-label-sm">Earn Hub</span>
+        </a>
+        <a class="flex items-center gap-3 px-4 py-3 rounded-xl text-on-surface-variant dark:text-outline-variant font-medium hover:bg-surface-container dark:hover:bg-dark-elevated transition-colors" href="/pages/wallet.html">
+            <span class="material-symbols-outlined">account_balance_wallet</span>
+            <span class="font-label-sm">Wallet</span>
+        </a>
+    </nav>
+    <div class="px-4 mt-auto">
+        <button id="logout-btn" class="w-full bg-surface-variant dark:bg-dark-elevated text-on-surface-variant dark:text-white py-3 px-4 rounded-xl font-label-sm flex items-center justify-center gap-2 hover:opacity-90 active:scale-95 transition-all">
+            <span class="material-symbols-outlined text-[20px]">logout</span>
+            Sign Out
+        </button>
+    </div>
+</aside>
+
+<!-- Top AppBar Shell -->
+<header class="fixed top-0 right-0 left-64 h-20 bg-surface/80 dark:bg-dark-bg/80 backdrop-blur-md z-20 px-margin-desktop flex items-center justify-between shadow-sm border-b border-outline-variant/10">
+    <div class="flex-1 max-w-xl">
+        <div class="relative group">
+            <span class="material-symbols-outlined absolute left-4 top-1/2 -translate-y-1/2 text-outline group-focus-within:text-primary">search</span>
+            <input class="w-full bg-surface-container-low dark:bg-dark-surface border-none rounded-full py-2.5 pl-12 pr-4 focus:ring-2 focus:ring-primary/20 text-body-md transition-all dark:text-white" placeholder="Search loans, calculator parameters..." type="text"/>
+        </div>
+    </div>
+    <div class="flex items-center gap-6">
+        <div class="hidden md:flex items-center gap-2 px-4 py-1.5 bg-success/10 text-success rounded-full border border-success/20">
+            <span class="material-symbols-outlined text-[18px]">ecg_heart</span>
+            <span class="font-label-sm font-bold" id="header-health-score">Health Score: 85</span>
+        </div>
+        <div class="flex items-center gap-2">
+            <button onclick="window.toggleTheme()" class="p-2 text-on-surface-variant dark:text-outline-variant hover:bg-surface-container dark:hover:bg-dark-surface rounded-full transition-all" title="Toggle Mode">
+                <span class="material-symbols-outlined">contrast</span>
+            </button>
+        </div>
+        <div class="h-10 w-px bg-outline-variant/30 mx-2"></div>
+        <div class="flex items-center gap-3 cursor-pointer group">
+            <div class="flex flex-col items-end">
+                <span class="font-label-sm font-bold text-on-surface dark:text-white group-hover:text-primary transition-colors" id="top-user-name">Loading Profile</span>
+                <span class="text-[11px] text-outline" id="top-user-tier">Premium User</span>
+            </div>
+            <div class="w-10 h-10 rounded-full bg-primary/10 text-primary flex items-center justify-center font-bold" id="user-avatar-initials">
+                EF
+            </div>
+        </div>
+    </div>
+</header>
+
+<!-- Main Content Canvas -->
+<main class="ml-64 pt-28 px-margin-desktop pb-margin-desktop max-w-[1600px] dark:bg-dark-bg">
+    <!-- Overview Header Card -->
+    <section class="mb-8">
+        <div class="bg-surface-container-lowest dark:bg-dark-surface rounded-[24px] p-8 card-shadow border border-outline-variant/30 dark:border-outline/10 relative overflow-hidden">
+            <div class="absolute -top-24 -right-24 w-64 h-64 bg-primary/5 rounded-full blur-3xl"></div>
+            <div class="absolute -bottom-24 -left-24 w-64 h-64 bg-secondary/5 rounded-full blur-3xl"></div>
+            
+            <div class="relative grid grid-cols-1 md:grid-cols-4 gap-8 items-center">
+                <div class="space-y-1 border-r border-outline-variant/30 dark:border-outline/10 pr-4">
+                    <p class="text-outline text-xs font-bold uppercase tracking-wider">Eligible Credit Line</p>
+                    <h2 class="font-financial-display text-primary dark:text-inverse-primary text-3xl font-extrabold" id="eligible-amount-display">₹15,00,000</h2>
+                    <span class="inline-flex items-center text-success text-xs font-bold">
+                        <span class="material-symbols-outlined text-[14px] mr-1">trending_up</span> Approved instantly
+                    </span>
+                </div>
+                <div class="space-y-1 border-r border-outline-variant/30 dark:border-outline/10 pr-4">
+                    <p class="text-outline text-xs font-bold uppercase tracking-wider">Active Borrowings</p>
+                    <h2 class="font-financial-display text-on-surface dark:text-white text-3xl font-extrabold" id="active-borrowings-count">0</h2>
+                    <p class="text-on-surface-variant dark:text-outline-variant text-xs" id="active-borrowing-sub">No active credit accounts</p>
+                </div>
+                <div class="space-y-1 border-r border-outline-variant/30 dark:border-outline/10 pr-4">
+                    <p class="text-outline text-xs font-bold uppercase tracking-wider">Repayment Progress</p>
+                    <div class="h-2 w-full bg-surface-container dark:bg-dark-bg rounded-full mt-2 overflow-hidden">
+                        <div class="h-full bg-primary rounded-full" id="total-loan-progress-bar" style="width: 0%;"></div>
+                    </div>
+                    <p class="text-on-surface-variant dark:text-outline-variant text-xs mt-1" id="total-loan-progress-text">₹0 / ₹0 Paid</p>
+                </div>
+                <div class="flex flex-col items-center justify-center">
+                    <p class="text-outline text-xs font-bold uppercase tracking-wider mb-2">Credit Score Snapshot</p>
+                    <div id="widget-health-score" class="w-24 h-24 flex items-center justify-center">
+                        <!-- Mount Health Score Circular widget -->
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <div class="grid grid-cols-1 lg:grid-cols-3 gap-gutter">
+        <!-- Main Column -->
+        <div class="lg:col-span-2 space-y-6">
+            <!-- Loan Categories Grid -->
+            <div>
+                <h3 class="font-card-title text-on-surface dark:text-white font-bold text-lg mb-4">Loan Offerings</h3>
+                <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
+                    <div onclick="initiateLoanApp('Personal Credit Line', 10.25)" class="bg-surface-container-lowest dark:bg-dark-surface p-6 rounded-2xl border border-outline-variant/30 dark:border-outline/10 hover:border-primary/50 hover:-translate-y-1 transition-all cursor-pointer text-center group">
+                        <div class="w-12 h-12 bg-primary/10 rounded-full flex items-center justify-center mx-auto mb-3 group-hover:bg-primary group-hover:text-white transition-colors">
+                            <span class="material-symbols-outlined">person</span>
+                        </div>
+                        <p class="font-bold text-sm text-on-surface dark:text-white">Personal Credit</p>
+                        <p class="text-[11px] text-outline mt-1">From 10.25%</p>
+                    </div>
+                    <div onclick="initiateLoanApp('Business Expansion Fund', 9.5)" class="bg-surface-container-lowest dark:bg-dark-surface p-6 rounded-2xl border border-outline-variant/30 dark:border-outline/10 hover:border-primary/50 hover:-translate-y-1 transition-all cursor-pointer text-center group">
+                        <div class="w-12 h-12 bg-secondary/10 rounded-full flex items-center justify-center mx-auto mb-3 group-hover:bg-secondary group-hover:text-white transition-colors">
+                            <span class="material-symbols-outlined">business_center</span>
+                        </div>
+                        <p class="font-bold text-sm text-on-surface dark:text-white">Business Fund</p>
+                        <p class="text-[11px] text-outline mt-1">From 9.50%</p>
+                    </div>
+                    <div onclick="initiateLoanApp('Educational Support Credit', 8.75)" class="bg-surface-container-lowest dark:bg-dark-surface p-6 rounded-2xl border border-outline-variant/30 dark:border-outline/10 hover:border-primary/50 hover:-translate-y-1 transition-all cursor-pointer text-center group">
+                        <div class="w-12 h-12 bg-tertiary/10 rounded-full flex items-center justify-center mx-auto mb-3 group-hover:bg-tertiary group-hover:text-white transition-colors">
+                            <span class="material-symbols-outlined">school</span>
+                        </div>
+                        <p class="font-bold text-sm text-on-surface dark:text-white">Education Credit</p>
+                        <p class="text-[11px] text-outline mt-1">From 8.75%</p>
+                    </div>
+                    <div onclick="initiateLoanApp('Emergency Health Line', 11.0)" class="bg-surface-container-lowest dark:bg-dark-surface p-6 rounded-2xl border border-outline-variant/30 dark:border-outline/10 hover:border-primary/50 hover:-translate-y-1 transition-all cursor-pointer text-center group">
+                        <div class="w-12 h-12 bg-warning/10 rounded-full flex items-center justify-center mx-auto mb-3 group-hover:bg-warning group-hover:text-white transition-colors">
+                            <span class="material-symbols-outlined">local_hospital</span>
+                        </div>
+                        <p class="font-bold text-sm text-on-surface dark:text-white">Emergency Loan</p>
+                        <p class="text-[11px] text-outline mt-1">From 11.00%</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Top Providers -->
+            <div>
+                <h3 class="font-card-title text-on-surface dark:text-white font-bold text-lg mb-4">Lenders Comparison</h3>
+                <div class="bg-surface-container-lowest dark:bg-dark-surface rounded-2xl border border-outline-variant/30 dark:border-outline/10 overflow-hidden shadow-sm">
+                    <table class="w-full text-left">
+                        <thead class="bg-surface-container-low dark:bg-dark-bg border-b border-outline-variant/20">
+                            <tr>
+                                <th class="px-6 py-4 font-semibold text-xs text-outline uppercase">Lender</th>
+                                <th class="px-6 py-4 font-semibold text-xs text-outline uppercase">Interest Rate</th>
+                                <th class="px-6 py-4 font-semibold text-xs text-outline uppercase">Max Tenure</th>
+                                <th class="px-6 py-4 font-semibold text-xs text-outline uppercase">Processing Fee</th>
+                                <th class="px-6 py-4 font-semibold text-xs text-outline uppercase">Actions</th>
+                            </tr>
+                        </thead>
+                        <tbody class="divide-y divide-outline-variant/10 text-sm">
+                            <tr class="hover:bg-surface-container-low/50 dark:hover:bg-dark-elevated transition-colors">
+                                <td class="px-6 py-4 flex items-center gap-3">
+                                    <div class="w-8 h-8 bg-primary rounded-lg flex items-center justify-center text-white font-bold text-[10px]">EF</div>
+                                    <span class="font-bold text-on-surface dark:text-white">E-Faws Direct (Smart Loan)</span>
+                                </td>
+                                <td class="px-6 py-4 text-primary dark:text-inverse-primary font-bold">10.25% - 12%</td>
+                                <td class="px-6 py-4 text-on-surface-variant dark:text-outline-variant">60 Months</td>
+                                <td class="px-6 py-4 text-on-surface-variant dark:text-outline-variant">Zero Fee</td>
+                                <td class="px-6 py-4">
+                                    <button onclick="initiateLoanApp('E-Faws Direct Smart Loan', 10.25)" class="text-primary hover:underline font-bold">Apply</button>
+                                </td>
+                            </tr>
+                            <tr class="hover:bg-surface-container-low/50 dark:hover:bg-dark-elevated transition-colors">
+                                <td class="px-6 py-4 flex items-center gap-3">
+                                    <div class="w-8 h-8 bg-blue-900 text-white rounded-lg flex items-center justify-center font-bold text-[10px]">HDFC</div>
+                                    <span class="font-bold text-on-surface dark:text-white">HDFC Bank Line</span>
+                                </td>
+                                <td class="px-6 py-4 font-bold text-on-surface dark:text-white">10.50% - 14%</td>
+                                <td class="px-6 py-4 text-on-surface-variant dark:text-outline-variant">48 Months</td>
+                                <td class="px-6 py-4 text-on-surface-variant dark:text-outline-variant">₹1,500 Flat</td>
+                                <td class="px-6 py-4">
+                                    <button onclick="initiateLoanApp('HDFC Personal Credit Line', 10.50)" class="text-primary hover:underline font-bold">Apply</button>
+                                </td>
+                            </tr>
+                            <tr class="hover:bg-surface-container-low/50 dark:hover:bg-dark-elevated transition-colors">
+                                <td class="px-6 py-4 flex items-center gap-3">
+                                    <div class="w-8 h-8 bg-orange-600 text-white rounded-lg flex items-center justify-center font-bold text-[10px]">ICICI</div>
+                                    <span class="font-bold text-on-surface dark:text-white">ICICI Bank Line</span>
+                                </td>
+                                <td class="px-6 py-4 font-bold text-on-surface dark:text-white">10.75% - 15%</td>
+                                <td class="px-6 py-4 text-on-surface-variant dark:text-outline-variant">72 Months</td>
+                                <td class="px-6 py-4 text-on-surface-variant dark:text-outline-variant">₹1,999 Flat</td>
+                                <td class="px-6 py-4">
+                                    <button onclick="initiateLoanApp('ICICI Personal Loan', 10.75)" class="text-primary hover:underline font-bold">Apply</button>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+            <!-- Loan Analytics Widget (mounted React PieChart) -->
+            <div class="bg-surface-container-lowest dark:bg-dark-surface rounded-[24px] p-6 shadow-sm border border-outline-variant/30 dark:border-outline/10">
+                <h3 class="font-card-title text-on-surface dark:text-white font-bold text-lg mb-6">EMI &amp; Principal Due Breakdown</h3>
+                <div id="widget-lending-analytics" class="w-full min-h-[160px]">
+                    <!-- React Donut Chart -->
+                </div>
+            </div>
+
+            <!-- Repayment Calendar & Late Penalty Simulator -->
+            <div class="bg-surface-container-lowest dark:bg-dark-surface rounded-[24px] p-6 shadow-sm border border-outline-variant/30 dark:border-outline/10 space-y-6">
+                <div class="flex justify-between items-center">
+                    <div>
+                        <h3 class="font-card-title text-on-surface dark:text-white font-bold text-lg">Repayment Calendar & Late Penalties</h3>
+                        <p class="text-outline text-xs mt-1">Track EMI due dates and simulate delay outcomes</p>
+                    </div>
+                    <div class="flex items-center gap-2 bg-surface-container-low dark:bg-dark-bg p-2 rounded-xl border border-outline-variant/20">
+                        <label class="relative inline-flex items-center cursor-pointer">
+                            <input type="checkbox" id="penalty-simulation-toggle" class="sr-only peer">
+                            <div class="w-9 h-5 bg-outline-variant rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-4 after:w-4 after:transition-all peer-checked:bg-primary"></div>
+                        </label>
+                        <span class="text-xs font-bold text-on-surface dark:text-white">Simulate Late Fee</span>
+                    </div>
+                </div>
+
+                <!-- Calendar View -->
+                <div class="grid grid-cols-2 md:grid-cols-4 gap-3" id="repayment-calendar-grid">
+                    <!-- Calendar days loaded dynamically -->
+                </div>
+
+                <!-- Simulation Info Panel -->
+                <div id="penalty-info-panel" class="hidden p-4 bg-warning/10 border border-warning/20 rounded-2xl flex items-start gap-3">
+                    <span class="material-symbols-outlined text-warning animate-pulse">warning</span>
+                    <div class="text-xs">
+                        <p class="font-bold text-warning">Simulation Active: Late Repayment Status</p>
+                        <p class="text-on-surface-variant dark:text-outline-variant mt-1 leading-relaxed">
+                            Simulated 2% late penalty is applied. Remaining due amount increases, and a security alert has been dispatched to the notifications dashboard.
+                        </p>
+                    </div>
+                </div>
+            </div>        </div>
+
+        <!-- Sidebar Columns -->
+        <div class="space-y-6">
+            <!-- EMI Calculator Card -->
+            <div class="bg-surface-container-lowest dark:bg-dark-surface p-6 rounded-[24px] card-shadow border border-outline-variant/30 dark:border-outline/10">
+                <h3 class="font-card-title text-on-surface dark:text-white font-bold text-lg mb-6">Interactive EMI Calculator</h3>
+                <div class="space-y-6">
+                    <div>
+                        <div class="flex justify-between mb-2 text-sm font-medium">
+                            <span class="text-on-surface-variant dark:text-outline-variant">Loan Amount</span>
+                            <span class="text-primary dark:text-inverse-primary font-bold" id="calc-amount-label">₹5,00,000</span>
+                        </div>
+                        <input id="calc-amount-slider" class="w-full h-1.5 bg-surface-container dark:bg-dark-bg rounded-lg appearance-none cursor-pointer accent-primary" max="1500000" min="50000" step="25000" type="range" value="500000"/>
+                    </div>
+                    <div>
+                        <div class="flex justify-between mb-2 text-sm font-medium">
+                            <span class="text-on-surface-variant dark:text-outline-variant">Tenure (Months)</span>
+                            <span class="text-primary dark:text-inverse-primary font-bold" id="calc-tenure-label">24 Months</span>
+                        </div>
+                        <input id="calc-tenure-slider" class="w-full h-1.5 bg-surface-container dark:bg-dark-bg rounded-lg appearance-none cursor-pointer accent-primary" max="60" min="6" step="6" type="range" value="24"/>
+                    </div>
+                    <div>
+                        <div class="flex justify-between mb-2 text-sm font-medium">
+                            <span class="text-on-surface-variant dark:text-outline-variant">Interest Rate (fixed)</span>
+                            <span class="text-primary dark:text-inverse-primary font-bold" id="calc-rate-label">10.25% p.a.</span>
+                        </div>
+                        <input id="calc-rate-slider" class="w-full h-1.5 bg-surface-container dark:bg-dark-bg rounded-lg appearance-none cursor-pointer accent-primary" max="18" min="7" step="0.25" type="range" value="10.25"/>
+                    </div>
+                    
+                    <div class="bg-surface-container-low dark:bg-dark-bg p-4 rounded-2xl flex justify-between items-center">
+                        <div>
+                            <p class="text-[10px] text-outline uppercase font-bold">Estimated Monthly EMI</p>
+                            <p class="text-2xl font-financial-display font-extrabold text-on-surface dark:text-white" id="calc-emi-display">₹23,135</p>
+                        </div>
+                        <button onclick="applyFromCalculator()" class="bg-primary text-white p-3 rounded-full hover:scale-105 active:scale-95 transition-all">
+                            <span class="material-symbols-outlined">arrow_forward</span>
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Active Borrowing Card -->
+            <div class="bg-surface-container-lowest dark:bg-dark-surface p-6 rounded-[24px] border border-outline-variant/30 dark:border-outline/10">
+                <h3 class="font-card-title text-on-surface dark:text-white font-bold text-lg mb-6">Active Credit Tracker</h3>
+                <div class="space-y-6" id="active-loans-list">
+                    <!-- Loaded dynamically -->
+                    <p class="text-outline text-sm">Checking active loan files...</p>
+                </div>
+            </div>
+            
+            <!-- Credit builder tips -->
+            <div class="bg-dark-surface p-6 rounded-[24px] shadow-lg text-white relative overflow-hidden">
+                <div class="absolute -right-8 -bottom-8 w-28 h-28 bg-primary/20 rounded-full blur-2xl"></div>
+                <div class="flex items-center gap-2 text-warning mb-4">
+                    <span class="material-symbols-outlined">lightbulb</span>
+                    <span class="font-bold text-xs uppercase tracking-wider">Credit Builder Advice</span>
+                </div>
+                <p class="text-xs text-outline-variant leading-relaxed mb-6">
+                    Ensure HDFC EMIs are paid before the due date. The FastAPI microservice detects consistent repayment buffers, which automatically drops subsequent interest proposals by 0.5%.
+                </p>
+                <button onclick="alert('Full report requested from FastAPI. Generating profile credit analysis...')" class="w-full bg-white/10 hover:bg-white/20 py-2.5 rounded-xl text-xs font-bold transition-all border border-white/10">Request Profile Report</button>
+            </div>
+        </div>
+    </div>
+</main>
+
+<!-- Loan Application Modal -->
+<div id="loan-modal" class="fixed inset-0 bg-black/60 backdrop-blur-sm z-50 flex items-center justify-center hidden opacity-0 transition-opacity duration-300">
+    <div class="bg-surface-container-lowest dark:bg-dark-surface p-8 rounded-[28px] max-w-lg w-full mx-4 shadow-2xl border border-outline-variant/20 relative">
+        <button onclick="closeLoanModal()" class="absolute right-6 top-6 text-outline hover:text-primary transition-colors">
+            <span class="material-symbols-outlined">close</span>
+        </button>
+        <h3 class="font-card-title text-2xl font-bold text-on-surface dark:text-white mb-1">Instant Loan Disbursal</h3>
+        <p class="text-xs text-outline mb-6">No paperwork needed. Funds are disbursed instantly to your Smart E-Wallet balance.</p>
+        
+        <form id="loan-application-form" onsubmit="submitLoanApplication(event)" class="space-y-5">
+            <div class="grid grid-cols-2 gap-4">
+                <div>
+                    <label class="block text-xs font-bold text-outline uppercase tracking-wider mb-2">Interest Rate</label>
+                    <input type="text" id="loan-rate-field" class="w-full bg-surface-container-low dark:bg-dark-bg border border-outline-variant/30 rounded-xl py-3 px-4 font-bold text-on-surface dark:text-white" readonly />
+                </div>
+                <div>
+                    <label class="block text-xs font-bold text-outline uppercase tracking-wider mb-2">Loan Category</label>
+                    <input type="text" id="loan-category-field" class="w-full bg-surface-container-low dark:bg-dark-bg border border-outline-variant/30 rounded-xl py-3 px-4 font-bold text-on-surface dark:text-white" readonly />
+                </div>
+            </div>
+            
+            <div class="grid grid-cols-2 gap-4">
+                <div>
+                    <label class="block text-xs font-bold text-outline uppercase tracking-wider mb-2">Borrowing Amount (₹)</label>
+                    <input type="number" id="loan-amount-field" min="10000" max="1500000" class="w-full bg-surface-container-low dark:bg-dark-bg border border-outline-variant/30 rounded-xl py-3 px-4 font-bold text-on-surface dark:text-white focus:ring-2 focus:ring-primary/20" required />
+                </div>
+                <div>
+                    <label class="block text-xs font-bold text-outline uppercase tracking-wider mb-2">Tenure (Months)</label>
+                    <select id="loan-tenure-field" class="w-full bg-surface-container-low dark:bg-dark-bg border border-outline-variant/30 rounded-xl py-3 px-4 font-bold text-on-surface dark:text-white focus:ring-2 focus:ring-primary/20">
+                        <option value="6">6 Months</option>
+                        <option value="12">12 Months</option>
+                        <option value="24" selected>24 Months</option>
+                        <option value="36">36 Months</option>
+                        <option value="48">48 Months</option>
+                        <option value="60">60 Months</option>
+                    </select>
+                </div>
+            </div>
+
+            <div class="bg-surface-container-low dark:bg-dark-bg p-4 rounded-xl space-y-2">
+                <div class="flex justify-between text-xs font-medium">
+                    <span class="text-outline">Calculated Monthly EMI</span>
+                    <span class="font-bold text-primary dark:text-inverse-primary" id="modal-emi-calc">₹0.00</span>
+                </div>
+                <div class="flex justify-between text-xs font-medium">
+                    <span class="text-outline">One-time processing fee</span>
+                    <span class="font-bold text-success">₹0 (Zero Fee)</span>
+                </div>
+            </div>
+            
+            <button type="submit" class="w-full bg-primary text-white py-4 rounded-xl font-label-sm font-bold shadow-lg shadow-primary/25 hover:opacity-95 transition-all">Submit Application &amp; Disburse</button>
+        </form>
+    </div>
+</div>
+
+<!-- Scripts -->
+<script type="module" src="/widgets/index.jsx"></script>
+<script type="module" src="/js/lending.js"></script>
+</body>
+</html>

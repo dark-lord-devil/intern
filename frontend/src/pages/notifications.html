@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html class="light" lang="en">
+<head>
+    <meta charset="utf-8"/>
+    <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+    <title>E-Faws | Notification Center</title>
+    <!-- Fonts & Icons -->
+    <link href="https://fonts.googleapis.com" rel="preconnect"/>
+    <link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&amp;family=Sora:wght@600;700;800&amp;display=swap" rel="stylesheet"/>
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+    
+    <!-- Compiled CSS & Theme Toggle script -->
+    <link rel="stylesheet" href="/css/main.css" />
+    <link rel="stylesheet" href="/css/theme.css" />
+    <link rel="stylesheet" href="/css/responsive.css" />
+    <script type="module" src="/js/theme.js"></script>
+    <style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .card-shadow {
+            box-shadow: 0 4px 20px -2px rgba(0, 74, 198, 0.04);
+        }
+        .glass-glow {
+            background: rgba(255, 255, 255, 0.7);
+            backdrop-filter: blur(12px);
+            border: 1px solid rgba(0, 83, 219, 0.1);
+        }
+        .sidebar-active {
+            box-shadow: inset -4px 0 0 0 #004ac6;
+        }
+        ::-webkit-scrollbar { width: 6px; }
+        ::-webkit-scrollbar-track { background: transparent; }
+        ::-webkit-scrollbar-thumb { background: #c3c6d7; border-radius: 10px; }
+    </style>
+</head>
+<body class="bg-background text-on-surface font-body-md min-h-screen dark:bg-dark-bg dark:text-inverse-on-surface">
+<!-- Desktop Side Navigation Shell -->
+<aside class="fixed left-0 top-0 h-screen w-64 border-r border-outline-variant/30 bg-surface-container-lowest dark:bg-dark-surface flex flex-col py-margin-desktop space-y-stack-md z-30">
+    <div class="px-6 mb-8 flex items-center gap-3">
+        <div class="flex flex-col">
+            <span class="font-card-title text-card-title font-bold text-primary dark:text-inverse-primary">E-Faws</span>
+            <span class="font-label-sm text-[10px] uppercase tracking-wider text-outline">Growth OS</span>
+        </div>
+    </div>
+    <nav class="flex-1 px-4 space-y-1 overflow-y-auto">
+        <a class="flex items-center gap-3 px-4 py-3 rounded-xl text-on-surface-variant dark:text-outline-variant font-medium hover:bg-surface-container dark:hover:bg-dark-elevated transition-colors" href="/pages/dashboard.html">
+            <span class="material-symbols-outlined">dashboard</span>
+            <span class="font-label-sm">Dashboard</span>
+        </a>
+        <a class="flex items-center gap-3 px-4 py-3 rounded-xl text-on-surface-variant dark:text-outline-variant font-medium hover:bg-surface-container dark:hover:bg-dark-elevated transition-colors" href="/pages/lending.html">
+            <span class="material-symbols-outlined">payments</span>
+            <span class="font-label-sm">Lending</span>
+        </a>
+        <a class="flex items-center gap-3 px-4 py-3 rounded-xl text-on-surface-variant dark:text-outline-variant font-medium hover:bg-surface-container dark:hover:bg-dark-elevated transition-colors" href="/pages/investments.html">
+            <span class="material-symbols-outlined">trending_up</span>
+            <span class="font-label-sm">Investment</span>
+        </a>
+        <a class="flex items-center gap-3 px-4 py-3 rounded-xl text-on-surface-variant dark:text-outline-variant font-medium hover:bg-surface-container dark:hover:bg-dark-elevated transition-colors" href="/pages/insurance.html">
+            <span class="material-symbols-outlined">verified_user</span>
+            <span class="font-label-sm">Insurance</span>
+        </a>
+        <a class="flex items-center gap-3 px-4 py-3 rounded-xl text-on-surface-variant dark:text-outline-variant font-medium hover:bg-surface-container dark:hover:bg-dark-elevated transition-colors" href="/pages/earnhub.html">
+            <span class="material-symbols-outlined">savings</span>
+            <span class="font-label-sm">Earn Hub</span>
+        </a>
+        <a class="flex items-center gap-3 px-4 py-3 rounded-xl text-on-surface-variant dark:text-outline-variant font-medium hover:bg-surface-container dark:hover:bg-dark-elevated transition-colors" href="/pages/wallet.html">
+            <span class="material-symbols-outlined">account_balance_wallet</span>
+            <span class="font-label-sm">Wallet</span>
+        </a>
+        <a class="flex items-center gap-3 px-4 py-3 rounded-xl text-primary font-bold bg-primary/10 sidebar-active transition-all duration-150" href="/pages/notifications.html">
+            <span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">notifications</span>
+            <span class="font-label-sm">Notifications</span>
+        </a>
+        <a class="flex items-center gap-3 px-4 py-3 rounded-xl text-on-surface-variant dark:text-outline-variant font-medium hover:bg-surface-container dark:hover:bg-dark-elevated transition-colors" href="/pages/security.html">
+            <span class="material-symbols-outlined">security</span>
+            <span class="font-label-sm">Security</span>
+        </a>
+        <a id="nav-admin-link" class="flex items-center gap-3 px-4 py-3 rounded-xl text-on-surface-variant dark:text-outline-variant font-medium hover:bg-surface-container dark:hover:bg-dark-elevated transition-colors hidden" href="/pages/admin.html">
+            <span class="material-symbols-outlined">admin_panel_settings</span>
+            <span class="font-label-sm">Admin Panel</span>
+        </a>
+    </nav>
+    <div class="px-4 mt-auto">
+        <button id="logout-btn" class="w-full bg-surface-variant dark:bg-dark-elevated text-on-surface-variant dark:text-white py-3 px-4 rounded-xl font-label-sm flex items-center justify-center gap-2 hover:opacity-90 active:scale-95 transition-all">
+            <span class="material-symbols-outlined text-[20px]">logout</span>
+            Sign Out
+        </button>
+    </div>
+</aside>
+
+<!-- Top AppBar Shell -->
+<header class="fixed top-0 right-0 left-64 h-20 bg-surface/80 dark:bg-dark-bg/80 backdrop-blur-md z-20 px-margin-desktop flex items-center justify-between shadow-sm border-b border-outline-variant/10">
+    <div class="flex-1 max-w-xl">
+        <div class="relative group">
+            <span class="material-symbols-outlined absolute left-4 top-1/2 -translate-y-1/2 text-outline group-focus-within:text-primary">search</span>
+            <input id="notif-search" class="w-full bg-surface-container-low dark:bg-dark-surface border-none rounded-full py-2.5 pl-12 pr-4 focus:ring-2 focus:ring-primary/20 text-body-md transition-all dark:text-white" placeholder="Search notification title or content..." type="text"/>
+        </div>
+    </div>
+    <div class="flex items-center gap-6">
+        <div class="hidden md:flex items-center gap-2 px-4 py-1.5 bg-success/10 text-success rounded-full border border-success/20">
+            <span class="material-symbols-outlined text-[18px]">ecg_heart</span>
+            <span class="font-label-sm font-bold" id="header-health-score">Health Score: 85</span>
+        </div>
+        <div class="flex items-center gap-2">
+            <button onclick="window.toggleTheme()" class="p-2 text-on-surface-variant dark:text-outline-variant hover:bg-surface-container dark:hover:bg-dark-surface rounded-full transition-all" title="Toggle Mode">
+                <span class="material-symbols-outlined">contrast</span>
+            </button>
+        </div>
+        <div class="h-10 w-px bg-outline-variant/30 mx-2"></div>
+        <div class="flex items-center gap-3 cursor-pointer group">
+            <div class="flex flex-col items-end">
+                <span class="font-label-sm font-bold text-on-surface dark:text-white group-hover:text-primary transition-colors" id="top-user-name">Loading Profile</span>
+                <span class="text-[11px] text-outline" id="top-user-tier">Premium User</span>
+            </div>
+            <div class="w-10 h-10 rounded-full bg-primary/10 text-primary flex items-center justify-center font-bold" id="user-avatar-initials">
+                EF
+            </div>
+        </div>
+    </div>
+</header>
+
+<!-- Main Content Canvas -->
+<main class="ml-64 pt-28 px-margin-desktop pb-margin-desktop max-w-[1200px] dark:bg-dark-bg">
+    <!-- Page Header -->
+    <div class="flex justify-between items-center mb-8">
+        <div>
+            <h2 class="font-section-title text-section-title text-3xl font-bold text-on-surface dark:text-white">Notification Center</h2>
+            <p class="text-on-surface-variant dark:text-outline-variant font-body-md mt-1">Stay updated with security alerts, returns tracking, and investment milestones.</p>
+        </div>
+        <div class="flex gap-3">
+            <button id="mark-all-read-btn" class="bg-surface-container-high dark:bg-dark-surface text-on-surface-variant dark:text-white px-5 py-3 rounded-2xl font-semibold border border-outline-variant/30 text-sm hover:opacity-95 active:scale-95 transition-all">
+                Mark All Read
+            </button>
+        </div>
+    </div>
+
+    <!-- Notifications Layout Grid -->
+    <div class="grid grid-cols-1 lg:grid-cols-4 gap-gutter">
+        <!-- Sidebar Filters -->
+        <div class="lg:col-span-1 space-y-4">
+            <div class="bg-surface-container-lowest dark:bg-dark-surface rounded-2xl p-5 border border-outline-variant/30 dark:border-outline/10 card-shadow">
+                <h3 class="font-bold text-xs uppercase tracking-wider text-outline mb-4">Filter By Category</h3>
+                <div class="space-y-1" id="category-filters">
+                    <button data-filter="ALL" class="w-full text-left px-4 py-2.5 rounded-xl text-sm font-bold bg-primary/10 text-primary flex justify-between items-center transition-all">
+                        <span>All Updates</span>
+                        <span id="cnt-all" class="bg-primary text-white text-[10px] px-2 py-0.5 rounded-full">0</span>
+                    </button>
+                    <button data-filter="ALERT" class="w-full text-left px-4 py-2.5 rounded-xl text-sm font-semibold hover:bg-surface-container dark:hover:bg-dark-bg text-on-surface-variant dark:text-outline-variant flex justify-between items-center transition-all">
+                        <span>Fraud & Security</span>
+                        <span id="cnt-alert" class="bg-outline-variant text-on-surface text-[10px] px-2 py-0.5 rounded-full">0</span>
+                    </button>
+                    <button data-filter="INVESTMENT" class="w-full text-left px-4 py-2.5 rounded-xl text-sm font-semibold hover:bg-surface-container dark:hover:bg-dark-bg text-on-surface-variant dark:text-outline-variant flex justify-between items-center transition-all">
+                        <span>Investments</span>
+                        <span id="cnt-investment" class="bg-outline-variant text-on-surface text-[10px] px-2 py-0.5 rounded-full">0</span>
+                    </button>
+                    <button data-filter="LENDING" class="w-full text-left px-4 py-2.5 rounded-xl text-sm font-semibold hover:bg-surface-container dark:hover:bg-dark-bg text-on-surface-variant dark:text-outline-variant flex justify-between items-center transition-all">
+                        <span>Lending</span>
+                        <span id="cnt-lending" class="bg-outline-variant text-on-surface text-[10px] px-2 py-0.5 rounded-full">0</span>
+                    </button>
+                    <button data-filter="REWARDS" class="w-full text-left px-4 py-2.5 rounded-xl text-sm font-semibold hover:bg-surface-container dark:hover:bg-dark-bg text-on-surface-variant dark:text-outline-variant flex justify-between items-center transition-all">
+                        <span>Rewards & XP</span>
+                        <span id="cnt-rewards" class="bg-outline-variant text-on-surface text-[10px] px-2 py-0.5 rounded-full">0</span>
+                    </button>
+                </div>
+            </div>
+
+            <!-- Custom Mock Trigger Panel for evaluation -->
+            <div class="bg-primary/5 dark:bg-dark-surface rounded-2xl p-5 border border-primary/20 card-shadow space-y-4">
+                <div>
+                    <h3 class="font-bold text-xs uppercase tracking-wider text-primary mb-1">Simulate Notification</h3>
+                    <p class="text-[11px] text-outline">Trigger a local event to test priority-based rendering.</p>
+                </div>
+                <div class="space-y-2">
+                    <select id="mock-priority" class="w-full bg-white dark:bg-dark-bg border border-outline-variant/30 text-xs rounded-xl py-2 px-3 font-semibold dark:text-white">
+                        <option value="LOW">LOW Priority (Gray)</option>
+                        <option value="MEDIUM">MEDIUM Priority (Blue)</option>
+                        <option value="HIGH">HIGH Priority (Orange)</option>
+                        <option value="CRITICAL">CRITICAL Priority (Red Alert)</option>
+                    </select>
+                    <button onclick="triggerMockNotification()" class="w-full bg-primary text-white text-xs font-bold py-2.5 rounded-xl hover:opacity-90 transition-all">
+                        Inject Event
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Notifications List -->
+        <div class="lg:col-span-3 space-y-4">
+            <!-- Filter summary -->
+            <div class="flex justify-between items-center text-xs text-outline px-2">
+                <span id="showing-summary">Showing all notifications</span>
+                <span class="flex items-center gap-1 font-semibold text-primary cursor-pointer hover:underline" id="last-sync-time">
+                    <span class="material-symbols-outlined text-[14px]">sync</span>
+                    Synced just now
+                </span>
+            </div>
+
+            <div id="notifications-list-container" class="space-y-3">
+                <!-- Notifications loaded here dynamically -->
+                <div class="p-8 text-center text-outline bg-surface-container-lowest dark:bg-dark-surface border border-outline-variant/30 dark:border-outline/10 rounded-2xl card-shadow animate-pulse">
+                    Loading notifications stream...
+                </div>
+            </div>
+        </div>
+    </div>
+</main>
+
+<!-- Scripts -->
+<script type="module" src="/js/notifications.js"></script>
+</body>
+</html>

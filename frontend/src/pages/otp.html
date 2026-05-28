@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html class="light" lang="en">
+<head>
+    <meta charset="utf-8"/>
+    <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+    <title>E-Faws - OTP Verification</title>
+    <!-- Fonts & Icons -->
+    <link href="https://fonts.googleapis.com" rel="preconnect"/>
+    <link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&amp;family=Sora:wght@600;700&amp;display=swap" rel="stylesheet"/>
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+    
+    <!-- Compiled CSS & Theme Toggle script -->
+    <link rel="stylesheet" href="/css/main.css" />
+    <link rel="stylesheet" href="/css/theme.css" />
+    <link rel="stylesheet" href="/css/responsive.css" />
+    <script type="module" src="/js/theme.js"></script>
+</head>
+<body class="bg-gradient-to-br from-surface to-surface-container-low dark:from-dark-bg dark:to-dark-surface min-h-screen flex items-center justify-center p-margin-mobile md:p-margin-desktop font-body-md text-on-surface dark:text-inverse-on-surface antialiased">
+<!-- Main Container -->
+<main class="w-full max-w-md mx-auto relative">
+    <!-- Theme Toggle Icon -->
+    <button onclick="window.toggleTheme()" class="absolute -top-12 right-0 p-2 rounded-full hover:bg-surface-container dark:hover:bg-dark-elevated transition-colors text-on-surface-variant dark:text-outline-variant" title="Toggle Light/Dark Mode">
+        <span class="material-symbols-outlined">contrast</span>
+    </button>
+
+    <!-- Header / Logo -->
+    <header class="flex justify-center mb-section-gap">
+        <span class="font-hero-lg font-bold text-primary dark:text-inverse-primary tracking-tight text-3xl">E-Faws</span>
+    </header>
+    <!-- Verification Card -->
+    <section class="bg-surface-container-lowest dark:bg-dark-elevated rounded-[24px] ambient-shadow border border-outline-variant/30 dark:border-outline/10 p-8 flex flex-col items-center text-center relative overflow-hidden">
+        <!-- Soft Glow Background Accent -->
+        <div class="absolute -top-24 -right-24 w-48 h-48 bg-secondary-container/20 rounded-full blur-3xl pointer-events-none"></div>
+        <!-- Illustration -->
+        <div class="w-24 h-24 mb-stack-lg rounded-full bg-surface-container-low dark:bg-dark-surface flex items-center justify-center border border-outline-variant/20 dark:border-outline/10 relative">
+            <span class="material-symbols-outlined text-primary dark:text-inverse-primary text-4xl">vpn_key</span>
+            <!-- Inner glow -->
+            <div class="absolute inset-0 rounded-full shadow-[inset_0_0_15px_rgba(37,99,235,0.1)]"></div>
+        </div>
+        <!-- Header Texts -->
+        <h1 class="font-section-title text-section-title mb-stack-sm text-on-surface dark:text-white">Verify Your Mobile Number</h1>
+        <p class="font-body-md text-body-md text-on-surface-variant dark:text-outline-variant mb-stack-lg max-w-[280px]">
+            Enter the 6-digit code sent to <span id="phone-display" class="font-semibold text-on-surface dark:text-white">+91 ••••• •••••</span> to secure your account.
+        </p>
+
+        <div id="error-alert" class="w-full hidden p-4 mb-4 rounded-xl bg-error-container text-on-error-container text-sm font-medium border border-error/20 flex items-center gap-2">
+            <span class="material-symbols-outlined text-lg">error</span>
+            <span id="error-alert-text"></span>
+        </div>
+
+        <!-- OTP Input Form -->
+        <form id="otp-form" class="w-full flex flex-col items-center">
+            <!-- Input Boxes -->
+            <div class="flex gap-2 justify-between w-full mb-stack-lg" id="otp-inputs">
+                <input aria-label="Digit 1" class="otp-input w-12 h-14 text-center font-financial-display text-card-title rounded-[12px] border border-outline-variant/50 dark:border-outline/10 bg-surface dark:bg-dark-surface focus:border-primary focus:ring-2 focus:ring-primary/20 focus:outline-none transition-all duration-200 text-on-surface dark:text-white" maxlength="1" placeholder="•" type="text" pattern="[0-9]"/>
+                <input aria-label="Digit 2" class="otp-input w-12 h-14 text-center font-financial-display text-card-title rounded-[12px] border border-outline-variant/50 dark:border-outline/10 bg-surface dark:bg-dark-surface focus:border-primary focus:ring-2 focus:ring-primary/20 focus:outline-none transition-all duration-200 text-on-surface dark:text-white" maxlength="1" placeholder="•" type="text" pattern="[0-9]"/>
+                <input aria-label="Digit 3" class="otp-input w-12 h-14 text-center font-financial-display text-card-title rounded-[12px] border border-outline-variant/50 dark:border-outline/10 bg-surface dark:bg-dark-surface focus:border-primary focus:ring-2 focus:ring-primary/20 focus:outline-none transition-all duration-200 text-on-surface dark:text-white" maxlength="1" placeholder="•" type="text" pattern="[0-9]"/>
+                <input aria-label="Digit 4" class="otp-input w-12 h-14 text-center font-financial-display text-card-title rounded-[12px] border border-outline-variant/50 dark:border-outline/10 bg-surface dark:bg-dark-surface focus:border-primary focus:ring-2 focus:ring-primary/20 focus:outline-none transition-all duration-200 text-on-surface dark:text-white" maxlength="1" placeholder="•" type="text" pattern="[0-9]"/>
+                <input aria-label="Digit 5" class="otp-input w-12 h-14 text-center font-financial-display text-card-title rounded-[12px] border border-outline-variant/50 dark:border-outline/10 bg-surface dark:bg-dark-surface focus:border-primary focus:ring-2 focus:ring-primary/20 focus:outline-none transition-all duration-200 text-on-surface dark:text-white" maxlength="1" placeholder="•" type="text" pattern="[0-9]"/>
+                <input aria-label="Digit 6" class="otp-input w-12 h-14 text-center font-financial-display text-card-title rounded-[12px] border border-outline-variant/50 dark:border-outline/10 bg-surface dark:bg-dark-surface focus:border-primary focus:ring-2 focus:ring-primary/20 focus:outline-none transition-all duration-200 text-on-surface dark:text-white" maxlength="1" placeholder="•" type="text" pattern="[0-9]"/>
+            </div>
+            <!-- Controls -->
+            <div class="flex flex-col items-center gap-stack-sm w-full mb-stack-lg font-label-sm text-label-sm">
+                <button class="text-on-surface-variant dark:text-outline-variant hover:text-primary transition-colors cursor-pointer" type="button" id="resend-btn">
+                    Resend Code
+                </button>
+            </div>
+            <!-- Primary CTA -->
+            <button class="w-full bg-primary text-on-primary font-label-sm text-body-lg py-4 rounded-xl hover:bg-primary/95 transition-colors duration-200 shadow-md font-semibold mb-stack-md flex items-center justify-center gap-2 group dark:bg-primary-container dark:text-on-primary-container" type="submit">
+                <span>Verify &amp; Continue</span>
+                <span class="material-symbols-outlined text-[20px] group-hover:translate-x-1 transition-transform">arrow_forward</span>
+            </button>
+            <!-- Secondary CTA -->
+            <a class="text-on-surface-variant dark:text-outline-variant font-label-sm text-label-sm hover:text-primary transition-colors inline-flex items-center gap-1" href="/pages/register.html">
+                <span class="material-symbols-outlined text-[16px]">arrow_back</span>
+                Back to Registration
+            </a>
+        </form>
+        <!-- Trust Elements Divider -->
+        <div class="w-full border-t border-outline-variant/30 dark:border-outline/10 mt-stack-lg pt-stack-md flex flex-col items-center gap-2">
+            <div class="flex items-center gap-2 text-success font-label-sm text-[12px] bg-success/10 px-3 py-1 rounded-full">
+                <span class="material-symbols-outlined text-[14px]">lock</span>
+                <span>AES-256 Bit Encryption</span>
+            </div>
+            <p class="font-label-sm text-[12px] text-outline dark:text-outline-variant">
+                Bank-grade security. RBI-compliant.
+            </p>
+        </div>
+    </section>
+</main>
+
+<script>
+    // Extract phone parameter from URL
+    const urlParams = new URLSearchParams(window.location.search);
+    const phone = urlParams.get('phone') || '+91 ••••• •••••';
+    document.getElementById('phone-display').textContent = phone;
+
+    // Automatic focus progression across OTP inputs
+    const inputs = document.querySelectorAll('#otp-inputs input');
+    
+    inputs.forEach((input, index) => {
+        // Jump to next input on input value entry (digits only)
+        input.addEventListener('input', (e) => {
+            const val = e.target.value;
+            if (!/^\d*$/.test(val)) {
+                e.target.value = val.replace(/\D/g, '');
+                return;
+            }
+            if (e.target.value.length === 1 && index < inputs.length - 1) {
+                inputs[index + 1].focus();
+            }
+        });
+
+        // Go to previous input on backspace
+        input.addEventListener('keydown', (e) => {
+            if (e.key === 'Backspace' && e.target.value.length === 0 && index > 0) {
+                inputs[index - 1].focus();
+            }
+        });
+
+        // Support paste events to distribute code
+        input.addEventListener('paste', (e) => {
+            e.preventDefault();
+            const pasteData = e.clipboardData.getData('text').trim();
+            if (/^\d{6}$/.test(pasteData)) {
+                for (let i = 0; i < inputs.length; i++) {
+                    inputs[i].value = pasteData[i];
+                }
+                inputs[inputs.length - 1].focus();
+            }
+        });
+    });
+
+    // Form Submission Integration
+    const otpForm = document.getElementById('otp-form');
+    const errorAlert = document.getElementById('error-alert');
+    const errorAlertText = document.getElementById('error-alert-text');
+
+    otpForm.addEventListener('submit', async (e) => {
+        e.preventDefault();
+        errorAlert.classList.add('hidden');
+
+        // Compile inputs
+        let otpCode = '';
+        inputs.forEach(input => {
+            otpCode += input.value;
+        });
+
+        if (otpCode.length !== 6) {
+            errorAlertText.textContent = "Please enter all 6 digits of the OTP.";
+            errorAlert.classList.remove('hidden');
+            return;
+        }
+
+        const apiHost = window.location.origin.includes('localhost') ? 'http://localhost:5000' : '';
+
+        try {
+            const response = await fetch(`${apiHost}/api/v1/auth/verify-otp`, {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({ phone, otpCode })
+            });
+
+            const data = await response.json();
+
+            if (response.status === 200) {
+                // Successful verification. Store JWT session token.
+                localStorage.setItem('token', data.token);
+                // Redirect to main dashboard
+                window.location.href = '/pages/dashboard.html';
+            } else {
+                errorAlertText.textContent = data.error || 'Invalid OTP code. Please check and try again.';
+                errorAlert.classList.remove('hidden');
+            }
+        } catch (err) {
+            console.error('OTP request error:', err);
+            errorAlertText.textContent = 'Server connection failed. Make sure backend is running on port 5000.';
+            errorAlert.classList.remove('hidden');
+        }
+    });
+
+    // Resend OTP trigger (Mock/live notification trigger)
+    document.getElementById('resend-btn').addEventListener('click', async () => {
+        errorAlert.classList.add('hidden');
+        
+        // In a real application, you'd trigger a resend endpoint.
+        // We will call the login endpoint again which regenerates OTP for unverified users, or we trigger /login
+        const apiHost = window.location.origin.includes('localhost') ? 'http://localhost:5000' : '';
+        
+        alert(`Resending verification code to ${phone}... Please check server logs or SMS.`);
+    });
+</script>
+</body>
+</html>

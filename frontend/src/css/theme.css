@@ -1,0 +1,6 @@
+/* E-Faws Custom Theme Overrides */
+/* The project primarily utilizes Tailwind's built-in dark: class modifiers */
+
+.theme-transition {
+  transition: background-color 0.3s ease, border-color 0.3s ease, color 0.3s ease, fill 0.3s ease;
+}

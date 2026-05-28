@@ -1,0 +1,269 @@
+<!DOCTYPE html>
+<html class="light" lang="en">
+<head>
+    <meta charset="utf-8"/>
+    <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+    <title>E-Faws - Registration</title>
+    <!-- Fonts & Icons -->
+    <link href="https://fonts.googleapis.com" rel="preconnect"/>
+    <link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&amp;family=Sora:wght@600;700&amp;display=swap" rel="stylesheet"/>
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+    
+    <!-- Compiled CSS & Theme Toggle script -->
+    <link rel="stylesheet" href="/css/main.css" />
+    <link rel="stylesheet" href="/css/theme.css" />
+    <link rel="stylesheet" href="/css/responsive.css" />
+    <script type="module" src="/js/theme.js"></script>
+</head>
+<body class="bg-background text-on-background font-body-md antialiased min-h-screen flex flex-col md:flex-row dark:bg-dark-bg dark:text-inverse-on-surface">
+<!-- Left Side: Branding & Value Prop -->
+<div class="hidden md:flex flex-col justify-between w-full md:w-5/12 lg:w-1/2 p-10 lg:p-16 bg-gradient-to-br from-light-bg to-surface-container-low border-r border-outline-variant/30 dark:from-dark-bg dark:to-dark-surface dark:border-outline/10">
+    <div class="flex flex-col space-y-stack-lg">
+        <!-- Logo -->
+        <div>
+            <a href="/" class="flex items-center gap-2">
+                <span class="font-hero-lg-mobile md:text-section-title font-bold text-primary dark:text-inverse-primary tracking-tight">E-Faws</span>
+            </a>
+        </div>
+        <!-- Headline -->
+        <div class="mt-8">
+            <h1 class="font-section-title text-section-title text-on-surface dark:text-white tracking-tight leading-tight">
+                Grow your wealth with <span class="text-primary dark:text-inverse-primary">AI-powered</span> intelligence.
+            </h1>
+        </div>
+        <!-- Visual -->
+        <div class="relative w-full max-w-md mx-auto my-8">
+            <img alt="3D Growth Chart" class="w-full h-auto object-contain drop-shadow-xl" src="https://lh3.googleusercontent.com/aida-public/AB6AXuC4ktiXwxS5VvF2VaeLxWgV1IoQw1br7Xs8LdgQctrCP6ddz3VB4U9QS-kv9XAOlaIdrGrKv5fI9BUGH0w6sq8sMN63U1Hn6M38Try4wQgyJ6rcBJxthHdUh8K8d8e56PntUA_OXaFIn5HvfaOJe4S2wH84p-FqFCcrqwBNYX8Yldams8XINzV3p0-AZZUYNwZp-j5_bXaspPhY_rO977MKuWF-tlBJ56N51v4BMo32-QT1rWtbgMGL8HMZePLflMCfLqP-yJfe5OA"/>
+        </div>
+        <!-- Value Props List -->
+        <ul class="space-y-stack-md mt-4">
+            <li class="flex items-start">
+                <span class="material-symbols-outlined text-primary mr-4 bg-primary-fixed p-2 rounded-full text-xl dark:text-inverse-primary dark:bg-primary-container" style="font-variation-settings: 'FILL' 1;">currency_rupee</span>
+                <div>
+                    <h3 class="font-label-sm text-label-sm text-on-surface dark:text-white">Smart Lending</h3>
+                    <p class="font-body-md text-body-md text-on-surface-variant dark:text-outline-variant text-sm mt-1">Instant approvals tailored to your profile.</p>
+                </div>
+            </li>
+            <li class="flex items-start">
+                <span class="material-symbols-outlined text-secondary mr-4 bg-secondary-container p-2 rounded-full text-xl dark:text-secondary-fixed dark:bg-on-secondary-container" style="font-variation-settings: 'FILL' 1;">monitoring</span>
+                <div>
+                    <h3 class="font-label-sm text-label-sm text-on-surface dark:text-white">Investment Intelligence</h3>
+                    <p class="font-body-md text-body-md text-on-surface-variant dark:text-outline-variant text-sm mt-1">AI-managed portfolios for optimal growth.</p>
+                </div>
+            </li>
+            <li class="flex items-start">
+                <span class="material-symbols-outlined text-success mr-4 bg-success/20 p-2 rounded-full text-xl dark:bg-success/10" style="font-variation-settings: 'FILL' 1;">shield</span>
+                <div>
+                    <h3 class="font-label-sm text-label-sm text-on-surface dark:text-white">Insurance Protection</h3>
+                    <p class="font-body-md text-body-md text-on-surface-variant dark:text-outline-variant text-sm mt-1">Comprehensive and easy digital claims.</p>
+                </div>
+            </li>
+            <li class="flex items-start">
+                <span class="material-symbols-outlined text-warning mr-4 bg-warning/20 p-2 rounded-full text-xl dark:bg-warning/10" style="font-variation-settings: 'FILL' 1;">trophy</span>
+                <div>
+                    <h3 class="font-label-sm text-label-sm text-on-surface dark:text-white">Earn Hub</h3>
+                    <p class="font-body-md text-body-md text-on-surface-variant dark:text-outline-variant text-sm mt-1">Unlock exclusive rewards as you hit milestones.</p>
+                </div>
+            </li>
+        </ul>
+    </div>
+    <!-- Trust / Footer Left -->
+    <div class="mt-12 flex items-center text-on-surface-variant dark:text-outline-variant">
+        <span class="material-symbols-outlined mr-2 text-sm">lock</span>
+        <span class="font-body-md text-body-md text-sm">Bank-grade security. RBI-compliant.</span>
+    </div>
+</div>
+
+<!-- Right Side: Registration Form -->
+<div class="flex-1 flex items-center justify-center p-6 sm:p-12 lg:p-24 bg-surface dark:bg-dark-surface relative">
+    <!-- Theme Toggle Icon -->
+    <button onclick="window.toggleTheme()" class="absolute top-6 right-6 p-2 rounded-full hover:bg-surface-container dark:hover:bg-dark-elevated transition-colors text-on-surface-variant dark:text-outline-variant" title="Toggle Light/Dark Mode">
+        <span class="material-symbols-outlined">contrast</span>
+    </button>
+    
+    <!-- Mobile Logo (visible only on mobile) -->
+    <div class="md:hidden absolute top-6 left-6">
+        <span class="font-hero-lg-mobile font-bold text-primary dark:text-inverse-primary tracking-tight text-2xl">E-Faws</span>
+    </div>
+    <div class="w-full max-w-lg bg-surface-container-lowest dark:bg-dark-elevated rounded-[24px] p-8 sm:p-10 shadow-sm border border-outline-variant/40 dark:border-outline/10">
+        <div class="mb-8">
+            <h2 class="font-section-title text-section-title text-on-surface dark:text-white mb-2">Start Your Journey</h2>
+            <p class="font-body-md text-body-md text-on-surface-variant dark:text-outline-variant">Secure your financial future today.</p>
+        </div>
+        
+        <div id="error-alert" class="hidden p-4 mb-4 rounded-xl bg-error-container text-on-error-container text-sm font-medium border border-error/20 flex items-center gap-2">
+            <span class="material-symbols-outlined text-lg">error</span>
+            <span id="error-alert-text"></span>
+        </div>
+
+        <form id="register-form" class="space-y-stack-md">
+            <!-- Full Name -->
+            <div>
+                <label class="block font-label-sm text-label-sm text-on-surface dark:text-white mb-2" for="fullName">Full Name</label>
+                <div class="relative">
+                    <span class="absolute inset-y-0 left-0 flex items-center pl-4 text-outline">
+                        <span class="material-symbols-outlined text-[20px]">person</span>
+                    </span>
+                    <input class="block w-full pl-11 pr-4 py-3 bg-surface dark:bg-dark-surface border border-outline-variant dark:border-outline/10 rounded-lg text-on-surface dark:text-white font-body-md text-body-md focus:ring-2 focus:ring-primary focus:border-primary transition-shadow" id="fullName" name="fullName" placeholder="John Doe" required="" type="text"/>
+                </div>
+            </div>
+            <!-- Mobile Number -->
+            <div>
+                <label class="block font-label-sm text-label-sm text-on-surface dark:text-white mb-2" for="mobile">Mobile Number</label>
+                <div class="flex">
+                    <div class="relative flex items-center bg-surface dark:bg-dark-surface border border-outline-variant dark:border-outline/10 border-r-0 rounded-l-lg px-3 text-on-surface dark:text-white font-body-md text-body-md cursor-pointer hover:bg-surface-container-low transition-colors">
+                        <span class="mr-1">🇮🇳</span>
+                        <span>+91</span>
+                    </div>
+                    <input class="block w-full px-4 py-3 bg-surface dark:bg-dark-surface border border-outline-variant dark:border-outline/10 rounded-r-lg text-on-surface dark:text-white font-body-md text-body-md focus:ring-2 focus:ring-primary focus:border-primary transition-shadow" id="mobile" name="mobile" placeholder="9876543210" required="" type="tel" pattern="[6-9][0-9]{9}"/>
+                </div>
+            </div>
+            <!-- Email -->
+            <div>
+                <label class="block font-label-sm text-label-sm text-on-surface dark:text-white mb-2" for="email">Email Address</label>
+                <div class="relative">
+                    <span class="absolute inset-y-0 left-0 flex items-center pl-4 text-outline">
+                        <span class="material-symbols-outlined text-[20px]">mail</span>
+                    </span>
+                    <input class="block w-full pl-11 pr-4 py-3 bg-surface dark:bg-dark-surface border border-outline-variant dark:border-outline/10 rounded-lg text-on-surface dark:text-white font-body-md text-body-md focus:ring-2 focus:ring-primary focus:border-primary transition-shadow" id="email" name="email" placeholder="john@example.com" required="" type="email"/>
+                </div>
+            </div>
+            <!-- Password -->
+            <div>
+                <label class="block font-label-sm text-label-sm text-on-surface dark:text-white mb-2" for="password">Password</label>
+                <div class="relative">
+                    <span class="absolute inset-y-0 left-0 flex items-center pl-4 text-outline">
+                        <span class="material-symbols-outlined text-[20px]">lock</span>
+                    </span>
+                    <input class="block w-full pl-11 pr-10 py-3 bg-surface dark:bg-dark-surface border border-outline-variant dark:border-outline/10 rounded-lg text-on-surface dark:text-white font-body-md text-body-md focus:ring-2 focus:ring-primary focus:border-primary transition-shadow" id="password" name="password" placeholder="••••••••" required="" type="password" minlength="6"/>
+                    <button id="toggle-password" class="absolute inset-y-0 right-0 flex items-center pr-4 text-outline hover:text-on-surface focus:outline-none" type="button">
+                        <span class="material-symbols-outlined text-[20px]" id="password-visibility-icon">visibility_off</span>
+                    </button>
+                </div>
+            </div>
+            <!-- Confirm Password -->
+            <div>
+                <label class="block font-label-sm text-label-sm text-on-surface dark:text-white mb-2" for="confirmPassword">Confirm Password</label>
+                <div class="relative">
+                    <span class="absolute inset-y-0 left-0 flex items-center pl-4 text-outline">
+                        <span class="material-symbols-outlined text-[20px]">lock_reset</span>
+                    </span>
+                    <input class="block w-full pl-11 pr-10 py-3 bg-surface dark:bg-dark-surface border border-outline-variant dark:border-outline/10 rounded-lg text-on-surface dark:text-white font-body-md text-body-md focus:ring-2 focus:ring-primary focus:border-primary transition-shadow" id="confirmPassword" name="confirmPassword" placeholder="••••••••" required="" type="password" minlength="6"/>
+                    <button id="toggle-confirm-password" class="absolute inset-y-0 right-0 flex items-center pr-4 text-outline hover:text-on-surface focus:outline-none" type="button">
+                        <span class="material-symbols-outlined text-[20px]" id="confirm-password-visibility-icon">visibility_off</span>
+                    </button>
+                </div>
+            </div>
+            <!-- Checkboxes -->
+            <div class="pt-2">
+                <label class="flex items-start">
+                    <input class="mt-1 w-5 h-5 rounded border-outline-variant text-primary focus:ring-primary bg-surface cursor-pointer" required="" type="checkbox"/>
+                    <span class="ml-3 font-body-md text-body-md text-sm text-on-surface-variant dark:text-outline-variant">
+                        I agree to the <a class="text-primary dark:text-inverse-primary hover:underline font-medium" href="#">Terms &amp; Conditions</a> and <a class="text-primary dark:text-inverse-primary hover:underline font-medium" href="#">Privacy Policy</a>.
+                    </span>
+                </label>
+            </div>
+            <!-- Submit Button -->
+            <div class="pt-4">
+                <button class="w-full bg-primary hover:bg-primary/90 text-on-primary font-label-sm text-label-sm py-4 px-6 rounded-[20px] transition-colors shadow-sm flex items-center justify-center dark:bg-primary-container dark:text-on-primary-container" type="submit">
+                    Create Account
+                    <span class="material-symbols-outlined ml-2 text-[20px]">arrow_forward</span>
+                </button>
+            </div>
+        </form>
+        <!-- Secondary Actions -->
+        <div class="mt-8 text-center">
+            <p class="font-body-md text-body-md text-on-surface-variant dark:text-outline-variant">
+                Already have an account? <a class="text-primary dark:text-inverse-primary font-medium hover:underline" href="/pages/login.html">Sign In</a>
+            </p>
+        </div>
+        <!-- Trust Badges -->
+        <div class="mt-8 pt-6 border-t border-outline-variant/30 dark:border-outline/10 flex items-center justify-center space-x-6 text-outline dark:text-outline-variant">
+            <div class="flex items-center text-xs">
+                <span class="material-symbols-outlined mr-1 text-[16px]">verified_user</span>
+                <span>SSL Encrypted</span>
+            </div>
+            <div class="flex items-center text-xs">
+                <span class="material-symbols-outlined mr-1 text-[16px]">gpp_good</span>
+                <span>Secure Onboarding</span>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+    // Password visibility toggle
+    const togglePasswordBtn = document.getElementById('toggle-password');
+    const passwordInput = document.getElementById('password');
+    const visibilityIcon = document.getElementById('password-visibility-icon');
+
+    togglePasswordBtn.addEventListener('click', () => {
+        const type = passwordInput.getAttribute('type') === 'password' ? 'text' : 'password';
+        passwordInput.setAttribute('type', type);
+        visibilityIcon.textContent = type === 'password' ? 'visibility_off' : 'visibility';
+    });
+
+    const toggleConfirmPasswordBtn = document.getElementById('toggle-confirm-password');
+    const confirmPasswordInput = document.getElementById('confirmPassword');
+    const confirmVisibilityIcon = document.getElementById('confirm-password-visibility-icon');
+
+    toggleConfirmPasswordBtn.addEventListener('click', () => {
+        const type = confirmPasswordInput.getAttribute('type') === 'password' ? 'text' : 'password';
+        confirmPasswordInput.setAttribute('type', type);
+        confirmVisibilityIcon.textContent = type === 'password' ? 'visibility_off' : 'visibility';
+    });
+
+    // Form Submission Integration
+    const registerForm = document.getElementById('register-form');
+    const errorAlert = document.getElementById('error-alert');
+    const errorAlertText = document.getElementById('error-alert-text');
+
+    registerForm.addEventListener('submit', async (e) => {
+        e.preventDefault();
+        errorAlert.classList.add('hidden');
+
+        const fullName = document.getElementById('fullName').value;
+        const mobileRaw = document.getElementById('mobile').value;
+        const email = document.getElementById('email').value;
+        const password = passwordInput.value;
+        const confirmPassword = confirmPasswordInput.value;
+
+        if (password !== confirmPassword) {
+            errorAlertText.textContent = "Passwords do not match.";
+            errorAlert.classList.remove('hidden');
+            return;
+        }
+
+        // Format phone to standard +91XXXXXXXXXX
+        const phone = `+91${mobileRaw.replace(/\s+/g, '')}`;
+
+        const apiHost = window.location.origin.includes('localhost') ? 'http://localhost:5000' : '';
+
+        try {
+            const response = await fetch(`${apiHost}/api/v1/auth/register`, {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({ email, phone, password, fullName })
+            });
+
+            const data = await response.json();
+
+            if (response.status === 201) {
+                // Successful registration. Redirect to OTP page passing the registered phone.
+                window.location.href = `/pages/otp.html?phone=${encodeURIComponent(phone)}`;
+            } else {
+                errorAlertText.textContent = data.error || 'Registration failed.';
+                errorAlert.classList.remove('hidden');
+            }
+        } catch (err) {
+            console.error('Registration request error:', err);
+            errorAlertText.textContent = 'Server connection failed. Make sure backend is running on port 5000.';
+            errorAlert.classList.remove('hidden');
+        }
+    });
+</script>
+</body>
+</html>

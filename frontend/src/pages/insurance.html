@@ -1,0 +1,417 @@
+<!DOCTYPE html>
+<html class="light" lang="en">
+<head>
+    <meta charset="utf-8"/>
+    <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+    <title>E-Faws | Insurance Hub</title>
+    <!-- Fonts & Icons -->
+    <link href="https://fonts.googleapis.com" rel="preconnect"/>
+    <link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&amp;family=Sora:wght@600;700;800&amp;display=swap" rel="stylesheet"/>
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+    
+    <!-- Compiled CSS & Theme Toggle script -->
+    <link rel="stylesheet" href="/css/main.css" />
+    <link rel="stylesheet" href="/css/theme.css" />
+    <link rel="stylesheet" href="/css/responsive.css" />
+    <script type="module" src="/js/theme.js"></script>
+    <style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .card-shadow {
+            box-shadow: 0 4px 20px -2px rgba(0, 74, 198, 0.04);
+        }
+        .glass-glow {
+            background: rgba(255, 255, 255, 0.7);
+            backdrop-filter: blur(12px);
+            border: 1px solid rgba(0, 83, 219, 0.1);
+        }
+        .sidebar-active {
+            box-shadow: inset -4px 0 0 0 #004ac6;
+        }
+        ::-webkit-scrollbar { width: 6px; }
+        ::-webkit-scrollbar-track { background: transparent; }
+        ::-webkit-scrollbar-thumb { background: #c3c6d7; border-radius: 10px; }
+    </style>
+</head>
+<body class="bg-background text-on-surface font-body-md min-h-screen dark:bg-dark-bg dark:text-inverse-on-surface">
+<!-- Desktop Side Navigation Shell -->
+<aside class="fixed left-0 top-0 h-screen w-64 border-r border-outline-variant/30 bg-surface-container-lowest dark:bg-dark-surface flex flex-col py-margin-desktop space-y-stack-md z-30">
+    <div class="px-6 mb-8 flex items-center gap-3">
+        <div class="flex flex-col">
+            <span class="font-card-title text-card-title font-bold text-primary dark:text-inverse-primary">E-Faws</span>
+            <span class="font-label-sm text-[10px] uppercase tracking-wider text-outline">Growth OS</span>
+        </div>
+    </div>
+    <nav class="flex-1 px-4 space-y-1 overflow-y-auto">
+        <a class="flex items-center gap-3 px-4 py-3 rounded-xl text-on-surface-variant dark:text-outline-variant font-medium hover:bg-surface-container dark:hover:bg-dark-elevated transition-colors" href="/pages/dashboard.html">
+            <span class="material-symbols-outlined">dashboard</span>
+            <span class="font-label-sm">Dashboard</span>
+        </a>
+        <a class="flex items-center gap-3 px-4 py-3 rounded-xl text-on-surface-variant dark:text-outline-variant font-medium hover:bg-surface-container dark:hover:bg-dark-elevated transition-colors" href="/pages/lending.html">
+            <span class="material-symbols-outlined">payments</span>
+            <span class="font-label-sm">Lending</span>
+        </a>
+        <a class="flex items-center gap-3 px-4 py-3 rounded-xl text-on-surface-variant dark:text-outline-variant font-medium hover:bg-surface-container dark:hover:bg-dark-elevated transition-colors" href="/pages/investments.html">
+            <span class="material-symbols-outlined">trending_up</span>
+            <span class="font-label-sm">Investment</span>
+        </a>
+        <a class="flex items-center gap-3 px-4 py-3 rounded-xl text-primary font-bold bg-primary/10 sidebar-active transition-all duration-150" href="/pages/insurance.html">
+            <span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">verified_user</span>
+            <span class="font-label-sm">Insurance</span>
+        </a>
+        <a class="flex items-center gap-3 px-4 py-3 rounded-xl text-on-surface-variant dark:text-outline-variant font-medium hover:bg-surface-container dark:hover:bg-dark-elevated transition-colors" href="/pages/earnhub.html">
+            <span class="material-symbols-outlined">savings</span>
+            <span class="font-label-sm">Earn Hub</span>
+        </a>
+        <a class="flex items-center gap-3 px-4 py-3 rounded-xl text-on-surface-variant dark:text-outline-variant font-medium hover:bg-surface-container dark:hover:bg-dark-elevated transition-colors" href="/pages/wallet.html">
+            <span class="material-symbols-outlined">account_balance_wallet</span>
+            <span class="font-label-sm">Wallet</span>
+        </a>
+    </nav>
+    <div class="px-4 mt-auto">
+        <button id="logout-btn" class="w-full bg-surface-variant dark:bg-dark-elevated text-on-surface-variant dark:text-white py-3 px-4 rounded-xl font-label-sm flex items-center justify-center gap-2 hover:opacity-90 active:scale-95 transition-all">
+            <span class="material-symbols-outlined text-[20px]">logout</span>
+            Sign Out
+        </button>
+    </div>
+</aside>
+
+<!-- Top AppBar Shell -->
+<header class="fixed top-0 right-0 left-64 h-20 bg-surface/80 dark:bg-dark-bg/80 backdrop-blur-md z-20 px-margin-desktop flex items-center justify-between shadow-sm border-b border-outline-variant/10">
+    <div class="flex-1 max-w-xl">
+        <div class="relative group">
+            <span class="material-symbols-outlined absolute left-4 top-1/2 -translate-y-1/2 text-outline group-focus-within:text-primary">search</span>
+            <input class="w-full bg-surface-container-low dark:bg-dark-surface border-none rounded-full py-2.5 pl-12 pr-4 focus:ring-2 focus:ring-primary/20 text-body-md transition-all dark:text-white" placeholder="Search policies or claims..." type="text"/>
+        </div>
+    </div>
+    <div class="flex items-center gap-6">
+        <div class="hidden md:flex items-center gap-2 px-4 py-1.5 bg-success/10 text-success rounded-full border border-success/20">
+            <span class="material-symbols-outlined text-[18px]">ecg_heart</span>
+            <span class="font-label-sm font-bold" id="header-health-score">Health Score: 85</span>
+        </div>
+        <div class="flex items-center gap-2">
+            <button onclick="window.toggleTheme()" class="p-2 text-on-surface-variant dark:text-outline-variant hover:bg-surface-container dark:hover:bg-dark-surface rounded-full transition-all" title="Toggle Mode">
+                <span class="material-symbols-outlined">contrast</span>
+            </button>
+        </div>
+        <div class="h-10 w-px bg-outline-variant/30 mx-2"></div>
+        <div class="flex items-center gap-3 cursor-pointer group">
+            <div class="flex flex-col items-end">
+                <span class="font-label-sm font-bold text-on-surface dark:text-white group-hover:text-primary transition-colors" id="top-user-name">Loading Profile</span>
+                <span class="text-[11px] text-outline" id="top-user-tier">Premium User</span>
+            </div>
+            <div class="w-10 h-10 rounded-full bg-primary/10 text-primary flex items-center justify-center font-bold" id="user-avatar-initials">
+                EF
+            </div>
+        </div>
+    </div>
+</header>
+
+<!-- Main Content Canvas -->
+<main class="ml-64 pt-28 px-margin-desktop pb-margin-desktop max-w-[1600px] dark:bg-dark-bg">
+    <!-- Page Title & Header -->
+    <div class="flex justify-between items-end mb-8">
+        <div>
+            <h2 class="font-section-title text-section-title text-3xl font-bold text-on-surface dark:text-white">Insurance Hub</h2>
+            <p class="text-on-surface-variant dark:text-outline-variant font-body-md mt-1">Guard your assets and protect your family with our unified policies platform.</p>
+        </div>
+        <button onclick="openInsuranceModal()" class="bg-primary text-on-primary px-6 py-3 rounded-2xl font-semibold flex items-center gap-2 shadow-md hover:opacity-90 active:scale-95 transition-all">
+            <span class="material-symbols-outlined">add_moderator</span>
+            Buy Policy
+        </button>
+    </div>
+
+    <!-- 1. Insurance Overview Bento Section -->
+    <section class="grid grid-cols-1 lg:grid-cols-12 gap-gutter mb-8">
+        <!-- Protection Score -->
+        <div class="lg:col-span-4 bg-surface-container-lowest dark:bg-dark-surface p-8 rounded-[24px] shadow-sm border border-outline-variant/30 dark:border-outline/10 flex flex-col items-center justify-center text-center">
+            <h3 class="font-card-title text-on-surface dark:text-white mb-6 font-bold">Protection Score</h3>
+            <div class="relative w-40 h-40 flex items-center justify-center">
+                <svg class="w-full h-full transform -rotate-90">
+                    <circle class="text-surface-container-high dark:text-dark-bg" cx="80" cy="80" fill="transparent" r="70" stroke="currentColor" stroke-width="12"></circle>
+                    <circle class="text-primary" cx="80" cy="80" fill="transparent" r="70" stroke="currentColor" stroke-dasharray="440" stroke-dashoffset="52.8" stroke-width="12"></circle>
+                </svg>
+                <div class="absolute flex flex-col items-center">
+                    <span class="font-financial-display text-4xl font-extrabold text-primary" id="protection-score-display">88</span>
+                    <span class="font-label-sm text-outline text-xs mt-1">Out of 100</span>
+                </div>
+            </div>
+            <p class="mt-6 font-body-md text-on-surface-variant dark:text-outline-variant">Your coverage health is <span class="text-success font-bold">Excellent</span></p>
+        </div>
+        
+        <!-- Summary Cards -->
+        <div class="lg:col-span-8 grid grid-cols-1 md:grid-cols-3 gap-gutter">
+            <div class="bg-primary p-8 rounded-[24px] text-white flex flex-col justify-between shadow-lg relative overflow-hidden">
+                <div class="absolute -right-8 -top-8 w-24 h-24 bg-white/10 rounded-full blur-2xl"></div>
+                <span class="material-symbols-outlined text-white/50 text-4xl">policy</span>
+                <div>
+                    <p class="font-label-sm text-primary-fixed uppercase tracking-wider text-xs">Active Policies</p>
+                    <p class="font-financial-display text-5xl font-extrabold mt-2" id="active-policies-count">0</p>
+                </div>
+            </div>
+            <div class="bg-surface-container-lowest dark:bg-dark-surface p-8 rounded-[24px] shadow-sm border border-outline-variant/30 dark:border-outline/10 flex flex-col justify-between">
+                <span class="material-symbols-outlined text-primary text-4xl">shield</span>
+                <div>
+                    <p class="font-label-sm text-outline uppercase tracking-wider text-xs">Total Coverage</p>
+                    <p class="font-financial-display text-4xl font-extrabold text-on-surface dark:text-white mt-2" id="total-coverage-amount">₹0</p>
+                </div>
+            </div>
+            <div class="bg-warning/10 dark:bg-warning/5 p-8 rounded-[24px] border border-warning/20 flex flex-col justify-between">
+                <div class="flex justify-between items-start">
+                    <span class="material-symbols-outlined text-warning text-4xl">event_repeat</span>
+                    <span class="bg-warning text-white font-label-sm text-[10px] px-2.5 py-1 rounded-full uppercase font-bold">Secure</span>
+                </div>
+                <div>
+                    <p class="font-label-sm text-on-surface-variant dark:text-outline-variant uppercase tracking-wider text-xs">Policy Renewal</p>
+                    <p class="font-financial-display text-4xl font-extrabold text-on-surface dark:text-white mt-2" id="next-renewal-days">No Due</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 2. AI Protection Insights & Personalization -->
+    <section class="mb-8">
+        <div class="flex items-center gap-2 mb-6">
+            <span class="material-symbols-outlined text-secondary" style="font-variation-settings: 'FILL' 1;">auto_awesome</span>
+            <h3 class="font-section-title text-2xl font-bold text-on-surface dark:text-white">AI Protection Insights</h3>
+        </div>
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-gutter">
+            <!-- Alert 1 -->
+            <div class="relative overflow-hidden bg-surface-container-lowest dark:bg-dark-surface rounded-[24px] border-2 border-secondary/20 shadow-sm flex flex-col md:flex-row group hover:shadow-md transition-all">
+                <div class="p-8 flex-1">
+                    <span class="bg-secondary/10 text-secondary dark:text-secondary-container font-label-sm px-3 py-1 rounded-full text-[10px] uppercase font-bold">Optimization Alert</span>
+                    <h4 class="font-card-title text-lg font-bold text-on-surface dark:text-white mt-3">Premium Optimizer</h4>
+                    <p class="font-body-md text-sm text-on-surface-variant dark:text-outline-variant mt-2 leading-relaxed">
+                        Based on your risk profiles, consolidating your auto and health policies can unlock up to 15% cheaper premiums.
+                    </p>
+                    <button onclick="openInsuranceModal('Vehicle', 'HDFC ERGO', 12000, 1000000)" class="mt-4 px-6 py-2.5 bg-secondary text-white rounded-full text-xs font-bold hover:opacity-90 active:scale-95 transition-all">Optimize Premium</button>
+                </div>
+            </div>
+            <!-- Alert 2 -->
+            <div class="relative overflow-hidden bg-surface-container-lowest dark:bg-dark-surface rounded-[24px] border-2 border-primary/10 shadow-sm flex flex-col md:flex-row group hover:shadow-md transition-all">
+                <div class="p-8 flex-1">
+                    <span class="bg-primary/10 text-primary dark:text-inverse-primary font-label-sm px-3 py-1 rounded-full text-[10px] uppercase font-bold">Coverage Gap Detected</span>
+                    <h4 class="font-card-title text-lg font-bold text-on-surface dark:text-white mt-3">Family Critical Care</h4>
+                    <p class="font-body-md text-sm text-on-surface-variant dark:text-outline-variant mt-2 leading-relaxed">
+                        Your current plan lacks parents critical illness coverage. Safeguard your family against sudden hospitalizations.
+                    </p>
+                    <button onclick="openInsuranceModal('Health', 'Star Health', 8500, 500000)" class="mt-4 px-6 py-2.5 bg-primary text-white rounded-full text-xs font-bold hover:opacity-90 active:scale-95 transition-all">Add Cover Now</button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 3. Policy Comparison Marketplace -->
+    <section class="mb-8">
+        <h3 class="font-section-title text-2xl font-bold text-on-surface dark:text-white mb-6">Policy Marketplace</h3>
+        <div class="bg-surface-container-lowest dark:bg-dark-surface rounded-[24px] shadow-sm border border-outline-variant/30 dark:border-outline/10 overflow-hidden">
+            <div class="overflow-x-auto">
+                <table class="w-full text-left border-collapse">
+                    <thead>
+                        <tr class="bg-surface-container-low dark:bg-dark-bg border-b border-outline-variant/20">
+                            <th class="p-6 font-semibold text-xs text-outline uppercase">Provider</th>
+                            <th class="p-6 font-semibold text-xs text-outline uppercase">Premium/Year</th>
+                            <th class="p-6 font-semibold text-xs text-outline uppercase">Coverage Amount</th>
+                            <th class="p-6 font-semibold text-xs text-outline uppercase">Key Benefits</th>
+                            <th class="p-6 font-semibold text-xs text-outline uppercase">Claim Settlement Ratio</th>
+                            <th class="p-6"></th>
+                        </tr>
+                    </thead>
+                    <tbody class="divide-y divide-outline-variant/10 text-sm">
+                        <tr class="hover:bg-surface-container-low/50 dark:hover:bg-dark-elevated transition-colors">
+                            <td class="p-6 flex items-center gap-3">
+                                <div class="w-10 h-10 rounded-lg bg-surface-container dark:bg-dark-bg flex items-center justify-center font-bold text-outline">TA</div>
+                                <span class="font-bold text-on-surface dark:text-white">Tata AIG</span>
+                            </td>
+                            <td class="p-6 text-on-surface dark:text-white font-semibold">₹18,500</td>
+                            <td class="p-6 text-on-surface-variant dark:text-outline-variant">₹10 Lakh</td>
+                            <td class="p-6">
+                                <ul class="text-[12px] text-on-surface-variant dark:text-outline-variant space-y-1">
+                                    <li class="flex items-center gap-1">
+                                        <span class="material-symbols-outlined text-success text-[14px]">check_circle</span> Cashless Garages
+                                    </li>
+                                    <li class="flex items-center gap-1">
+                                        <span class="material-symbols-outlined text-success text-[14px]">check_circle</span> 24x7 Roadside Assist
+                                    </li>
+                                </ul>
+                            </td>
+                            <td class="p-6">
+                                <div class="flex items-center gap-2">
+                                    <div class="flex-1 h-1.5 bg-surface-container dark:bg-dark-bg rounded-full overflow-hidden w-20">
+                                        <div class="w-[98%] h-full bg-success"></div>
+                                    </div>
+                                    <span class="font-bold text-success">98.2%</span>
+                                </div>
+                            </td>
+                            <td class="p-6">
+                                <button onclick="openInsuranceModal('Vehicle', 'Tata AIG', 18500, 1000000)" class="px-4 py-2 border-2 border-primary text-primary dark:text-inverse-primary rounded-full font-bold text-xs hover:bg-primary hover:text-white transition-all">Buy Now</button>
+                            </td>
+                        </tr>
+                        <tr class="hover:bg-surface-container-low/50 dark:hover:bg-dark-elevated transition-colors">
+                            <td class="p-6 flex items-center gap-3">
+                                <div class="w-10 h-10 rounded-lg bg-surface-container dark:bg-dark-bg flex items-center justify-center font-bold text-outline">HE</div>
+                                <span class="font-bold text-on-surface dark:text-white">HDFC ERGO</span>
+                            </td>
+                            <td class="p-6 text-on-surface dark:text-white font-semibold">₹17,200</td>
+                            <td class="p-6 text-on-surface-variant dark:text-outline-variant">₹10 Lakh</td>
+                            <td class="p-6">
+                                <ul class="text-[12px] text-on-surface-variant dark:text-outline-variant space-y-1">
+                                    <li class="flex items-center gap-1">
+                                        <span class="material-symbols-outlined text-success text-[14px]">check_circle</span> Global Room Rent Cover
+                                    </li>
+                                    <li class="flex items-center gap-1">
+                                        <span class="material-symbols-outlined text-success text-[14px]">check_circle</span> AYUSH Treatment Cover
+                                    </li>
+                                </ul>
+                            </td>
+                            <td class="p-6">
+                                <div class="flex items-center gap-2">
+                                    <div class="flex-1 h-1.5 bg-surface-container dark:bg-dark-bg rounded-full overflow-hidden w-20">
+                                        <div class="w-[97%] h-full bg-success"></div>
+                                    </div>
+                                    <span class="font-bold text-success">97.5%</span>
+                                </div>
+                            </td>
+                            <td class="p-6">
+                                <button onclick="openInsuranceModal('Health', 'HDFC ERGO', 17200, 1000000)" class="px-4 py-2 border-2 border-primary text-primary dark:text-inverse-primary rounded-full font-bold text-xs hover:bg-primary hover:text-white transition-all">Buy Now</button>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </section>
+
+    <!-- Active Policies and Claims Row -->
+    <div class="grid grid-cols-1 lg:grid-cols-2 gap-gutter mb-8">
+        <!-- Dynamic Active Policies Checklist -->
+        <section class="bg-surface-container-lowest dark:bg-dark-surface p-8 rounded-[24px] border border-outline-variant/30 dark:border-outline/10 card-shadow flex flex-col justify-between">
+            <div>
+                <h3 class="font-card-title text-on-surface dark:text-white font-bold text-lg mb-6 flex items-center gap-2">
+                    <span class="material-symbols-outlined text-primary">verified</span>
+                    Active Protections
+                </h3>
+                <div class="space-y-4" id="active-policies-list">
+                    <!-- Hydrated dynamically -->
+                    <p class="text-outline text-sm">Checking active policies...</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Claims Assistance -->
+        <section class="bg-surface-container-lowest dark:bg-dark-surface p-8 rounded-[24px] border border-outline-variant/30 dark:border-outline/10 card-shadow">
+            <h3 class="font-card-title text-on-surface dark:text-white font-bold text-lg mb-6 flex items-center gap-2">
+                <span class="material-symbols-outlined text-primary">support_agent</span>
+                Claims Assistance Center
+            </h3>
+            <div class="bg-primary/5 dark:bg-primary/10 p-6 rounded-[24px] border border-dashed border-primary/20">
+                <div class="flex justify-between items-center mb-4">
+                    <div>
+                        <p class="font-bold text-on-surface dark:text-white">Active Claim: Vehicle Insurance</p>
+                        <p class="text-xs text-outline">Ticket #CL-88012 • Star Health Care</p>
+                    </div>
+                    <span class="bg-primary/15 text-primary px-3 py-1 rounded-full font-bold text-xs">60% Approved</span>
+                </div>
+                <div class="relative pt-1">
+                    <div class="overflow-hidden h-2.5 mb-4 text-xs flex rounded-full bg-surface-container dark:bg-dark-bg">
+                        <div class="shadow-none flex flex-col text-center whitespace-nowrap text-white justify-center bg-primary" style="width:60%"></div>
+                    </div>
+                </div>
+                <div class="flex items-center gap-4">
+                    <button onclick="alert('Document upload portal is initialized securely under IRDAI protocols.')" class="flex-1 bg-primary text-white py-3 rounded-xl font-bold flex items-center justify-center gap-2 hover:opacity-90 text-xs transition-all">
+                        <span class="material-symbols-outlined text-[18px]">upload_file</span>
+                        Upload Documents
+                    </button>
+                    <button onclick="alert('Connecting to an insurance assistance bot...')" class="p-3 border-2 border-primary text-primary dark:text-inverse-primary rounded-xl hover:bg-primary/5 transition-all">
+                        <span class="material-symbols-outlined text-[20px]">chat</span>
+                    </button>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <!-- Security & IRDAI Regulator Trust -->
+    <section class="pt-8 border-t border-outline-variant/20">
+        <div class="flex flex-wrap justify-center items-center gap-12 opacity-60 dark:opacity-80">
+            <div class="flex items-center gap-2 text-xs font-bold uppercase tracking-wider text-outline">
+                <span class="material-symbols-outlined text-success">gavel</span>
+                IRDAI Regulated
+            </div>
+            <div class="flex items-center gap-2 text-xs font-bold uppercase tracking-wider text-outline">
+                <span class="material-symbols-outlined text-success">lock</span>
+                Secure Custody
+            </div>
+            <div class="flex items-center gap-2 text-xs font-bold uppercase tracking-wider text-outline">
+                <span class="material-symbols-outlined text-success">encrypted</span>
+                AES 256-bit Encrypted
+            </div>
+        </div>
+    </section>
+</main>
+
+<!-- Buy Policy Modal -->
+<div id="insurance-modal" class="fixed inset-0 bg-black/60 backdrop-blur-sm z-50 flex items-center justify-center hidden opacity-0 transition-opacity duration-300">
+    <div class="bg-surface-container-lowest dark:bg-dark-surface p-8 rounded-[28px] max-w-lg w-full mx-4 shadow-2xl border border-outline-variant/20 relative">
+        <button onclick="closeInsuranceModal()" class="absolute right-6 top-6 text-outline hover:text-primary transition-colors">
+            <span class="material-symbols-outlined">close</span>
+        </button>
+        <h3 class="font-card-title text-2xl font-bold text-on-surface dark:text-white mb-1">Purchase Policy</h3>
+        <p class="text-xs text-outline mb-6">Select policy parameters. Your first year premium will be debited from your Smart E-Wallet.</p>
+        
+        <form id="insurance-purchase-form" onsubmit="submitInsurancePurchase(event)" class="space-y-5">
+            <div class="grid grid-cols-2 gap-4">
+                <div>
+                    <label class="block text-xs font-bold text-outline uppercase tracking-wider mb-2">Policy Type</label>
+                    <select id="policy-type-field" onchange="calculateMockPremium()" class="w-full bg-surface-container-low dark:bg-dark-bg border border-outline-variant/30 rounded-xl py-3 px-4 font-bold text-on-surface dark:text-white focus:ring-2 focus:ring-primary/20">
+                        <option value="Health">Health Insurance</option>
+                        <option value="Vehicle">Vehicle Insurance</option>
+                        <option value="Life">Life Term Cover</option>
+                        <option value="Travel">International Travel Cover</option>
+                    </select>
+                </div>
+                <div>
+                    <label class="block text-xs font-bold text-outline uppercase tracking-wider mb-2">Provider</label>
+                    <select id="policy-provider-field" class="w-full bg-surface-container-low dark:bg-dark-bg border border-outline-variant/30 rounded-xl py-3 px-4 font-bold text-on-surface dark:text-white focus:ring-2 focus:ring-primary/20">
+                        <option value="HDFC ERGO">HDFC ERGO</option>
+                        <option value="Tata AIG">Tata AIG</option>
+                        <option value="Star Health">Star Health</option>
+                        <option value="Bajaj Allianz">Bajaj Allianz</option>
+                    </select>
+                </div>
+            </div>
+            
+            <div class="grid grid-cols-2 gap-4">
+                <div>
+                    <label class="block text-xs font-bold text-outline uppercase tracking-wider mb-2">Coverage Amount (₹)</label>
+                    <select id="policy-coverage-field" onchange="calculateMockPremium()" class="w-full bg-surface-container-low dark:bg-dark-bg border border-outline-variant/30 rounded-xl py-3 px-4 font-bold text-on-surface dark:text-white focus:ring-2 focus:ring-primary/20">
+                        <option value="500000">₹5,00,000 Cover</option>
+                        <option value="1000000" selected>₹10,00,000 Cover</option>
+                        <option value="2500000">₹25,00,000 Cover</option>
+                        <option value="5000000">₹50,00,000 Cover</option>
+                    </select>
+                </div>
+                <div>
+                    <label class="block text-xs font-bold text-outline uppercase tracking-wider mb-2">Calculated Premium (₹/Yr)</label>
+                    <input type="text" id="policy-premium-field" class="w-full bg-surface-container-low dark:bg-dark-bg border border-outline-variant/30 rounded-xl py-3 px-4 font-bold text-primary dark:text-inverse-primary" readonly />
+                </div>
+            </div>
+
+            <div class="bg-primary/5 p-4 rounded-xl space-y-2 border border-primary/10 text-xs font-medium">
+                <div class="flex justify-between text-outline">
+                    <span>Tax rebate eligibility (Section 80D)</span>
+                    <span class="text-success font-bold">100% Eligible</span>
+                </div>
+            </div>
+            
+            <button type="submit" class="w-full bg-primary text-white py-4 rounded-xl font-label-sm font-bold shadow-lg shadow-primary/25 hover:opacity-95 transition-all">Submit Application &amp; Activate</button>
+        </form>
+    </div>
+</div>
+
+<!-- Scripts -->
+<script type="module" src="/widgets/index.jsx"></script>
+<script type="module" src="/js/insurance.js"></script>
+</body>
+</html>

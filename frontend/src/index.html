@@ -1,0 +1,283 @@
+<!DOCTYPE html>
+<html class="light" lang="en">
+<head>
+    <meta charset="utf-8"/>
+    <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+    <title>E-Faws | AI-Powered Financial Growth</title>
+    <!-- Fonts & Icons -->
+    <link href="https://fonts.googleapis.com" rel="preconnect"/>
+    <link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&amp;family=Sora:wght@600;700&amp;display=swap" rel="stylesheet"/>
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+    
+    <!-- Compiled CSS & Theme Toggler -->
+    <link rel="stylesheet" href="/css/main.css" />
+    <link rel="stylesheet" href="/css/theme.css" />
+    <link rel="stylesheet" href="/css/responsive.css" />
+    <script type="module" src="/js/theme.js"></script>
+</head>
+<body class="bg-light-bg text-on-surface font-body-md antialiased overflow-x-hidden dark:bg-dark-bg dark:text-inverse-on-surface">
+<!-- TopNavBar -->
+<nav class="bg-surface/80 dark:bg-dark-bg/80 backdrop-blur-md w-full sticky top-0 z-50 shadow-sm border-b border-outline-variant/10">
+    <div class="max-w-container-max mx-auto px-margin-mobile md:px-margin-desktop flex items-center justify-between h-20">
+        <div class="flex items-center gap-2">
+            <!-- Logo -->
+            <span class="font-hero-lg-mobile md:text-section-title font-bold text-primary dark:text-inverse-primary tracking-tight">E-Faws</span>
+        </div>
+        <div class="hidden md:flex items-center gap-gutter">
+            <a class="text-on-surface-variant hover:text-primary transition-colors font-body-md text-body-md dark:text-outline-variant dark:hover:text-primary-fixed-dim" href="#">Lending</a>
+            <a class="text-on-surface-variant hover:text-primary transition-colors font-body-md text-body-md dark:text-outline-variant dark:hover:text-primary-fixed-dim" href="#">Investment</a>
+            <a class="text-on-surface-variant hover:text-primary transition-colors font-body-md text-body-md dark:text-outline-variant dark:hover:text-primary-fixed-dim" href="#">Insurance</a>
+            <a class="text-on-surface-variant hover:text-primary transition-colors font-body-md text-body-md dark:text-outline-variant dark:hover:text-primary-fixed-dim" href="#">Earn Hub</a>
+            <a class="text-on-surface-variant hover:text-primary transition-colors font-body-md text-body-md dark:text-outline-variant dark:hover:text-primary-fixed-dim" href="#">About</a>
+        </div>
+        <div class="flex items-center gap-4">
+            <!-- Theme Toggle Icon -->
+            <button onclick="window.toggleTheme()" class="p-2 rounded-full hover:bg-surface-container dark:hover:bg-dark-elevated transition-colors text-on-surface-variant dark:text-outline-variant" title="Toggle Light/Dark Mode">
+                <span class="material-symbols-outlined">contrast</span>
+            </button>
+            <a class="hidden md:inline-flex text-primary font-label-sm text-label-sm hover:opacity-90 transition-all dark:text-inverse-primary" href="/pages/login.html">Log In</a>
+            <a class="bg-primary text-on-primary px-6 py-3 rounded-full font-label-sm text-label-sm hover:opacity-90 transition-all dark:bg-primary-container" href="/pages/register.html">Get Started</a>
+        </div>
+    </div>
+</nav>
+
+<!-- Hero Section -->
+<section class="max-w-container-max mx-auto px-margin-mobile md:px-margin-desktop pt-section-gap pb-section-gap grid grid-cols-1 lg:grid-cols-2 gap-section-gap items-center">
+    <div class="flex flex-col gap-stack-lg z-10">
+        <h1 class="font-hero-lg-mobile text-hero-lg-mobile md:font-hero-lg md:text-hero-lg text-on-surface dark:text-white">
+            Your <span class="text-primary dark:text-inverse-primary">AI-Powered</span><br/> Financial Growth Ecosystem
+        </h1>
+        <p class="font-body-lg text-body-lg text-on-surface-variant max-w-xl dark:text-outline-variant">
+            Grow your wealth with smart lending, intelligent investments, and personalized financial insights—all in one secure platform.
+        </p>
+        <div class="flex flex-col sm:flex-row gap-4">
+            <a class="bg-primary text-on-primary px-8 py-4 rounded-full font-label-sm text-label-sm text-center hover:opacity-90 transition-all shadow-lg shadow-primary/20 dark:bg-primary-container" href="/pages/register.html">Get Started</a>
+            <a class="bg-surface-variant text-on-surface px-8 py-4 rounded-full font-label-sm text-label-sm text-center hover:bg-surface-dim transition-all dark:bg-dark-elevated dark:text-white dark:hover:bg-dark-surface" href="#">Explore Ecosystem</a>
+        </div>
+        <!-- Trust Badges Inline -->
+        <div class="flex items-center gap-6 mt-stack-md pt-stack-md border-t border-outline-variant/30">
+            <div class="flex items-center gap-2">
+                <span class="material-symbols-outlined text-success" style="font-variation-settings: 'FILL' 1;">verified_user</span>
+                <span class="font-label-sm text-label-sm text-on-surface-variant dark:text-outline-variant">RBI Regulated</span>
+            </div>
+            <div class="flex items-center gap-2">
+                <span class="material-symbols-outlined text-primary dark:text-inverse-primary" style="font-variation-settings: 'FILL' 1;">security</span>
+                <span class="font-label-sm text-label-sm text-on-surface-variant dark:text-outline-variant">AES-256</span>
+            </div>
+        </div>
+    </div>
+    <div class="relative w-full h-full min-h-[400px] lg:min-h-[600px] flex items-center justify-center">
+        <!-- Decorative Elements -->
+        <div class="absolute inset-0 bg-gradient-to-tr from-primary/10 to-secondary-container/20 rounded-[3rem] -rotate-3 scale-105 -z-10 blur-xl"></div>
+        <img alt="Dashboard Preview showing financial growth, asset allocation, and AI insights." class="w-full h-auto rounded-2xl shadow-2xl border border-outline-variant/20 relative z-10" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAVO1jM-IJIcbPbEE5F0jxfYjAp4qL7DV2zHMwPHM58nRM7G5NSffQnp1nJQ6ujc5-Olv8GYwCEnzjiLLWN4NqPReoEJnaBgEmM610BdgpnNrnI1QguWvLOW_vgUocKAQUG0tKcB3mbmv-0B2hpyv3WBes6khANJToeIDzuqz7hCnsJrJUAMfNFrraw6cugdr4DgNYwLOa8ISzzk45HCFR_u8UiJqNIw8t5KDIygqpml_cNp5lMHcRr2GCROdvScOegaG5DapEtwt0"/>
+    </div>
+</section>
+
+<!-- Ecosystem Grid -->
+<section class="bg-surface dark:bg-dark-surface py-section-gap">
+    <div class="max-w-container-max mx-auto px-margin-mobile md:px-margin-desktop">
+        <div class="text-center mb-section-gap">
+            <h2 class="font-section-title text-section-title text-on-surface dark:text-white mb-stack-sm">A Complete Growth Ecosystem</h2>
+            <p class="font-body-md text-body-md text-on-surface-variant dark:text-outline-variant max-w-2xl mx-auto">Everything you need to manage, grow, and protect your wealth intelligently.</p>
+        </div>
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-gutter">
+            <!-- Smart Lending -->
+            <div class="bg-light-surface dark:bg-dark-elevated rounded-2xl p-6 ambient-shadow border border-outline-variant/20 dark:border-outline/10 flex flex-col gap-4 group hover:-translate-y-1 transition-transform">
+                <div class="w-12 h-12 rounded-full bg-primary/10 flex items-center justify-center text-primary group-hover:bg-primary group-hover:text-on-primary transition-colors dark:text-inverse-primary dark:group-hover:bg-primary-container">
+                    <span class="material-symbols-outlined">payments</span>
+                </div>
+                <h3 class="font-card-title text-card-title text-on-surface dark:text-white">Smart Lending</h3>
+                <p class="font-body-md text-body-md text-on-surface-variant dark:text-outline-variant flex-grow">Instant approvals and low rates tailored to your financial profile.</p>
+            </div>
+            <!-- Investment Intelligence -->
+            <div class="bg-light-surface dark:bg-dark-elevated rounded-2xl p-6 ambient-shadow border border-outline-variant/20 dark:border-outline/10 flex flex-col gap-4 group hover:-translate-y-1 transition-transform">
+                <div class="w-12 h-12 rounded-full bg-secondary/10 flex items-center justify-center text-secondary group-hover:bg-secondary group-hover:text-on-secondary transition-colors dark:text-secondary-fixed dark:group-hover:bg-on-secondary-container">
+                    <span class="material-symbols-outlined">trending_up</span>
+                </div>
+                <h3 class="font-card-title text-card-title text-on-surface dark:text-white">Investment Intelligence</h3>
+                <p class="font-body-md text-body-md text-on-surface-variant dark:text-outline-variant flex-grow">AI-managed portfolios with real-time tracking and automated rebalancing.</p>
+            </div>
+            <!-- Insurance Protection -->
+            <div class="bg-light-surface dark:bg-dark-elevated rounded-2xl p-6 ambient-shadow border border-outline-variant/20 dark:border-outline/10 flex flex-col gap-4 group hover:-translate-y-1 transition-transform">
+                <div class="w-12 h-12 rounded-full bg-tertiary/10 flex items-center justify-center text-tertiary group-hover:bg-tertiary group-hover:text-on-tertiary transition-colors dark:text-tertiary-fixed-dim dark:group-hover:bg-tertiary-container">
+                    <span class="material-symbols-outlined">health_and_safety</span>
+                </div>
+                <h3 class="font-card-title text-card-title text-on-surface dark:text-white">Insurance Protection</h3>
+                <p class="font-body-md text-body-md text-on-surface-variant dark:text-outline-variant flex-grow">Comprehensive coverage options with an easy, digital claims process.</p>
+            </div>
+            <!-- Earn Hub -->
+            <div class="bg-light-surface dark:bg-dark-elevated rounded-2xl p-6 ambient-shadow border border-outline-variant/20 dark:border-outline/10 flex flex-col gap-4 group hover:-translate-y-1 transition-transform">
+                <div class="w-12 h-12 rounded-full bg-warning/10 flex items-center justify-center text-warning group-hover:bg-warning group-hover:text-white transition-colors dark:group-hover:bg-warning">
+                    <span class="material-symbols-outlined">workspace_premium</span>
+                </div>
+                <h3 class="font-card-title text-card-title text-on-surface dark:text-white">Earn Hub</h3>
+                <p class="font-body-md text-body-md text-on-surface-variant dark:text-outline-variant flex-grow">Unlock XP rewards and premium perks as you hit financial milestones.</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- AI Insights Section -->
+<section class="max-w-container-max mx-auto px-margin-mobile md:px-margin-desktop py-section-gap">
+    <div class="flex flex-col lg:flex-row gap-section-gap items-center">
+        <div class="lg:w-1/3 flex flex-col gap-stack-lg">
+            <div class="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-secondary-container/20 text-secondary w-fit border border-secondary-container/50 dark:text-secondary-fixed">
+                <span class="material-symbols-outlined text-sm">smart_toy</span>
+                <span class="font-label-sm text-label-sm font-semibold">AI-Powered</span>
+            </div>
+            <h2 class="font-section-title text-section-title text-on-surface dark:text-white">Personalized Financial Intelligence</h2>
+            <p class="font-body-md text-body-md text-on-surface-variant dark:text-outline-variant">Our engine analyzes your entire financial footprint to deliver actionable, real-time insights designed to accelerate your wealth building.</p>
+            <a class="text-primary dark:text-inverse-primary font-label-sm text-label-sm font-semibold inline-flex items-center gap-1 hover:underline w-fit" href="#">
+                See How It Works <span class="material-symbols-outlined text-sm">arrow_forward</span>
+            </a>
+        </div>
+        <div class="lg:w-2/3 grid grid-cols-1 sm:grid-cols-2 gap-gutter relative w-full">
+            <!-- Insight Card 1 -->
+            <div class="bg-light-surface dark:bg-dark-elevated rounded-2xl p-6 ai-glow flex flex-col gap-3 z-10 relative mt-0 sm:mt-12">
+                <div class="flex justify-between items-start">
+                    <div class="w-10 h-10 rounded-full bg-secondary/10 flex items-center justify-center text-secondary dark:text-secondary-fixed">
+                        <span class="material-symbols-outlined">lightbulb</span>
+                    </div>
+                    <span class="text-xs font-semibold text-outline px-2 py-1 bg-surface-container dark:bg-dark-surface dark:text-outline-variant rounded-md">New</span>
+                </div>
+                <h4 class="font-label-sm text-label-sm text-on-surface dark:text-white font-semibold mt-2">Investment Suggestion</h4>
+                <p class="font-body-md text-body-md text-on-surface-variant dark:text-outline-variant text-sm">Rebalance 15% to an Aggressive Growth Portfolio to meet your 5-year target.</p>
+                <button class="mt-2 text-left text-secondary dark:text-secondary-fixed font-label-sm text-label-sm font-semibold">Review Action</button>
+            </div>
+            <!-- Insight Card 2 -->
+            <div class="bg-light-surface dark:bg-dark-elevated rounded-2xl p-6 ai-glow flex flex-col gap-3 z-10 relative">
+                <div class="w-10 h-10 rounded-full bg-warning/10 flex items-center justify-center text-warning">
+                    <span class="material-symbols-outlined">savings</span>
+                </div>
+                <h4 class="font-label-sm text-label-sm text-on-surface dark:text-white font-semibold mt-2">Spending Tip</h4>
+                <p class="font-body-md text-body-md text-on-surface-variant dark:text-outline-variant text-sm">Optimize Subscription Costs: You have 3 unused streaming services ($45/mo).</p>
+                <button class="mt-2 text-left text-warning font-label-sm text-label-sm font-semibold">Cancel Subscriptions</button>
+            </div>
+            <!-- Insight Card 3 -->
+            <div class="bg-light-surface dark:bg-dark-elevated rounded-2xl p-6 ambient-shadow border border-success/30 flex flex-col gap-3 z-10 relative sm:col-span-2 md:col-span-1">
+                <div class="w-10 h-10 rounded-full bg-success/10 flex items-center justify-center text-success">
+                    <span class="material-symbols-outlined">thumb_up</span>
+                </div>
+                <h4 class="font-label-sm text-label-sm text-on-surface dark:text-white font-semibold mt-2">Health Alert</h4>
+                <p class="font-body-md text-body-md text-on-surface-variant dark:text-outline-variant text-sm">Great job! Your Credit Score increased to 780, unlocking premium lending rates.</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Analytics Preview -->
+<section class="bg-surface-container-low dark:bg-dark-surface py-section-gap border-y border-outline-variant/20 dark:border-outline/10">
+    <div class="max-w-container-max mx-auto px-margin-mobile md:px-margin-desktop text-center mb-section-gap">
+        <h2 class="font-section-title text-section-title text-on-surface dark:text-white mb-stack-sm">Data-Driven Wealth Management</h2>
+        <p class="font-body-md text-body-md text-on-surface-variant dark:text-outline-variant max-w-2xl mx-auto">Visualize your progress with institutional-grade analytics, simplified for your personal growth.</p>
+    </div>
+    <div class="max-w-container-max mx-auto px-margin-mobile md:px-margin-desktop grid grid-cols-1 md:grid-cols-3 gap-gutter">
+        <!-- Health Score Widget -->
+        <div class="md:col-span-1 bg-light-surface dark:bg-dark-elevated rounded-2xl p-6 ambient-shadow border border-outline-variant/20 dark:border-outline/10 flex flex-col items-center justify-center text-center">
+            <h3 class="font-card-title text-card-title text-on-surface dark:text-white mb-6">Financial Health</h3>
+            <div class="relative w-40 h-40 flex items-center justify-center mb-4">
+                <svg class="w-full h-full transform -rotate-90" viewbox="0 0 100 100">
+                    <circle cx="50" cy="50" fill="none" r="45" stroke="#e1e2ed" stroke-width="8" class="dark:stroke-dark-surface"></circle>
+                    <circle class="text-primary dark:text-inverse-primary" cx="50" cy="50" fill="none" r="45" stroke="currentColor" stroke-dasharray="283" stroke-dashoffset="56" stroke-width="8"></circle>
+                </svg>
+                <div class="absolute inset-0 flex flex-col items-center justify-center">
+                    <span class="font-financial-display text-financial-display text-primary dark:text-inverse-primary">82</span>
+                    <span class="font-label-sm text-label-sm text-success">Excellent</span>
+                </div>
+            </div>
+            <p class="font-body-md text-body-md text-on-surface-variant dark:text-outline-variant text-sm mt-2">Top 15% of E-Faws users</p>
+        </div>
+        <!-- Chart Mockup Area -->
+        <div class="md:col-span-2 bg-light-surface dark:bg-dark-elevated rounded-2xl p-6 ambient-shadow border border-outline-variant/20 dark:border-outline/10 flex flex-col">
+            <div class="flex justify-between items-center mb-6">
+                <div>
+                    <h3 class="font-card-title text-card-title text-on-surface dark:text-white">Portfolio Growth</h3>
+                    <p class="font-body-md text-body-md text-on-surface-variant dark:text-outline-variant text-sm">Last 12 Months</p>
+                </div>
+                <div class="font-financial-display text-financial-display text-on-surface dark:text-white">
+                    $124,500 <span class="text-success text-lg ml-2 align-middle font-body-md">+14.2%</span>
+                </div>
+            </div>
+            <!-- Abstract Area Chart Representation -->
+            <div class="flex-grow relative min-h-[200px] w-full mt-4 flex items-end pb-8">
+                <!-- Grid Lines -->
+                <div class="absolute inset-0 flex flex-col justify-between border-l border-b border-outline-variant/20 dark:border-outline/10 pb-8 pl-8">
+                    <div class="w-full border-t border-dashed border-outline-variant/30 h-0"></div>
+                    <div class="w-full border-t border-dashed border-outline-variant/30 h-0"></div>
+                    <div class="w-full border-t border-dashed border-outline-variant/30 h-0"></div>
+                    <div class="w-full border-t border-dashed border-outline-variant/30 h-0"></div>
+                </div>
+                <!-- Area Chart Shape -->
+                <div class="absolute bottom-8 left-8 right-0 h-3/4 bg-gradient-to-t from-primary/20 to-transparent clip-path-chart" style="clip-path: polygon(0 100%, 0 60%, 20% 50%, 40% 70%, 60% 40%, 80% 20%, 100% 10%, 100% 100%);"></div>
+                <!-- Line -->
+                <svg class="absolute bottom-8 left-8 right-0 h-3/4 w-[calc(100%-2rem)]" preserveaspectratio="none" viewbox="0 0 100 100">
+                    <polyline fill="none" points="0,60 20,50 40,70 60,40 80,20 100,10" stroke="#004ac6" stroke-linejoin="round" stroke-width="3" class="dark:stroke-inverse-primary"></polyline>
+                </svg>
+                <!-- X Axis Labels -->
+                <div class="absolute bottom-0 left-8 right-0 flex justify-between text-xs text-outline dark:text-outline-variant font-label-sm">
+                    <span>Jan</span>
+                    <span>Mar</span>
+                    <span>Jun</span>
+                    <span>Sep</span>
+                    <span>Dec</span>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Final CTA -->
+<section class="max-w-container-max mx-auto px-margin-mobile md:px-margin-desktop py-section-gap">
+    <div class="bg-primary dark:bg-primary-container rounded-[2rem] p-8 md:p-16 text-center relative overflow-hidden">
+        <!-- Decorative Background Patterns -->
+        <div class="absolute top-0 right-0 w-64 h-64 bg-white/10 rounded-full blur-3xl -translate-y-1/2 translate-x-1/3"></div>
+        <div class="absolute bottom-0 left-0 w-80 h-80 bg-secondary/30 rounded-full blur-3xl translate-y-1/3 -translate-x-1/4"></div>
+        <div class="relative z-10 flex flex-col items-center max-w-3xl mx-auto gap-stack-lg">
+            <h2 class="font-hero-lg-mobile text-hero-lg-mobile md:font-hero-lg md:text-hero-lg text-on-primary">Start Your Growth Journey Today</h2>
+            <p class="font-body-lg text-body-lg text-on-primary/80">Join the smart wealth management revolution and take control of your financial future.</p>
+            <a class="bg-light-surface text-primary px-10 py-5 rounded-full font-label-sm text-label-sm font-bold text-lg hover:scale-105 transition-transform shadow-xl dark:bg-white dark:text-primary-container" href="/pages/register.html">Join Now</a>
+        </div>
+    </div>
+</section>
+
+<!-- Footer -->
+<footer class="bg-surface-container-lowest dark:bg-dark-surface w-full pt-section-gap pb-stack-lg border-t border-outline-variant dark:border-outline/10">
+    <div class="max-w-container-max mx-auto px-margin-mobile md:px-margin-desktop grid grid-cols-1 md:grid-cols-4 gap-gutter mb-12">
+        <!-- Brand Column -->
+        <div class="flex flex-col gap-4">
+            <!-- Footer logo -->
+            <span class="text-section-title font-bold text-primary dark:text-inverse-primary tracking-tight">E-Faws</span>
+            <p class="font-body-md text-body-md text-on-surface-variant dark:text-outline-variant">Intelligent wealth management for the modern era.</p>
+        </div>
+        <!-- Links -->
+        <div class="flex flex-col gap-3">
+            <h4 class="font-label-sm text-label-sm font-bold text-on-surface dark:text-white">Platform</h4>
+            <a class="text-on-surface-variant dark:text-outline-variant hover:text-primary dark:hover:text-inverse-primary transition-colors font-body-md text-body-md" href="#">Lending</a>
+            <a class="text-on-surface-variant dark:text-outline-variant hover:text-primary dark:hover:text-inverse-primary transition-colors font-body-md text-body-md" href="#">Investments</a>
+            <a class="text-on-surface-variant dark:text-outline-variant hover:text-primary dark:hover:text-inverse-primary transition-colors font-body-md text-body-md" href="#">Insurance</a>
+        </div>
+        <div class="flex flex-col gap-3">
+            <h4 class="font-label-sm text-label-sm font-bold text-on-surface dark:text-white">Company</h4>
+            <a class="text-on-surface-variant dark:text-outline-variant hover:text-primary dark:hover:text-inverse-primary transition-colors font-body-md text-body-md" href="#">About Us</a>
+            <a class="text-on-surface-variant dark:text-outline-variant hover:text-primary dark:hover:text-inverse-primary transition-colors font-body-md text-body-md" href="#">Careers</a>
+            <a class="text-on-surface-variant dark:text-outline-variant hover:text-primary dark:hover:text-inverse-primary transition-colors font-body-md text-body-md" href="#">Contact</a>
+        </div>
+        <div class="flex flex-col gap-3">
+            <h4 class="font-label-sm text-label-sm font-bold text-on-surface dark:text-white">Legal</h4>
+            <a class="text-on-surface-variant dark:text-outline-variant hover:text-primary dark:hover:text-inverse-primary transition-colors font-body-md text-body-md" href="#">Privacy Policy</a>
+            <a class="text-on-surface-variant dark:text-outline-variant hover:text-primary dark:hover:text-inverse-primary transition-colors font-body-md text-body-md" href="#">Terms of Service</a>
+            <a class="text-on-surface-variant dark:text-outline-variant hover:text-primary dark:hover:text-inverse-primary transition-colors font-body-md text-body-md" href="#">Security</a>
+        </div>
+    </div>
+    <div class="max-w-container-max mx-auto px-margin-mobile md:px-margin-desktop pt-8 border-t border-outline-variant/20 dark:border-outline/10 flex flex-col md:flex-row justify-between items-center gap-4">
+        <p class="font-body-md text-body-md text-on-surface-variant dark:text-outline-variant text-sm">
+            © 2026 E-Faws AI Financial. All rights reserved. Licensed NBFC &amp; IRDAI Partner.
+        </p>
+        <div class="flex gap-4">
+            <a class="text-outline dark:text-outline-variant hover:text-primary transition-colors" href="#"><span class="material-symbols-outlined">language</span></a>
+        </div>
+    </div>
+</footer>
+</body>
+</html>
